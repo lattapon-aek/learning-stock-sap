@@ -551,51 +551,57 @@ Dr  ส่วนต่างราคา (PRD)     1,000  ← ส่วนเก
 <section>
   <span class="lbl">Part 4 — พื้นฐาน</span>
   <h2>Dr / Cr ในชีวิตจริงของ Dohome</h2>
-  <p class="sm">อ่าน entries ด้วยคำถามเดียว: <strong>"account นี้เป็น Asset หรือ Liability? และมันเพิ่มหรือลด?"</strong></p>
+  <p class="sm" style="margin-bottom:8px;">อ่านด้วยคำถามเดียว: <em>"account นี้ประเภทไหน? และมันเพิ่มหรือลด?"</em></p>
 
-  <div style="margin:10px 0;">
+  <table style="font-size:.63em;">
+    <thead>
+      <tr>
+        <th style="padding:5px 10px;">เหตุการณ์</th>
+        <th style="padding:5px 10px;background:rgba(39,174,96,.5);">Dr (ซ้าย)</th>
+        <th style="padding:5px 10px;background:rgba(52,152,219,.5);">Cr (ขวา)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:7px 10px;">📦 DC <strong>รับสินค้าเข้า</strong><br><span style="color:var(--muted)">100 ชิ้น @ 100 บาท</span></td>
+        <td style="padding:7px 10px;background:rgba(39,174,96,.06);">
+          <strong style="color:var(--green)">สินค้าคงคลัง 10,000</strong><br>
+          <span style="color:var(--muted)">สินทรัพย์ เพิ่ม → Dr</span>
+        </td>
+        <td style="padding:7px 10px;background:rgba(52,152,219,.06);">
+          <strong style="color:var(--blue)">GR/IR 10,000</strong><br>
+          <span style="color:var(--muted)">หนี้สิน เพิ่ม → Cr (รอ Invoice)</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:7px 10px;">🧾 รับ <strong>Invoice</strong> จาก vendor<br><span style="color:var(--muted)">10,000 บาท</span></td>
+        <td style="padding:7px 10px;background:rgba(39,174,96,.06);">
+          <strong style="color:var(--green)">GR/IR 10,000</strong><br>
+          <span style="color:var(--muted)">หนี้สิน ลด → Dr (เคลียร์)</span>
+        </td>
+        <td style="padding:7px 10px;background:rgba(52,152,219,.06);">
+          <strong style="color:var(--blue)">เจ้าหนี้ 10,000</strong><br>
+          <span style="color:var(--muted)">หนี้สิน เพิ่ม → Cr (ค้างจ่าย)</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:7px 10px;">🛒 <strong>ขายสินค้าออก</strong><br><span style="color:var(--muted)">10 ชิ้น @ MAP 105</span></td>
+        <td style="padding:7px 10px;background:rgba(39,174,96,.06);">
+          <strong style="color:var(--green)">ต้นทุนขาย 1,050</strong><br>
+          <span style="color:var(--muted)">ค่าใช้จ่าย เพิ่ม → Dr</span>
+        </td>
+        <td style="padding:7px 10px;background:rgba(52,152,219,.06);">
+          <strong style="color:var(--blue)">สินค้าคงคลัง 1,050</strong><br>
+          <span style="color:var(--muted)">สินทรัพย์ ลด → Cr (ของออก)</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-    <p style="font-size:.72em;color:var(--muted);margin-bottom:4px;">📦 DC <strong>รับสินค้าเข้า</strong> 100 ชิ้น มูลค่า 10,000 บาท</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
-      <div style="background:rgba(39,174,96,.1);border:1px solid var(--green);border-radius:6px;padding:10px;font-size:.72em;">
-        <strong style="color:var(--green)">Dr สินค้าคงคลัง 10,000</strong><br>
-        <span class="sm">สินทรัพย์ → <strong>เพิ่ม</strong> → Dr</span><br>
-        <span class="sm">ของอยู่ในคลังเรา</span>
-      </div>
-      <div style="background:rgba(52,152,219,.1);border:1px solid var(--blue);border-radius:6px;padding:10px;font-size:.72em;">
-        <strong style="color:var(--blue)">Cr GR/IR 10,000</strong><br>
-        <span class="sm">หนี้สิน → <strong>เพิ่ม</strong> → Cr</span><br>
-        <span class="sm">ยังไม่ได้จ่าย รอ Invoice</span>
-      </div>
-    </div>
-
-    <p style="font-size:.72em;color:var(--muted);margin-bottom:4px;">🧾 รับ <strong>Invoice</strong> จาก vendor 10,000 บาท</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
-      <div style="background:rgba(39,174,96,.1);border:1px solid var(--green);border-radius:6px;padding:10px;font-size:.72em;">
-        <strong style="color:var(--green)">Dr GR/IR 10,000</strong><br>
-        <span class="sm">หนี้สิน → <strong>ลด</strong> → Dr</span><br>
-        <span class="sm">เคลียร์บัญชีพัก</span>
-      </div>
-      <div style="background:rgba(52,152,219,.1);border:1px solid var(--blue);border-radius:6px;padding:10px;font-size:.72em;">
-        <strong style="color:var(--blue)">Cr เจ้าหนี้ 10,000</strong><br>
-        <span class="sm">หนี้สิน → <strong>เพิ่ม</strong> → Cr</span><br>
-        <span class="sm">ต้องจ่าย vendor</span>
-      </div>
-    </div>
-
-    <p style="font-size:.72em;color:var(--muted);margin-bottom:4px;">🛒 <strong>ขายสินค้า</strong> ออก 10 ชิ้น MAP 105 บาท</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-      <div style="background:rgba(244,121,32,.1);border:1px solid var(--orange);border-radius:6px;padding:10px;font-size:.72em;">
-        <strong style="color:var(--orange)">Dr ต้นทุนขาย 1,050</strong><br>
-        <span class="sm">ค่าใช้จ่าย → <strong>เพิ่ม</strong> → Dr</span><br>
-        <span class="sm">ต้นทุนที่รับรู้</span>
-      </div>
-      <div style="background:rgba(231,76,60,.1);border:1px solid var(--red);border-radius:6px;padding:10px;font-size:.72em;">
-        <strong style="color:var(--red)">Cr สินค้าคงคลัง 1,050</strong><br>
-        <span class="sm">สินทรัพย์ → <strong>ลด</strong> → Cr</span><br>
-        <span class="sm">ของออกจากคลัง</span>
-      </div>
-    </div>
+  <div class="bo" style="margin-top:8px;font-size:.65em;">
+    <strong>สังเกต:</strong> Dr รวม = Cr รวม ทุกแถว &nbsp;|&nbsp;
+    สินทรัพย์ <strong>Dr = เพิ่ม</strong> / <strong>Cr = ลด</strong> &nbsp;|&nbsp;
+    หนี้สิน <strong>Dr = ลด</strong> / <strong>Cr = เพิ่ม</strong>
   </div>
 </section>
 
