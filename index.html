@@ -277,57 +277,64 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
 <section>
   <span class="lbl">Part 2 — Material Master</span>
   <h2>Material Type ของ Dohome — มีผลต่อ Stock ต่างกัน</h2>
-  <p class="sm">แต่ละ type กำหนดว่า GR จะเข้า stock หรือ consumption และจะมีมูลค่าหรือไม่</p>
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0;font-size:.68em;">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin:6px 0;font-size:.6em;">
 
-    <div style="background:rgba(39,174,96,.08);border:1px solid var(--green);border-radius:6px;padding:10px;">
-      <p style="color:var(--green);font-weight:700;margin-bottom:6px;">✅ มีจำนวน + มีมูลค่า → เข้า Stock</p>
-      <table style="font-size:.95em;margin:0;">
+    <div style="background:rgba(39,174,96,.08);border:1px solid var(--green);border-radius:6px;padding:7px 8px;">
+      <p style="color:var(--green);font-weight:700;margin-bottom:3px;">✅ เข้า Stock</p>
+      <p style="color:var(--muted);font-size:.88em;margin-bottom:4px;">มีจำนวน + มีมูลค่า</p>
+      <table style="margin:0;">
         <tbody>
-          <tr><td><strong>ZAWA</strong></td><td>Trading Goods <em style="color:var(--orange)">(สินค้าหลัก DC/สาขา) ⭐</em></td></tr>
-          <tr><td><strong>ZAWB</strong></td><td>Trading Goods Part (อะไหล่/ชิ้นส่วน)</td></tr>
-          <tr><td><strong>ZAWC</strong></td><td>Trading Consignment (สินค้าฝากขาย)</td></tr>
-          <tr><td><strong>ZGLD</strong></td><td>Trading Goods Gold <em style="color:var(--yellow)">(MAP ผันผวนสูง)</em></td></tr>
-          <tr><td><strong>ZGUT</strong></td><td>Empties / บรรจุภัณฑ์คืนได้</td></tr>
-          <tr><td><strong>ZSPR</strong></td><td>Spare Parts</td></tr>
-          <tr><td><strong>ZTOL</strong></td><td>Maintenance Tools</td></tr>
-          <tr><td><strong>ZMAS</strong></td><td>Maintenance Assemblies</td></tr>
-          <tr><td><strong>ZREF</strong></td><td>Refurbishment Parts</td></tr>
-          <tr><td><strong>ZERP</strong></td><td>Packaging</td></tr>
+          <tr><td style="padding:1px 5px;white-space:nowrap;"><strong>ZAWA</strong></td><td style="padding:1px 4px;">Trading Goods <span style="color:var(--orange)">⭐</span></td></tr>
+          <tr><td style="padding:1px 5px;"><strong>ZAWB</strong></td><td style="padding:1px 4px;">Trading Goods Part</td></tr>
+          <tr><td style="padding:1px 5px;"><strong>ZAWC</strong></td><td style="padding:1px 4px;">Trading Consignment</td></tr>
+          <tr><td style="padding:1px 5px;"><strong>ZGLD</strong></td><td style="padding:1px 4px;">Gold <span style="color:var(--yellow)">(MAP สูง)</span></td></tr>
+          <tr><td style="padding:1px 5px;"><strong>ZGUT</strong></td><td style="padding:1px 4px;">Empties</td></tr>
+          <tr><td style="padding:1px 5px;"><strong>ZSPR</strong></td><td style="padding:1px 4px;">Spare Parts</td></tr>
+          <tr><td style="padding:1px 5px;"><strong>ZTOL</strong></td><td style="padding:1px 4px;">Maintenance Tools</td></tr>
+          <tr><td style="padding:1px 5px;"><strong>ZMAS</strong></td><td style="padding:1px 4px;">Maint. Assemblies</td></tr>
+          <tr><td style="padding:1px 5px;"><strong>ZREF</strong></td><td style="padding:1px 4px;">Refurbishment Parts</td></tr>
+          <tr><td style="padding:1px 5px;"><strong>ZERP</strong></td><td style="padding:1px 4px;">Packaging</td></tr>
         </tbody>
       </table>
     </div>
 
-    <div style="display:flex;flex-direction:column;gap:8px;">
-      <div style="background:rgba(231,76,60,.08);border:1px solid var(--red);border-left:3px solid var(--red);border-radius:6px;padding:10px;">
-        <p style="color:var(--red);font-weight:700;margin-bottom:6px;">❌ ไม่มีจำนวน ไม่มีมูลค่า → เข้า Consumption ทันที</p>
-        <table style="font-size:.95em;margin:0;">
-          <tbody>
-            <tr><td><strong>ZCON</strong></td><td>Consumable (วัสดุสิ้นเปลือง)</td></tr>
-            <tr><td><strong>ZIEN</strong></td><td>Service (งานบริการ)</td></tr>
-            <tr><td><strong>ZOUP</strong></td><td>Coupons</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div style="background:rgba(52,152,219,.08);border:1px solid var(--blue);border-radius:6px;padding:10px;">
-        <p style="color:var(--blue);font-weight:700;margin-bottom:6px;">⚠️ กรณีพิเศษ — ต้องระวัง</p>
-        <table style="font-size:.95em;margin:0;">
-          <tbody>
-            <tr><td><strong>ZNBW</strong></td><td>Nonvaluated — มีจำนวน <span class="yes">✅</span> แต่ไม่มีมูลค่า <span class="no">❌</span></td></tr>
-            <tr><td><strong>ZERT</strong></td><td>Value-only — มีมูลค่า <span class="yes">✅</span> แต่ไม่แยกราย article</td></tr>
-          </tbody>
-        </table>
+    <div style="background:rgba(231,76,60,.08);border:1px solid var(--red);border-left:3px solid var(--red);border-radius:6px;padding:7px 8px;">
+      <p style="color:var(--red);font-weight:700;margin-bottom:3px;">❌ เข้า Consumption ทันที</p>
+      <p style="color:var(--muted);font-size:.88em;margin-bottom:4px;">ไม่มีจำนวน ไม่มีมูลค่าใน stock</p>
+      <table style="margin:0;">
+        <tbody>
+          <tr><td style="padding:1px 5px;"><strong>ZCON</strong></td><td style="padding:1px 4px;">Consumable</td></tr>
+          <tr><td style="padding:1px 5px;"><strong>ZIEN</strong></td><td style="padding:1px 4px;">Service</td></tr>
+          <tr><td style="padding:1px 5px;"><strong>ZOUP</strong></td><td style="padding:1px 4px;">Coupons</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:8px;padding:5px 6px;background:rgba(231,76,60,.12);border-radius:4px;font-size:.9em;">
+        GR ไม่เข้า stock เลย<br>integration ที่คาดว่า<br>"ทุก GR = เข้า stock"<br><strong style="color:var(--red)">จะผิดทันที</strong>
       </div>
     </div>
 
-  </div>
+    <div style="background:rgba(52,152,219,.08);border:1px solid var(--blue);border-radius:6px;padding:7px 8px;">
+      <p style="color:var(--blue);font-weight:700;margin-bottom:3px;">⚠️ กรณีพิเศษ</p>
+      <p style="color:var(--muted);font-size:.88em;margin-bottom:4px;">ต้องระวังเป็นพิเศษ</p>
+      <table style="margin:0 0 6px;">
+        <tbody>
+          <tr>
+            <td style="padding:1px 5px;"><strong>ZNBW</strong></td>
+            <td style="padding:1px 4px;">Nonvaluated<br><span style="color:var(--muted)">จำนวน ✅ มูลค่า ❌</span></td>
+          </tr>
+          <tr>
+            <td style="padding:1px 5px;"><strong>ZERT</strong></td>
+            <td style="padding:1px 4px;">Value-only<br><span style="color:var(--muted)">มูลค่า ✅ ไม่แยกราย</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="padding:5px 6px;background:rgba(52,152,219,.12);border-radius:4px;font-size:.9em;">
+        ZNBW: report มูลค่า = 0<br>
+        ZERT: ดู qty รายชิ้นไม่ได้
+      </div>
+    </div>
 
-  <div class="bw" style="font-size:.68em;">
-    <strong>⚠️ Integration gotcha:</strong>
-    <strong>ZCON / ZIEN</strong> — GR เข้า Consumption ทันที ไม่มีใน stock &nbsp;|&nbsp;
-    <strong>ZNBW</strong> — report ที่อ้าง "มูลค่า stock" จะได้ 0 เสมอ &nbsp;|&nbsp;
-    <strong>ZERT</strong> — ไม่สามารถดู stock ระดับ article ได้
   </div>
 </section>
 
@@ -741,19 +748,30 @@ Dr ส่วนต่าง (PRD)     1,000 ← แยกบัญชี
 <section>
   <span class="lbl">Part 5 — Movement Types</span>
   <h2>Movement Types ที่ Dohome ต้องรู้</h2>
-  <table>
-    <thead><tr><th>Mov.</th><th>ความหมาย</th><th style="text-align:center">Value</th><th style="text-align:center">MAP</th><th style="text-align:center">FI</th></tr></thead>
+  <table style="font-size:.6em;">
+    <thead>
+      <tr>
+        <th style="padding:5px 10px;">Mov.</th>
+        <th style="padding:5px 10px;">ความหมาย</th>
+        <th style="padding:5px 8px;text-align:center">กระทบ<br>Value?</th>
+        <th style="padding:5px 8px;text-align:center">กระทบ<br>MAP?</th>
+        <th style="padding:5px 8px;text-align:center">สร้าง<br>FI Doc?</th>
+      </tr>
+    </thead>
     <tbody>
-      <tr><td><strong>101</strong></td><td>รับสินค้าจาก PO</td><td style="text-align:center"><span class="yes">✅</span></td><td style="text-align:center"><span class="yes">✅</span></td><td style="text-align:center"><span class="yes">✅</span></td></tr>
-      <tr><td><strong>102</strong></td><td>ยกเลิก GR</td><td style="text-align:center"><span class="yes">✅</span></td><td style="text-align:center"><span class="yes">✅</span></td><td style="text-align:center"><span class="yes">✅</span></td></tr>
-      <tr><td><strong>122</strong></td><td>คืนสินค้ากลับ vendor</td><td style="text-align:center"><span class="yes">✅</span></td><td style="text-align:center"><span class="yes">✅</span></td><td style="text-align:center"><span class="yes">✅</span></td></tr>
-      <tr><td><strong>201</strong></td><td>เบิกใช้ภายใน (Cost Center)</td><td style="text-align:center"><span class="yes">✅</span></td><td style="text-align:center"><span class="no">❌</span></td><td style="text-align:center"><span class="yes">✅</span></td></tr>
-      <tr><td><strong>311</strong></td><td>โอนระหว่างคลังใน Plant เดียว</td><td style="text-align:center"><span class="no">❌</span></td><td style="text-align:center"><span class="no">❌</span></td><td style="text-align:center"><span class="no">❌</span></td></tr>
-      <tr><td><strong>351</strong></td><td>DC → สาขา (STO)</td><td style="text-align:center"><span class="yes">✅</span></td><td style="text-align:center"><span class="no">❌</span></td><td style="text-align:center"><span class="yes">✅</span></td></tr>
-      <tr><td><strong>551</strong></td><td>ตัดทิ้ง / สินค้าเสียหาย</td><td style="text-align:center"><span class="yes">✅</span></td><td style="text-align:center"><span class="no">❌</span></td><td style="text-align:center"><span class="yes">✅</span></td></tr>
-      <tr><td><strong>601</strong></td><td>ขายออก (Goods Issue for Delivery)</td><td style="text-align:center"><span class="yes">✅</span></td><td style="text-align:center"><span class="no">❌</span></td><td style="text-align:center"><span class="yes">✅</span></td></tr>
+      <tr><td style="padding:4px 10px;"><strong>101</strong></td><td style="padding:4px 10px;">รับสินค้าจาก PO (DC รับจาก vendor)</td><td style="text-align:center;padding:4px 8px;"><span class="yes">✅</span></td><td style="text-align:center;padding:4px 8px;"><span class="yes">✅</span></td><td style="text-align:center;padding:4px 8px;"><span class="yes">✅</span></td></tr>
+      <tr><td style="padding:4px 10px;"><strong>102</strong></td><td style="padding:4px 10px;">ยกเลิก GR (Cancel/Reverse)</td><td style="text-align:center;padding:4px 8px;"><span class="yes">✅</span></td><td style="text-align:center;padding:4px 8px;"><span class="yes">✅</span></td><td style="text-align:center;padding:4px 8px;"><span class="yes">✅</span></td></tr>
+      <tr><td style="padding:4px 10px;"><strong>122</strong></td><td style="padding:4px 10px;">คืนสินค้ากลับ vendor (Return)</td><td style="text-align:center;padding:4px 8px;"><span class="yes">✅</span></td><td style="text-align:center;padding:4px 8px;"><span class="yes">✅</span></td><td style="text-align:center;padding:4px 8px;"><span class="yes">✅</span></td></tr>
+      <tr><td style="padding:4px 10px;"><strong>201</strong></td><td style="padding:4px 10px;">เบิกใช้ภายใน (Cost Center)</td><td style="text-align:center;padding:4px 8px;"><span class="yes">✅</span></td><td style="text-align:center;padding:4px 8px;"><span class="no">❌</span></td><td style="text-align:center;padding:4px 8px;"><span class="yes">✅</span></td></tr>
+      <tr><td style="padding:4px 10px;"><strong>311</strong></td><td style="padding:4px 10px;">โอนระหว่างคลังใน Plant เดียวกัน</td><td style="text-align:center;padding:4px 8px;"><span class="no">❌</span></td><td style="text-align:center;padding:4px 8px;"><span class="no">❌</span></td><td style="text-align:center;padding:4px 8px;"><span class="no">❌</span></td></tr>
+      <tr><td style="padding:4px 10px;"><strong>351</strong></td><td style="padding:4px 10px;">DC → สาขา (Stock Transport Order)</td><td style="text-align:center;padding:4px 8px;"><span class="yes">✅</span></td><td style="text-align:center;padding:4px 8px;"><span class="no">❌</span></td><td style="text-align:center;padding:4px 8px;"><span class="yes">✅</span></td></tr>
+      <tr><td style="padding:4px 10px;"><strong>551</strong></td><td style="padding:4px 10px;">ตัดทิ้ง / สินค้าเสียหาย (Scrap)</td><td style="text-align:center;padding:4px 8px;"><span class="yes">✅</span></td><td style="text-align:center;padding:4px 8px;"><span class="no">❌</span></td><td style="text-align:center;padding:4px 8px;"><span class="yes">✅</span></td></tr>
+      <tr><td style="padding:4px 10px;"><strong>601</strong></td><td style="padding:4px 10px;">ขายออก (Goods Issue for Delivery)</td><td style="text-align:center;padding:4px 8px;"><span class="yes">✅</span></td><td style="text-align:center;padding:4px 8px;"><span class="no">❌</span></td><td style="text-align:center;padding:4px 8px;"><span class="yes">✅</span></td></tr>
     </tbody>
   </table>
+  <div class="bo" style="margin-top:8px;font-size:.65em;">
+    <strong>สังเกต:</strong> มีแค่ <strong>101, 102, 122</strong> เท่านั้นที่กระทบ MAP — movement ที่ "ออก" ทั้งหมดตัดที่ MAP ปัจจุบัน ไม่เปลี่ยน MAP
+  </div>
 </section>
 
 <!-- SLIDE: DC to Store -->
