@@ -130,6 +130,10 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
   <span class="pnum">Part 1</span>
   <h2 class="ptit">SAP มอง<br>"Stock" ยังไง?</h2>
   <span class="psub">Mental Model ที่ต้องมีก่อนทุกอย่าง</span>
+  <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
+    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 5 นาที</span>
+    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:04</span>
+  </div>
 </section>
 
 <!-- SLIDE: Stock = Qty x Value -->
@@ -208,6 +212,10 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
   <span class="pnum">Part 2</span>
   <h2 class="ptit">Article /<br>Material Master</h2>
   <span class="psub">ศูนย์กลางข้อมูลสินค้าของ Dohome</span>
+  <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
+    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 8 นาที</span>
+    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:09</span>
+  </div>
 </section>
 
 <!-- SLIDE: SSOT -->
@@ -338,30 +346,15 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
   </div>
 </section>
 
-<!-- SLIDE: Valuation Area -->
-<section>
-  <span class="lbl">Part 2 — Material Master</span>
-  <h2>Valuation Area คืออะไร และทำไมสำคัญ</h2>
-  <p class="sm">Valuation Area = ระดับที่ SAP ใช้ตีมูลค่าสินค้า</p>
-  <div class="two" style="margin:10px 0;">
-    <div class="bi"><strong>ระดับ Company Code</strong><br>Plant ทั้งหมดใน Dohome ใช้ราคาเดียวกัน</div>
-    <div class="bo"><strong>ระดับ Plant</strong><br>แต่ละ DC / สาขา มีราคาของตัวเอง</div>
-  </div>
-  <table>
-    <thead><tr><th>สถานการณ์</th><th>Valuation = Company Code</th><th>Valuation = Plant</th></tr></thead>
-    <tbody>
-      <tr><td>โอน DC → สาขา (ใน company เดียว)</td><td><span class="no">ไม่มี FI Doc</span></td><td><span class="yes">มี FI Doc</span></td></tr>
-      <tr><td>ราคาระหว่าง DC กับสาขา</td><td>เหมือนกัน</td><td>อาจต่างกัน</td></tr>
-    </tbody>
-  </table>
-  <blockquote>Dohome ต้องรู้ว่าใช้แบบไหน — มีผลต่อการออกแบบ integration ทั้งหมด</blockquote>
-</section>
-
 <!-- PART 3 DIVIDER -->
 <section class="part">
   <span class="pnum">Part 3</span>
   <h2 class="ptit">Price Control &amp;<br>Moving Average Price</h2>
   <span class="psub">หัวใจของการตีมูลค่าสินค้า</span>
+  <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
+    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 10 นาที</span>
+    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:17</span>
+  </div>
 </section>
 
 <!-- SLIDE: Why Price Control Matters -->
@@ -473,30 +466,15 @@ Dr  ส่วนต่างราคา (PRD)     1,000  ← ส่วนเก
   <blockquote><strong>จำง่ายๆ:</strong> V เปลี่ยน stock value ตาม actual; S แยก variance ออกจาก stock</blockquote>
 </section>
 
-<!-- SLIDE: MAP Impact Table -->
-<section>
-  <span class="lbl">Part 3 — Price Control</span>
-  <h2>สรุป: Movement ไหนกระทบ MAP บ้าง?</h2>
-  <table>
-    <thead><tr><th>Movement</th><th>ความหมาย</th><th style="text-align:center">MAP?</th><th>เหตุผล</th></tr></thead>
-    <tbody>
-      <tr><td><strong>101</strong></td><td>รับสินค้าจาก PO</td><td style="text-align:center"><span class="yes">✅</span></td><td>มูลค่าใหม่เข้า stock</td></tr>
-      <tr><td><strong>102</strong></td><td>ยกเลิก GR</td><td style="text-align:center"><span class="yes">✅</span></td><td>ย้อนกลับ MAP</td></tr>
-      <tr><td><strong>122</strong></td><td>คืนให้ vendor</td><td style="text-align:center"><span class="yes">✅</span></td><td>มูลค่าออกจาก stock</td></tr>
-      <tr><td><strong>201 / 311 / 551 / 601</strong></td><td>เบิกใช้ / โอนคลัง / ตัดทิ้ง / ขายออก</td><td style="text-align:center"><span class="no">❌</span></td><td>ตัดที่ MAP ปัจจุบัน</td></tr>
-      <tr style="background:rgba(244,121,32,.1)"><td><strong>Invoice (MIRO)</strong></td><td>บันทึกใบแจ้งหนี้</td><td style="text-align:center"><span class="yes">✅ (V+stock พอ)</span></td><td>ปรับส่วนต่างเข้า stock</td></tr>
-    </tbody>
-  </table>
-  <div class="bo" style="margin-top:8px;">
-    <strong>จำง่ายๆ:</strong> MAP เปลี่ยนเฉพาะตอน "ของเข้า + มูลค่าเข้า" หรือ "Invoice ปรับราคา"
-  </div>
-</section>
-
 <!-- PART 4 DIVIDER -->
 <section class="part">
   <span class="pnum">Part 4</span>
   <h2 class="ptit">Procure-to-Pay<br>Flow</h2>
   <span class="psub">จาก PO ถึง Payment — แต่ละ step เกิดอะไรขึ้น?</span>
+  <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
+    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 12 นาที</span>
+    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:27</span>
+  </div>
 </section>
 
 <!-- SLIDE: Debit & Credit Concept -->
@@ -699,36 +677,15 @@ Dr ส่วนต่าง (PRD)     1,000 ← แยกบัญชี
   </div>
 </section>
 
-<!-- SLIDE: Doc Numbers -->
-<section>
-  <span class="lbl">Part 4 — P2P Flow</span>
-  <h2>Material Doc ≠ FI Doc — อย่า Join ด้วยเลขเดียวกัน!</h2>
-  <p class="sm">เมื่อ Post GR ระบบสร้างเอกสาร <strong>2 ชุดพร้อมกัน</strong> — เลขเอกสารไม่เท่ากัน</p>
-  <div class="two" style="margin:10px 0;text-align:center;">
-    <div style="background:var(--card);border:1px solid var(--blue);border-radius:8px;padding:14px;">
-      <p class="sm">Material Document</p>
-      <p style="font-size:1.1em;font-weight:700;color:var(--blue);font-family:monospace;">5000012345</p>
-      <p class="sm">MKPF / MSEG</p>
-      <p class="sm">บันทึกการเคลื่อนไหวสินค้า</p>
-    </div>
-    <div style="background:var(--card);border:1px solid var(--orange);border-radius:8px;padding:14px;">
-      <p class="sm">Accounting Document</p>
-      <p style="font-size:1.1em;font-weight:700;color:var(--orange);font-family:monospace;">4900056789</p>
-      <p class="sm">BKPF / BSEG</p>
-      <p class="sm">บันทึกรายการบัญชี</p>
-    </div>
-  </div>
-  <div class="bw">
-    <strong>⚠️ เลขทั้งสองไม่เท่ากัน!</strong><br>
-    ต้องใช้ reference fields ที่ SAP กำหนด — ไม่ใช่ join โดยตรงจากเลขเอกสาร
-  </div>
-</section>
-
 <!-- PART 5 DIVIDER -->
 <section class="part">
   <span class="pnum">Part 5</span>
   <h2 class="ptit">Movement Types &amp;<br>Stock ของ Dohome</h2>
   <span class="psub">DC-DC, DC-สาขา, Stock จอง, และ Gotchas</span>
+  <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
+    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 10 นาที</span>
+    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:39</span>
+  </div>
 </section>
 
 <!-- SLIDE: What is Mov Type -->
@@ -861,6 +818,10 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
   <span class="pnum">Part 6</span>
   <h2 class="ptit">Account<br>Determination</h2>
   <span class="psub">SAP ตัดบัญชีอัตโนมัติยังไง?</span>
+  <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
+    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 4 นาที</span>
+    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:49</span>
+  </div>
 </section>
 
 <!-- SLIDE: Account Det Chain -->
@@ -898,36 +859,15 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
   </table>
 </section>
 
-<!-- SLIDE: Full Example -->
-<section>
-  <span class="lbl">Part 6 — Account Determination</span>
-  <h2>ตัวอย่างครบวงจร: GR และ Invoice ลงบัญชียังไง</h2>
-  <p class="sm">Price Control = V, PO = 100 บาท, Invoice จริง = 105 บาท (100 ชิ้น)</p>
-  <div class="two" style="margin-top:8px;">
-    <div>
-      <p style="font-size:.7em;text-align:center;margin-bottom:4px;"><strong>Goods Receipt (Mov. 101)</strong></p>
-      <pre style="font-size:.56em;"><code>Dr สินค้าคงคลัง BSX  10,000
-   Cr GR/IR      WRX  10,000</code></pre>
-      <p class="sm" style="color:var(--orange);">→ MAP คำนวณใหม่อัตโนมัติ</p>
-    </div>
-    <div>
-      <p style="font-size:.7em;text-align:center;margin-bottom:4px;"><strong>Invoice Receipt (MIRO)</strong></p>
-      <pre style="font-size:.56em;"><code>Dr GR/IR    WRX  10,000
-Dr สินค้า   BSX     500 ← ปรับ V
-   Cr เจ้าหนี้      10,500</code></pre>
-      <p class="sm" style="color:var(--orange);">→ MAP ปรับอีกครั้งจาก Invoice</p>
-    </div>
-  </div>
-  <div class="bg" style="margin-top:8px;font-size:.7em;">
-    <strong>ผลสุดท้าย:</strong> GR/IR = 0 ✅ &nbsp;|&nbsp; Stock สะท้อนราคาจริง &nbsp;|&nbsp; เจ้าหนี้ค้างจ่าย 10,500 บาท
-  </div>
-</section>
-
 <!-- PART 7 DIVIDER -->
 <section class="part">
   <span class="pnum">Part 7</span>
   <h2 class="ptit">Developer<br>Quick Reference</h2>
   <span class="psub">Cheat Sheet สำหรับใช้งานจริง</span>
+  <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
+    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 4 นาที</span>
+    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:53</span>
+  </div>
 </section>
 
 <!-- SLIDE: Cheat Sheet -->
