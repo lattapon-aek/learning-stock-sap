@@ -93,7 +93,7 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
       <p><strong style="color:var(--orange)">PART 5</strong> — Movement Types &amp; Stock</p>
       <p><strong style="color:var(--orange)">PART 6</strong> — Account Determination</p>
       <p><strong style="color:var(--orange)">PART 7</strong> — Developer Quick Reference</p>
-      <p style="color:var(--muted);">⏱ รวม ~55 นาที &nbsp;|&nbsp; 32 slides</p>
+      <p style="color:var(--muted);">⏱ รวม ~45 นาที &nbsp;|&nbsp; 28 slides</p>
     </div>
   </div>
   <div class="bo" style="margin-top:14px;">
@@ -157,25 +157,26 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
   <blockquote>Root cause และจุด debug ไม่เหมือนกันเลย</blockquote>
 </section>
 
-<!-- SLIDE: Stock Types -->
+<!-- SLIDE: Stock Types + Reserved -->
 <section>
   <span class="lbl">Part 1 — Mental Model</span>
   <h2>Stock มีหลายประเภท — ไม่ใช่ตัวเลขเดียว</h2>
   <table>
-    <thead><tr><th>ประเภท</th><th>ความหมาย</th><th>ขายได้?</th></tr></thead>
+    <thead><tr><th>ประเภท (เก็บแยกกันใน SAP)</th><th>ความหมาย</th><th>ขายได้?</th></tr></thead>
     <tbody>
-      <tr><td><strong>Unrestricted</strong></td><td>พร้อมใช้งาน</td><td><span class="yes">✅</span> (แต่อาจมี Reserved ฝังอยู่)</td></tr>
-      <tr><td><strong>Reserved</strong> (จอง)</td><td>ถูกจองโดย Delivery — ยังนับใน Unrestricted</td><td><span class="no">❌ ไม่ได้อีก</span></td></tr>
+      <tr><td><strong>Unrestricted</strong></td><td>พร้อมใช้งาน</td><td><span class="yes">✅</span> เฉพาะส่วนที่ยังไม่ถูกจอง</td></tr>
       <tr><td><strong>Quality Inspection</strong></td><td>รอตรวจรับ</td><td><span class="no">❌ ยังไม่ได้</span></td></tr>
       <tr><td><strong>Blocked</strong></td><td>ระงับการใช้งาน</td><td><span class="no">❌ ไม่ได้</span></td></tr>
     </tbody>
   </table>
-  <div class="bw" style="margin-top:10px;">
-    <strong>ตัวอย่าง Dohome:</strong><br>
-    Unrestricted = 100 &nbsp;|&nbsp; Reserved by Delivery = 33 &nbsp;|&nbsp;
-    <strong style="color:var(--green);">ขายได้จริง (Available) = 67</strong>
+  <p class="sm" style="margin-top:8px;"><strong style="color:var(--orange)">Reserved ไม่ใช่ประเภทที่ 4</strong> — มันคือ "การจอง" ที่ฝังอยู่ <em>ข้างใน</em> Unrestricted (เกิดอัตโนมัติเมื่อสร้าง Delivery)</p>
+  <pre><code>Unrestricted (MARD-LABST)        = 100 ชิ้น  ← integration มักดึงตัวนี้
+├── Reserved โดย Delivery ค้างอยู่ =  33 ชิ้น
+└── Available to Promise (ATP)    =  67 ชิ้น  ← ขายได้จริง</code></pre>
+  <div class="bw" style="margin-top:8px;">
+    <strong>⚠️ Integration ต้องดู Available — ไม่ใช่ <code>MARD-LABST</code></strong><br>
+    <code>MARD-LABST</code> = Unrestricted ทั้งก้อน (ยังรวม Reserved อยู่) → เห็น 100 แต่ขายได้จริง 67
   </div>
-  <blockquote>Integration ที่ดึงแค่ Unrestricted จะเห็น 100 แต่ขายได้จริงแค่ 67</blockquote>
 </section>
 
 <!-- SLIDE: 4 Questions -->
@@ -213,7 +214,7 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
   <h2 class="ptit">Article /<br>Material Master</h2>
   <span class="psub">ศูนย์กลางข้อมูลสินค้าของ Dohome</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
-    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 8 นาที</span>
+    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 7 นาที</span>
     <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:09</span>
   </div>
 </section>
@@ -286,63 +287,40 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
   <span class="lbl">Part 2 — Material Master</span>
   <h2>Material Type ของ Dohome — มีผลต่อ Stock ต่างกัน</h2>
 
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin:6px 0;font-size:.6em;">
-
-    <div style="background:rgba(39,174,96,.08);border:1px solid var(--green);border-radius:6px;padding:7px 8px;">
-      <p style="color:var(--green);font-weight:700;margin-bottom:3px;">✅ เข้า Stock</p>
-      <p style="color:var(--muted);font-size:.88em;margin-bottom:4px;">มีจำนวน + มีมูลค่า</p>
-      <table style="margin:0;">
-        <tbody>
-          <tr><td style="padding:1px 5px;white-space:nowrap;"><strong>ZAWA</strong></td><td style="padding:1px 4px;">Trading Goods <span style="color:var(--orange)">⭐</span></td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZAWB</strong></td><td style="padding:1px 4px;">Trading Goods Part</td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZAWC</strong></td><td style="padding:1px 4px;">Trading Consignment</td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZGLD</strong></td><td style="padding:1px 4px;">Gold <span style="color:var(--yellow)">(MAP สูง)</span></td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZGUT</strong></td><td style="padding:1px 4px;">Empties</td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZSPR</strong></td><td style="padding:1px 4px;">Spare Parts</td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZTOL</strong></td><td style="padding:1px 4px;">Maintenance Tools</td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZMAS</strong></td><td style="padding:1px 4px;">Maint. Assemblies</td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZREF</strong></td><td style="padding:1px 4px;">Refurbishment Parts</td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZERP</strong></td><td style="padding:1px 4px;">Packaging</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div style="background:rgba(231,76,60,.08);border:1px solid var(--red);border-left:3px solid var(--red);border-radius:6px;padding:7px 8px;">
-      <p style="color:var(--red);font-weight:700;margin-bottom:3px;">❌ เข้า Consumption ทันที</p>
-      <p style="color:var(--muted);font-size:.88em;margin-bottom:4px;">ไม่มีจำนวน ไม่มีมูลค่าใน stock</p>
-      <table style="margin:0;">
-        <tbody>
-          <tr><td style="padding:1px 5px;"><strong>ZCON</strong></td><td style="padding:1px 4px;">Consumable</td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZIEN</strong></td><td style="padding:1px 4px;">Service</td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZOUP</strong></td><td style="padding:1px 4px;">Coupons</td></tr>
-        </tbody>
-      </table>
-      <div style="margin-top:8px;padding:5px 6px;background:rgba(231,76,60,.12);border-radius:4px;font-size:.9em;">
-        GR ไม่เข้า stock เลย<br>integration ที่คาดว่า<br>"ทุก GR = เข้า stock"<br><strong style="color:var(--red)">จะผิดทันที</strong>
-      </div>
-    </div>
-
-    <div style="background:rgba(52,152,219,.08);border:1px solid var(--blue);border-radius:6px;padding:7px 8px;">
-      <p style="color:var(--blue);font-weight:700;margin-bottom:3px;">⚠️ กรณีพิเศษ</p>
-      <p style="color:var(--muted);font-size:.88em;margin-bottom:4px;">ต้องระวังเป็นพิเศษ</p>
-      <table style="margin:0 0 6px;">
-        <tbody>
-          <tr>
-            <td style="padding:1px 5px;"><strong>ZNBW</strong></td>
-            <td style="padding:1px 4px;">Nonvaluated<br><span style="color:var(--muted)">จำนวน ✅ มูลค่า ❌</span></td>
-          </tr>
-          <tr>
-            <td style="padding:1px 5px;"><strong>ZERT</strong></td>
-            <td style="padding:1px 4px;">Value-only<br><span style="color:var(--muted)">มูลค่า ✅ ไม่แยกราย</span></td>
-          </tr>
-        </tbody>
-      </table>
-      <div style="padding:5px 6px;background:rgba(52,152,219,.12);border-radius:4px;font-size:.9em;">
-        ZNBW: report มูลค่า = 0<br>
-        ZERT: ดู qty รายชิ้นไม่ได้
-      </div>
-    </div>
-
+  <table style="font-size:.66em;">
+    <thead><tr><th>กลุ่ม</th><th>Material Type</th><th style="text-align:center">จำนวน</th><th style="text-align:center">มูลค่า</th><th>ผลต่อ Integration</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong style="color:var(--green)">✅ เข้า Stock</strong></td>
+        <td><strong>ZAWA</strong> Trading Goods <span style="color:var(--orange)">⭐ ตัวหลัก</span><br><span class="sm">+ อีก ~9 ประเภท (ZGLD, ZSPR, ZGUT …) หลักการเดียวกัน</span></td>
+        <td style="text-align:center"><span class="yes">✅</span></td>
+        <td style="text-align:center"><span class="yes">✅</span></td>
+        <td>GR เข้า stock ปกติ — Stock = Qty × Price</td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--red)">❌ Consumption</strong></td>
+        <td><strong>ZCON</strong> Consumable, <strong>ZIEN</strong> Service, <strong>ZOUP</strong> Coupons</td>
+        <td style="text-align:center"><span class="no">❌</span></td>
+        <td style="text-align:center"><span class="no">❌</span></td>
+        <td>GR ลงค่าใช้จ่ายทันที <strong style="color:var(--red)">ไม่เข้า stock เลย</strong></td>
+      </tr>
+      <tr>
+        <td rowspan="2"><strong style="color:var(--blue)">⚠️ พิเศษ</strong></td>
+        <td><strong>ZNBW</strong> Nonvaluated</td>
+        <td style="text-align:center"><span class="yes">✅</span></td>
+        <td style="text-align:center"><span class="no">❌</span></td>
+        <td>นับจำนวนได้ แต่ report มูลค่า = 0 เสมอ</td>
+      </tr>
+      <tr>
+        <td><strong>ZERT</strong> Value-only</td>
+        <td style="text-align:center"><span class="no">❌</span></td>
+        <td style="text-align:center"><span class="yes">✅</span></td>
+        <td>มีแต่มูลค่ารวม — ดู qty รายชิ้นไม่ได้</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="bw" style="margin-top:10px;">
+    <strong>⚠️ Gotcha:</strong> Integration ที่ assume ว่า <em>"ทุก GR = เข้า stock"</em> จะผิดทันทีเมื่อเจอ ZCON/ZIEN — ต้องเช็ค Material Type (<code>MARA-MTART</code>) ก่อนเสมอ
   </div>
 </section>
 
@@ -352,35 +330,8 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
   <h2 class="ptit">Price Control &amp;<br>Moving Average Price</h2>
   <span class="psub">หัวใจของการตีมูลค่าสินค้า</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
-    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 10 นาที</span>
-    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:17</span>
-  </div>
-</section>
-
-<!-- SLIDE: Why Price Control Matters -->
-<section>
-  <span class="lbl">Part 3 — Price Control</span>
-  <h2>ทำไม Price Control ถึงสำคัญที่สุด?</h2>
-  <p class="sm">Price Control กำหนดสิ่งเหล่านี้ทั้งหมด:</p>
-  <div class="two" style="margin-top:10px;">
-    <div>
-      <div class="bo" style="margin-bottom:8px;">มูลค่าสินค้าในคลังคำนวณยังไง</div>
-      <div class="bo">Invoice ราคาต่างจาก PO → ไปไหน?</div>
-    </div>
-    <div>
-      <div class="bo" style="margin-bottom:8px;">บัญชีไหนถูก Debit/Credit เมื่อสินค้าเดิน</div>
-      <div class="bo">ราคาใน MBEW-VERPR เปลี่ยนเมื่อไหร่</div>
-    </div>
-  </div>
-  <div class="two" style="margin-top:12px;text-align:center;">
-    <div style="background:rgba(39,174,96,.1);border:1px solid var(--green);border-radius:8px;padding:14px;">
-      <strong style="font-size:1.3em;color:var(--green);">V</strong><br>
-      <span class="sm">Moving Average Price<br>ราคาสะท้อนต้นทุนจริง</span>
-    </div>
-    <div style="background:rgba(52,152,219,.1);border:1px solid var(--blue);border-radius:8px;padding:14px;">
-      <strong style="font-size:1.3em;color:var(--blue);">S</strong><br>
-      <span class="sm">Standard Price<br>ราคาคงที่ตามกำหนด</span>
-    </div>
+    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 8 นาที</span>
+    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:16</span>
   </div>
 </section>
 
@@ -388,6 +339,7 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
 <section>
   <span class="lbl">Part 3 — Price Control</span>
   <h2>Moving Average Price (V) — หลักการ</h2>
+  <p class="sm">Price Control มี 2 แบบ: <strong style="color:var(--green)">V</strong> Moving Average (ราคาตามต้นทุนจริง — ค้าปลีกใช้ตัวนี้) และ <strong style="color:var(--blue)">S</strong> Standard (ราคาคงที่ — เปรียบเทียบท้าย Part นี้)</p>
   <div class="big" style="font-size:.82em;">
     MAP ใหม่ = <span>(มูลค่า stock เดิม + มูลค่าที่รับเข้า)</span> ÷ <span>จำนวน stock รวม</span>
   </div>
@@ -424,7 +376,6 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
       <tr style="background:rgba(244,121,32,.1)"><td>GR: รับเข้าอีก 30 ชิ้น @130 บาท</td><td style="text-align:right">100</td><td style="text-align:right">11,250</td><td style="text-align:right"><strong style="color:var(--orange)">112.50</strong></td></tr>
     </tbody>
   </table>
-  <blockquote>MAP เปลี่ยนเฉพาะตอนรับเข้าและ Invoice — <strong>ไม่เปลี่ยนตอนขายออก</strong></blockquote>
 </section>
 
 <!-- SLIDE: GI Effect -->
@@ -472,64 +423,22 @@ Dr  ส่วนต่างราคา (PRD)     1,000  ← ส่วนเก
   <h2 class="ptit">Procure-to-Pay<br>Flow</h2>
   <span class="psub">จาก PO ถึง Payment — แต่ละ step เกิดอะไรขึ้น?</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
-    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 12 นาที</span>
-    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:27</span>
+    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 8 นาที</span>
+    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:24</span>
   </div>
 </section>
 
-<!-- SLIDE: Debit & Credit Concept -->
+<!-- SLIDE: Dr/Cr in one slide -->
 <section>
   <span class="lbl">Part 4 — พื้นฐาน</span>
-  <h2>Debit กับ Credit คืออะไร?</h2>
-  <p class="sm">ก่อนอ่าน accounting entries ใน SAP — ต้องเข้าใจหลักการนี้ก่อน</p>
-
-  <div style="display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--orange);border-radius:8px;overflow:hidden;font-size:.8em;text-align:center;margin:10px 0;">
-    <div style="background:rgba(39,174,96,.15);padding:14px 10px;border-right:2px solid var(--orange);">
-      <strong style="font-size:1.4em;color:var(--green);">Dr</strong><br>
-      <strong style="color:var(--green);">Debit</strong><br>
-      <span class="sm">บันทึกด้านซ้าย</span>
-    </div>
-    <div style="background:rgba(52,152,219,.15);padding:14px 10px;">
-      <strong style="font-size:1.4em;color:var(--blue);">Cr</strong><br>
-      <strong style="color:var(--blue);">Credit</strong><br>
-      <span class="sm">บันทึกด้านขวา</span>
-    </div>
+  <h2>อ่าน Dr / Cr ให้เป็นใน 1 slide</h2>
+  <p class="sm" style="margin-bottom:6px;"><strong style="color:var(--green)">Dr (Debit)</strong> = ฝั่งซ้าย &nbsp;|&nbsp; <strong style="color:var(--blue)">Cr (Credit)</strong> = ฝั่งขวา &nbsp;|&nbsp; กฎเหล็ก: <strong>Dr รวม = Cr รวม เสมอ</strong></p>
+  <div class="bo" style="font-size:.65em;margin-bottom:8px;">
+    <strong>สินทรัพย์</strong> (สินค้าคงคลัง): Dr = เพิ่ม / Cr = ลด &nbsp;|&nbsp;
+    <strong>หนี้สิน</strong> (เจ้าหนี้, GR/IR): Cr = เพิ่ม / Dr = ลด &nbsp;|&nbsp;
+    <strong>ค่าใช้จ่าย</strong> (COGS): Dr = เพิ่ม
   </div>
-
-  <div class="bo" style="text-align:center;font-size:.82em;margin-bottom:10px;">
-    กฎเหล็ก: <strong>Dr รวม = Cr รวม เสมอ</strong> — ทุก transaction ต้องสมดุล
-  </div>
-
-  <table>
-    <thead><tr><th>ประเภทบัญชี</th><th>ตัวอย่าง</th><th style="text-align:center">Debit (Dr)</th><th style="text-align:center">Credit (Cr)</th></tr></thead>
-    <tbody>
-      <tr>
-        <td><strong>สินทรัพย์</strong> (Assets)</td>
-        <td>สินค้าคงคลัง, เงินสด</td>
-        <td style="text-align:center"><span class="yes">เพิ่ม ↑</span></td>
-        <td style="text-align:center"><span class="no">ลด ↓</span></td>
-      </tr>
-      <tr>
-        <td><strong>หนี้สิน</strong> (Liabilities)</td>
-        <td>เจ้าหนี้, GR/IR</td>
-        <td style="text-align:center"><span class="no">ลด ↓</span></td>
-        <td style="text-align:center"><span class="yes">เพิ่ม ↑</span></td>
-      </tr>
-      <tr>
-        <td><strong>ค่าใช้จ่าย</strong> (Expenses)</td>
-        <td>ต้นทุนขาย (COGS), ส่วนต่างราคา</td>
-        <td style="text-align:center"><span class="yes">เพิ่ม ↑</span></td>
-        <td style="text-align:center"><span class="no">ลด ↓</span></td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- SLIDE: Dr/Cr Dohome Example -->
-<section>
-  <span class="lbl">Part 4 — พื้นฐาน</span>
-  <h2>Dr / Cr ในชีวิตจริงของ Dohome</h2>
-  <p class="sm" style="margin-bottom:8px;">อ่านด้วยคำถามเดียว: <em>"account นี้ประเภทไหน? และมันเพิ่มหรือลด?"</em></p>
+  <p class="sm" style="margin-bottom:6px;">อ่านทุก entry ด้วยคำถามเดียว: <em>"account นี้ประเภทไหน? และมันเพิ่มหรือลด?"</em></p>
 
   <table style="font-size:.63em;">
     <thead>
@@ -576,11 +485,6 @@ Dr  ส่วนต่างราคา (PRD)     1,000  ← ส่วนเก
     </tbody>
   </table>
 
-  <div class="bo" style="margin-top:8px;font-size:.65em;">
-    <strong>สังเกต:</strong> Dr รวม = Cr รวม ทุกแถว &nbsp;|&nbsp;
-    สินทรัพย์ <strong>Dr = เพิ่ม</strong> / <strong>Cr = ลด</strong> &nbsp;|&nbsp;
-    หนี้สิน <strong>Dr = ลด</strong> / <strong>Cr = เพิ่ม</strong>
-  </div>
 </section>
 
 <!-- SLIDE: P2P Overview -->
@@ -613,7 +517,8 @@ Dr  ส่วนต่างราคา (PRD)     1,000  ← ส่วนเก
 <section>
   <span class="lbl">Part 4 — P2P Flow</span>
   <h2>GR/IR Clearing Account คืออะไร?</h2>
-  <p class="sm"><strong>GR/IR Clearing</strong> = บัญชีพักชั่วคราว ระหว่างรับของกับรับใบแจ้งหนี้</p>
+  <p class="sm"><strong>GR/IR Clearing</strong> = บัญชีพักชั่วคราว ระหว่างรับของกับรับใบแจ้งหนี้<br>
+  (ขั้น PO ยังไม่มีผลทางบัญชี — ทุกอย่างเริ่มที่ Goods Receipt)</p>
   <pre><code>ตอน Goods Receipt:
   Dr  สินค้าคงคลัง     10,000  ← ของเข้าคลัง
       Cr  GR/IR         10,000  ← รอ Invoice
@@ -629,26 +534,6 @@ Dr  ส่วนต่างราคา (PRD)     1,000  ← ส่วนเก
       <tr><td>ยอด Credit ค้าง</td><td style="color:var(--red);">&lt; 0</td><td>Invoice มาแล้ว แต่ของยังไม่มาถึง</td></tr>
     </tbody>
   </table>
-</section>
-
-<!-- SLIDE: GR Example -->
-<section>
-  <span class="lbl">Part 4 — P2P Flow</span>
-  <h2>ตัวอย่าง: รับสินค้าเข้า DC จาก Vendor</h2>
-  <p class="sm">100 ชิ้น, PO price = 100 บาท, MAP ปัจจุบัน = 95 บาท (Price Control = V)</p>
-  <div class="bi" style="margin:8px 0;">
-    <strong>ขั้นที่ 1 — สร้าง PO (ME21N):</strong> ไม่มีผลต่อ stock และบัญชีใดๆ
-  </div>
-  <div class="bo" style="margin-bottom:6px;">
-    <strong>ขั้นที่ 2 — Goods Receipt (MIGO — Movement 101):</strong><br>
-    <code>Dr สินค้าคงคลัง 10,000 / Cr GR/IR 10,000</code><br>
-    MAP ใหม่ = (9,500 + 10,000) ÷ 200 = <strong>97.50 บาท</strong>
-  </div>
-  <div class="bg">
-    <strong>ขั้นที่ 3 — Invoice (MIRO) ราคาตรงกับ PO:</strong><br>
-    <code>Dr GR/IR 10,000 / Cr เจ้าหนี้ 10,000</code><br>
-    GR/IR เคลียร์ = 0 ✅
-  </div>
 </section>
 
 <!-- SLIDE: Invoice Variance -->
@@ -683,8 +568,8 @@ Dr ส่วนต่าง (PRD)     1,000 ← แยกบัญชี
   <h2 class="ptit">Movement Types &amp;<br>Stock ของ Dohome</h2>
   <span class="psub">DC-DC, DC-สาขา, Stock จอง, และ Gotchas</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
-    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 10 นาที</span>
-    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:39</span>
+    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 8 นาที</span>
+    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:32</span>
   </div>
 </section>
 
@@ -764,29 +649,6 @@ Dr ส่วนต่าง (PRD)     1,000 ← แยกบัญชี
   </div>
 </section>
 
-<!-- SLIDE: Reserved Stock -->
-<section>
-  <span class="lbl">Part 5 — Movement Types</span>
-  <h2>Stock จอง (Reserved Stock) ใน Dohome</h2>
-  <p class="sm">เมื่อสร้าง Delivery — SAP จอง Stock อัตโนมัติ</p>
-  <pre><code>Unrestricted Stock ทั้งหมด = 100 ชิ้น
-├── Reserved โดย Delivery #001 = 30 ชิ้น
-├── Reserved โดย Delivery #002 = 20 ชิ้น
-└── Available to Promise (ATP)  = 50 ชิ้น  ← ขายได้จริง</code></pre>
-  <table style="margin:8px 0;">
-    <thead><tr><th>เหตุการณ์</th><th style="text-align:right">Unrestricted</th><th style="text-align:right">Reserved</th><th style="text-align:right">Available</th></tr></thead>
-    <tbody>
-      <tr><td>เริ่มต้น</td><td style="text-align:right">100</td><td style="text-align:right">0</td><td style="text-align:right">100</td></tr>
-      <tr style="background:rgba(244,121,32,.1)"><td>สร้าง Delivery (30 ชิ้น)</td><td style="text-align:right">100</td><td style="text-align:right">30</td><td style="text-align:right"><strong>70</strong></td></tr>
-      <tr style="background:rgba(39,174,96,.08)"><td>Post Goods Issue (Mov. 601)</td><td style="text-align:right">70</td><td style="text-align:right">0</td><td style="text-align:right"><strong>70</strong></td></tr>
-    </tbody>
-  </table>
-  <div class="bw">
-    <strong>⚠️ Integration ต้องดู Available — ไม่ใช่แค่ MARD-LABST</strong><br>
-    <code>MARD-LABST</code> = Unrestricted (ยังรวม Reserved อยู่)
-  </div>
-</section>
-
 <!-- SLIDE: Gotchas -->
 <section>
   <span class="lbl">Part 5 — Movement Types</span>
@@ -819,8 +681,8 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
   <h2 class="ptit">Account<br>Determination</h2>
   <span class="psub">SAP ตัดบัญชีอัตโนมัติยังไง?</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
-    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 4 นาที</span>
-    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:49</span>
+    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 3 นาที</span>
+    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:40</span>
   </div>
 </section>
 
@@ -830,8 +692,6 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
   <h2>ห่วงโซ่ Account Determination</h2>
   <div style="display:flex;flex-direction:column;gap:6px;margin:8px 0;font-size:.72em;">
     <div style="display:flex;align-items:center;gap:10px;"><div class="fb" style="min-width:220px;">Movement Type</div><span class="sm">เช่น 101, 601, 351</span></div>
-    <div style="color:var(--orange);padding-left:22px;font-size:1.2em;">↓</div>
-    <div style="display:flex;align-items:center;gap:10px;"><div class="fb" style="min-width:220px;">Value String</div><span class="sm">กำหนดใน Customizing</span></div>
     <div style="color:var(--orange);padding-left:22px;font-size:1.2em;">↓</div>
     <div style="display:flex;align-items:center;gap:10px;"><div class="fb" style="min-width:220px;border-color:var(--orange);">Transaction / Event Key</div><span class="sm">BSX / WRX / PRD / GBB / KDM / UMB</span></div>
     <div style="color:var(--orange);padding-left:22px;font-size:1.2em;">↓</div>
@@ -866,7 +726,7 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
   <span class="psub">Cheat Sheet สำหรับใช้งานจริง</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
     <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 4 นาที</span>
-    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:53</span>
+    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:43</span>
   </div>
 </section>
 
