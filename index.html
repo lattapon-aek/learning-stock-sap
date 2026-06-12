@@ -104,7 +104,7 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#F3EA
       <p><strong style="color:var(--orange)">PART 5</strong> — Movement Types &amp; Stock</p>
       <p><strong style="color:var(--orange)">PART 6</strong> — Account Determination</p>
       <p><strong style="color:var(--orange)">PART 7</strong> — Developer Quick Reference</p>
-      <p style="color:var(--muted);">⏱ รวม ~50 นาที &nbsp;|&nbsp; 29 slides</p>
+      <p style="color:var(--muted);">⏱ รวม ~48 นาที &nbsp;|&nbsp; 28 slides</p>
     </div>
   </div>
   <div class="bo" style="margin-top:14px;">
@@ -707,42 +707,43 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
   <h2 class="ptit">Account<br>Determination</h2>
   <span class="psub">SAP ตัดบัญชีอัตโนมัติยังไง?</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
-    <span style="background:rgba(238,127,45,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 3 นาที</span>
+    <span style="background:rgba(238,127,45,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 2 นาที</span>
     <span style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:40</span>
   </div>
 </section>
 
-<!-- SLIDE: Account Det Chain -->
+<!-- SLIDE: Account Determination (one page) -->
 <section>
   <span class="lbl">Part 6 — Account Determination</span>
-  <h2>ห่วงโซ่ Account Determination</h2>
-  <div style="display:flex;flex-direction:column;gap:6px;margin:8px 0;font-size:.72em;">
-    <div style="display:flex;align-items:center;gap:10px;"><div class="fb" style="min-width:220px;">Movement Type</div><span class="sm">เช่น 101, 601, 351</span></div>
-    <div style="color:var(--orange);padding-left:22px;font-size:1.2em;">↓</div>
-    <div style="display:flex;align-items:center;gap:10px;"><div class="fb" style="min-width:220px;border-color:var(--orange);">Transaction / Event Key</div><span class="sm">BSX / WRX / PRD / GBB / KDM / UMB</span></div>
-    <div style="color:var(--orange);padding-left:22px;font-size:1.2em;">↓</div>
-    <div style="display:flex;align-items:center;gap:10px;"><div class="fb" style="min-width:220px;">Valuation Class (BKLAS)</div><span class="sm">จาก MBEW-BKLAS ของสินค้า</span></div>
-    <div style="color:var(--orange);padding-left:22px;font-size:1.2em;">↓</div>
-    <div style="display:flex;align-items:center;gap:10px;"><div class="fb" style="min-width:220px;background:rgba(78,158,115,.14);border-color:var(--green);">G/L Account</div><span class="sm">กำหนดใน OBYC</span></div>
-  </div>
-  <blockquote>Dev ต้องรู้ว่า <strong>Valuation Class + Movement Type</strong> คือตัวแปรหลักที่กำหนดบัญชี</blockquote>
-</section>
+  <h2>SAP เลือกบัญชีให้เอง — เหมือน rule แยก email เข้า folder</h2>
+  <p class="sm">ตอนของเดิน ไม่มีใครนั่งเลือก G/L account เอง — SAP ดูแค่ <strong>2 อย่าง</strong> แล้วเปิดตาราง rule
+  (ตั้งไว้ล่วงหน้าใน <code>OBYC</code> เหมือนตั้ง filter อีเมลครั้งเดียว ใช้ตลอด)</p>
 
-<!-- SLIDE: Transaction Keys -->
-<section>
-  <span class="lbl">Part 6 — Account Determination</span>
-  <h2>Transaction Keys ที่ต้องรู้จัก</h2>
-  <table>
-    <thead><tr><th>Key</th><th>ความหมาย</th><th>ใช้เมื่อ</th></tr></thead>
-    <tbody>
-      <tr><td><strong style="color:var(--orange)">BSX</strong></td><td>Inventory Posting</td><td>ทุกครั้งที่ stock เพิ่ม/ลดมูลค่า</td></tr>
-      <tr><td><strong style="color:var(--blue)">WRX</strong></td><td>GR/IR Clearing</td><td>ทุก GR จาก PO และ Invoice</td></tr>
-      <tr><td><strong style="color:var(--red)">PRD</strong></td><td>Price Difference</td><td>ราคาซื้อ ≠ Standard Price (S)</td></tr>
-      <tr><td><strong style="color:var(--green)">GBB</strong></td><td>Offsetting Entry</td><td>เบิกใช้ภายใน, scrap, delivery</td></tr>
-      <tr><td><strong style="color:#9b59b6">KDM</strong></td><td>Exchange Rate Difference</td><td>ซื้อสินค้าสกุลเงินต่างประเทศ</td></tr>
-      <tr><td><strong style="color:var(--yellow)">UMB</strong></td><td>Revaluation</td><td>ปรับมูลค่าย้อนหลัง, backdated posting</td></tr>
-    </tbody>
-  </table>
+  <div class="flow" style="justify-content:center;gap:8px;margin:10px 0;flex-wrap:wrap;">
+    <div class="fb" style="white-space:normal;min-width:170px;"><strong>เกิดอะไรขึ้น?</strong><br><span class="sm">Movement Type<br>เช่น 101 = รับของจาก PO</span></div>
+    <div class="fa">+</div>
+    <div class="fb" style="white-space:normal;min-width:170px;"><strong>ของประเภทไหน?</strong><br><span class="sm">Valuation Class<br>จาก <code>MBEW-BKLAS</code></span></div>
+    <div class="fa">→</div>
+    <div class="fb" style="white-space:normal;min-width:120px;border-color:var(--orange);"><strong>ตาราง Rule</strong><br><span class="sm">OBYC</span></div>
+    <div class="fa">→</div>
+    <div class="fb" style="white-space:normal;min-width:120px;background:rgba(78,158,115,.14);border-color:var(--green);"><strong>G/L Account</strong></div>
+  </div>
+
+  <div class="bg" style="font-size:.66em;">
+    <strong>ตัวอย่าง: GR สินค้า ZAWA มูลค่า 10,000</strong> — Movement 101 บอกว่า entry นี้มี 2 ขา:
+    ขา stock (key <strong style="color:var(--orange)">BSX</strong>) กับขาบัญชีพัก (key <strong style="color:var(--blue)">WRX</strong>)
+    แล้ว Valuation Class ของ ZAWA ชี้ว่าแต่ละ key ใช้บัญชีเลขไหน<br>
+    <code>Dr สินค้าคงคลัง 10,000 / Cr GR/IR 10,000</code> — entry ที่เห็นใน Part 4 ทั้งหมด มาจากกลไกนี้แหละ
+  </div>
+
+  <p class="sm" style="margin-top:6px;">key ที่เจอบ่อย: <strong style="color:var(--orange)">BSX</strong> ขา stock &nbsp;|&nbsp;
+  <strong style="color:var(--blue)">WRX</strong> ขา GR/IR &nbsp;|&nbsp;
+  <strong style="color:var(--green)">GBB</strong> ขาคู่ตรงข้ามตอนเบิก/ขาย &nbsp;|&nbsp;
+  <strong style="color:var(--red)">PRD</strong> ส่วนต่างราคา</p>
+
+  <div class="bw" style="font-size:.65em;">
+    <strong>เวลาลงบัญชีผิด</strong> เกือบทั้งหมดมาจาก 2 ที่: Valuation Class ของสินค้าตั้งผิด หรือ rule ใน OBYC ชี้ผิดบัญชี — ไม่ต้องไปไล่ที่อื่น
+  </div>
 </section>
 
 <!-- PART 7 DIVIDER -->
@@ -752,7 +753,7 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
   <span class="psub">Cheat Sheet สำหรับใช้งานจริง</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
     <span style="background:rgba(238,127,45,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 4 นาที</span>
-    <span style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:43</span>
+    <span style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:42</span>
   </div>
 </section>
 
