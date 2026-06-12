@@ -466,8 +466,8 @@ section.present .flow > .heart { animation:popin .4s ease .25s both, heartbeat 2
   </div>
   <pre><code>Dr  ต้นทุนขาย (COGS)          1,050 บาท  ← 10 × MAP 105
     Cr  สินค้าคงคลัง (Stock)  1,050 บาท</code></pre>
-  <p class="sm" style="margin:4px 0 0;">📝 <strong>MAP</strong> = อัตราต้นทุนต่อชิ้นของของ<em>ในคลัง</em> (สถานะ — เปลี่ยนตอนรับเข้า) &nbsp;|&nbsp;
-  <strong>COGS</strong> = ต้นทุนที่ถูกตัด<em>ตอนขายออก</em> (= จำนวน × MAP ขณะนั้น — ตัดแล้วล็อกเลย) — คนละกลไกกัน และทั้งคู่ไม่ใช่ "ราคาขาย"</p>
+  <p class="sm" style="margin:4px 0 0;">📝 <strong style="color:var(--orange)">MAP</strong> = อัตราต้นทุนต่อชิ้นของของ<em>ในคลัง</em> — เป็น "สถานะ" มีค่าตลอดเวลา เปลี่ยนตอนรับเข้า<br>
+  📝 <strong style="color:var(--blue)">COGS</strong> = ต้นทุนที่ถูกตัด<em>ตอนขายออก</em> (= จำนวน × MAP ขณะนั้น) — ตัดแล้วล็อกเลย | คนละกลไกกัน และทั้งคู่ไม่ใช่ "ราคาขาย"</p>
   <div class="bi" style="margin-top:6px;">
     <strong>สำคัญสำหรับ Integration:</strong><br>
     MAP ที่ตัดคือ MAP <strong>ณ เวลาที่ post</strong> — ถ้า post ช้ากว่าความจริง MAP อาจไม่ตรงกับที่คาด
