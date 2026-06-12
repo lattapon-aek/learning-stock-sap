@@ -7,63 +7,74 @@
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reset.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/theme/black.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/theme/white.css">
 <style>
 :root {
-  --orange: #F47920;
-  --bg:     #0f1623;
-  --card:   #1a2234;
-  --card2:  #212e45;
-  --txt:    #e8eaf0;
-  --muted:  #8896a8;
-  --green:  #27ae60;
-  --red:    #e74c3c;
-  --blue:   #3498db;
-  --yellow: #f39c12;
+  --orange: #EE7F2D;
+  --bg:     #FAF6EF;
+  --card:   #FFFFFF;
+  --card2:  #F7F1E6;
+  --txt:    #4A443C;
+  --muted:  #9A9183;
+  --green:  #4E9E73;
+  --red:    #C9655B;
+  --blue:   #5B8FBF;
+  --yellow: #D9A026;
+  --line:   #E9E0D0;
 }
 .reveal { font-family:'Sarabun',sans-serif; background:var(--bg); }
 .reveal .slides { text-align:left; }
 .reveal h1,.reveal h2,.reveal h3 {
   font-family:'Sarabun',sans-serif; color:var(--orange);
-  text-transform:none; letter-spacing:normal; line-height:1.2;
+  text-transform:none; letter-spacing:normal; line-height:1.2; font-weight:700;
 }
 .reveal h2 { font-size:1.35em; }
 .reveal p,.reveal li { font-size:.77em; color:var(--txt); line-height:1.6; }
 .reveal ul { list-style:none; padding-left:0; }
 .reveal ul li::before { content:"▸ "; color:var(--orange); }
-.reveal table { width:100%; border-collapse:collapse; font-size:.63em; margin:.4em 0; }
-.reveal table th { background:var(--orange); color:#fff; padding:7px 11px; text-align:left; font-weight:600; }
-.reveal table td { background:var(--card); color:var(--txt); padding:6px 11px; border-bottom:1px solid #2a3550; }
+.reveal table { width:100%; border-collapse:collapse; font-size:.63em; margin:.4em 0;
+  border-radius:8px; overflow:hidden; box-shadow:0 1px 4px rgba(74,68,60,.08); }
+.reveal table th { background:rgba(238,127,45,.85); color:#fff; padding:7px 11px; text-align:left; font-weight:600; }
+.reveal table td { background:var(--card); color:var(--txt); padding:6px 11px; border-bottom:1px solid var(--line); }
 .reveal table tr:nth-child(even) td { background:var(--card2); }
-.reveal pre { background:#0a0e1a; border:1px solid #2a3550; border-left:3px solid var(--orange);
-  border-radius:4px; font-size:.58em; padding:10px 14px; margin:.4em 0; width:100%; box-shadow:none; }
-.reveal pre code { font-family:'JetBrains Mono',monospace; color:#c8d3e8; background:transparent; }
+.reveal pre { background:#FBF2E2; border:1px solid var(--line); border-left:3px solid var(--orange);
+  border-radius:8px; font-size:.58em; padding:10px 14px; margin:.4em 0; width:100%; box-shadow:none; }
+.reveal pre code { font-family:'JetBrains Mono',monospace; color:#6E5E45; background:transparent; }
 .reveal blockquote { background:var(--card); border-left:3px solid var(--orange); padding:9px 14px;
-  font-size:.7em; color:var(--muted); font-style:italic; width:100%; margin:7px 0; box-shadow:none; }
-.bo  { background:rgba(244,121,32,.12); border:1px solid var(--orange); border-radius:6px; padding:10px 14px; margin:6px 0; font-size:.73em; }
-.bi  { background:rgba(52,152,219,.12); border:1px solid var(--blue);   border-radius:6px; padding:10px 14px; margin:6px 0; font-size:.73em; }
-.bw  { background:rgba(231,76,60,.12);  border:1px solid var(--red);    border-left:4px solid var(--red); border-radius:6px; padding:10px 14px; margin:6px 0; font-size:.71em; }
-.bg  { background:rgba(39,174,96,.12);  border:1px solid var(--green);  border-radius:6px; padding:9px 13px; margin:6px 0; font-size:.71em; }
+  font-size:.7em; color:var(--muted); font-style:italic; width:100%; margin:7px 0;
+  box-shadow:0 1px 3px rgba(74,68,60,.06); border-radius:0 8px 8px 0; }
+.bo  { background:rgba(238,127,45,.08);  border:1px solid rgba(238,127,45,.35); border-radius:10px; padding:10px 14px; margin:6px 0; font-size:.73em; }
+.bi  { background:rgba(91,143,191,.09);  border:1px solid rgba(91,143,191,.35); border-radius:10px; padding:10px 14px; margin:6px 0; font-size:.73em; }
+.bw  { background:rgba(201,101,91,.08);  border:1px solid rgba(201,101,91,.35); border-left:4px solid var(--red); border-radius:10px; padding:10px 14px; margin:6px 0; font-size:.71em; }
+.bg  { background:rgba(78,158,115,.10);  border:1px solid rgba(78,158,115,.35); border-radius:10px; padding:9px 13px; margin:6px 0; font-size:.71em; }
 .two { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:8px; }
 .thr { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:8px; }
 .flow { display:flex; align-items:center; flex-wrap:wrap; gap:0; margin:10px 0; font-size:.68em; }
-.fb  { background:var(--card); border:1px solid var(--orange); border-radius:6px; padding:7px 12px; text-align:center; color:#fff; white-space:nowrap; }
-.fb.dim { border-color:#3a4a60; color:var(--muted); }
+.fb  { background:var(--card); border:1px solid rgba(238,127,45,.5); border-radius:10px; padding:7px 12px;
+  text-align:center; color:var(--txt); white-space:nowrap; box-shadow:0 1px 3px rgba(74,68,60,.08); }
+.fb.dim { border-color:var(--line); color:var(--muted); box-shadow:none; }
 .fa  { color:var(--orange); font-size:1.3em; padding:0 5px; flex-shrink:0; }
 .part { text-align:center !important; }
 .pnum { font-size:.85em; color:var(--muted); letter-spacing:4px; text-transform:uppercase; margin-bottom:6px; display:block; }
 .ptit { font-size:2em !important; color:var(--orange) !important; line-height:1.25 !important; }
 .psub { font-size:.82em; color:var(--muted); margin-top:10px; display:block; }
-.big  { text-align:center; font-size:1.25em; color:#fff; font-weight:600; margin:14px 0; padding:14px;
-        background:var(--card); border-radius:8px; border:1px solid var(--orange); }
+.big  { text-align:center; font-size:1.25em; color:var(--txt); font-weight:600; margin:14px 0; padding:14px;
+        background:var(--card); border-radius:12px; border:1px solid rgba(238,127,45,.4);
+        box-shadow:0 1px 4px rgba(74,68,60,.08); }
 .big span { color:var(--orange); }
 .lbl  { font-size:.53em; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-bottom:3px; display:block; }
 .num  { font-size:2.4em; font-weight:700; color:var(--orange); line-height:1; }
 .yes  { color:var(--green); font-weight:700; }
 .no   { color:var(--red);   font-weight:700; }
-.rule { border:none; border-top:1px solid #2a3550; margin:10px 0; }
+.rule { border:none; border-top:1px solid var(--line); margin:10px 0; }
 small,.sm { font-size:.68em; color:var(--muted); }
-code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a2234; padding:1px 5px; border-radius:3px; color:#c8d3e8; }
+code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#F3EAD7; padding:1px 5px; border-radius:4px; color:#A65818; }
+.qbtn { font-family:'Sarabun',sans-serif; font-size:.62em; font-weight:600; color:#fff; background:var(--orange);
+  border:none; border-radius:20px; padding:5px 16px; cursor:pointer; flex-shrink:0; box-shadow:0 1px 3px rgba(74,68,60,.15); }
+.qbtn:hover { opacity:.82; }
+.ans { display:none; margin-top:8px; padding:8px 12px; background:rgba(255,255,255,.75); border-radius:8px;
+  border-left:3px solid var(--green); color:var(--txt); }
+.ans.show { display:block; }
 </style>
 </head>
 <body>
@@ -72,10 +83,10 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
 <!-- COVER -->
 <section>
   <p style="font-size:.65em;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">DOHOME DEVELOPMENT TEAM</p>
-  <h1 style="font-size:2.1em;color:#fff;line-height:1.15;">SAP <span style="color:var(--orange)">Stock</span> &amp;<br>Material Master<br><span style="color:var(--orange)">สำหรับ Developer</span></h1>
+  <h1 style="font-size:2.1em;color:var(--txt);line-height:1.15;">SAP <span style="color:var(--orange)">Stock</span> &amp;<br>Material Master<br><span style="color:var(--orange)">สำหรับ Developer</span></h1>
   <p style="font-size:.78em;color:var(--muted);margin-top:14px;">ความเข้าใจพื้นฐานสำหรับการทำ Integration และ Debug ระบบ</p>
   <hr class="rule" style="margin-top:20px;">
-  <p style="font-size:.6em;color:#3a4a60;">ใช้ลูกศร ◄ ► หรือ Spacebar เพื่อเปลี่ยน Slide &nbsp;|&nbsp; F = Full Screen</p>
+  <p style="font-size:.6em;color:var(--muted);">ใช้ลูกศร ◄ ► หรือ Spacebar เพื่อเปลี่ยน Slide &nbsp;|&nbsp; F = Full Screen</p>
 </section>
 
 <!-- AGENDA -->
@@ -93,7 +104,7 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
       <p><strong style="color:var(--orange)">PART 5</strong> — Movement Types &amp; Stock</p>
       <p><strong style="color:var(--orange)">PART 6</strong> — Account Determination</p>
       <p><strong style="color:var(--orange)">PART 7</strong> — Developer Quick Reference</p>
-      <p style="color:var(--muted);">⏱ รวม ~55 นาที &nbsp;|&nbsp; 32 slides</p>
+      <p style="color:var(--muted);">⏱ รวม ~48 นาที &nbsp;|&nbsp; 28 slides</p>
     </div>
   </div>
   <div class="bo" style="margin-top:14px;">
@@ -105,7 +116,7 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
 <!-- HOOK -->
 <section>
   <span class="lbl">Hook</span>
-  <h2 style="color:#fff;font-size:1.15em;">ทำไม stock ที่ integration ดึงมา<br>กับที่ขายได้จริง ถึงไม่ตรงกัน?</h2>
+  <h2 style="color:var(--txt);font-size:1.15em;">ทำไม stock ที่ integration ดึงมา<br>กับที่ขายได้จริง ถึงไม่ตรงกัน?</h2>
   <div class="two" style="margin-top:18px;text-align:center;">
     <div style="background:var(--card);border-radius:8px;padding:18px;">
       <p class="sm" style="margin-bottom:4px;">Integration ดึงมา</p>
@@ -131,8 +142,8 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
   <h2 class="ptit">SAP มอง<br>"Stock" ยังไง?</h2>
   <span class="psub">Mental Model ที่ต้องมีก่อนทุกอย่าง</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
-    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 5 นาที</span>
-    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:04</span>
+    <span style="background:rgba(238,127,45,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 5 นาที</span>
+    <span style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:04</span>
   </div>
 </section>
 
@@ -157,25 +168,27 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
   <blockquote>Root cause และจุด debug ไม่เหมือนกันเลย</blockquote>
 </section>
 
-<!-- SLIDE: Stock Types -->
+<!-- SLIDE: Stock Types + Reserved -->
 <section>
   <span class="lbl">Part 1 — Mental Model</span>
   <h2>Stock มีหลายประเภท — ไม่ใช่ตัวเลขเดียว</h2>
   <table>
-    <thead><tr><th>ประเภท</th><th>ความหมาย</th><th>ขายได้?</th></tr></thead>
+    <thead><tr><th>ประเภท (เก็บแยกกันใน SAP)</th><th>ความหมาย</th><th>ขายได้?</th></tr></thead>
     <tbody>
-      <tr><td><strong>Unrestricted</strong></td><td>พร้อมใช้งาน</td><td><span class="yes">✅</span> (แต่อาจมี Reserved ฝังอยู่)</td></tr>
-      <tr><td><strong>Reserved</strong> (จอง)</td><td>ถูกจองโดย Delivery — ยังนับใน Unrestricted</td><td><span class="no">❌ ไม่ได้อีก</span></td></tr>
+      <tr><td><strong>Unrestricted</strong></td><td>พร้อมใช้งาน</td><td><span class="yes">✅</span> เฉพาะส่วนที่ยังไม่ถูกจอง</td></tr>
       <tr><td><strong>Quality Inspection</strong></td><td>รอตรวจรับ</td><td><span class="no">❌ ยังไม่ได้</span></td></tr>
       <tr><td><strong>Blocked</strong></td><td>ระงับการใช้งาน</td><td><span class="no">❌ ไม่ได้</span></td></tr>
     </tbody>
   </table>
-  <div class="bw" style="margin-top:10px;">
-    <strong>ตัวอย่าง Dohome:</strong><br>
-    Unrestricted = 100 &nbsp;|&nbsp; Reserved by Delivery = 33 &nbsp;|&nbsp;
-    <strong style="color:var(--green);">ขายได้จริง (Available) = 67</strong>
+  <p class="sm" style="margin-top:8px;"><strong style="color:var(--orange)">Reserved ไม่ใช่ประเภทที่ 4</strong> — มันคือ "การจอง" ที่ฝังอยู่ <em>ข้างใน</em> Unrestricted (เกิดอัตโนมัติเมื่อสร้าง Delivery)<br>
+  🍽 เหมือนโต๊ะในร้านอาหาร: โต๊ะว่าง 100 โต๊ะ แต่ติดจองล่วงหน้า 33 — รับลูกค้า walk-in ได้จริงแค่ 67</p>
+  <pre><code>Unrestricted (MARD-LABST)        = 100 ชิ้น  ← integration มักดึงตัวนี้
+├── Reserved โดย Delivery ค้างอยู่ =  33 ชิ้น
+└── Available to Promise (ATP)    =  67 ชิ้น  ← ขายได้จริง</code></pre>
+  <div class="bw" style="margin-top:8px;">
+    <strong>⚠️ Integration ต้องดู Available — ไม่ใช่ <code>MARD-LABST</code></strong><br>
+    <code>MARD-LABST</code> = Unrestricted ทั้งก้อน (ยังรวม Reserved อยู่) → เห็น 100 แต่ขายได้จริง 67
   </div>
-  <blockquote>Integration ที่ดึงแค่ Unrestricted จะเห็น 100 แต่ขายได้จริงแค่ 67</blockquote>
 </section>
 
 <!-- SLIDE: 4 Questions -->
@@ -213,8 +226,8 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
   <h2 class="ptit">Article /<br>Material Master</h2>
   <span class="psub">ศูนย์กลางข้อมูลสินค้าของ Dohome</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
-    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 8 นาที</span>
-    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:09</span>
+    <span style="background:rgba(238,127,45,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 7 นาที</span>
+    <span style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:09</span>
   </div>
 </section>
 
@@ -225,7 +238,7 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
   <div class="flow" style="justify-content:center;gap:8px;flex-wrap:wrap;margin:10px 0;">
     <div class="fb">Purchasing</div>
     <div class="fb">MRP</div>
-    <div class="fb" style="border-color:#fff;background:#2a3a56;padding:10px 16px;"><strong>Material Master</strong></div>
+    <div class="fb" style="border-color:var(--orange);background:rgba(238,127,45,.12);padding:10px 16px;"><strong>Material Master</strong></div>
     <div class="fb">Inventory Mgmt</div>
     <div class="fb">FI / Accounting</div>
   </div>
@@ -256,6 +269,11 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
       <tr><td><strong>MBEW</strong></td><td>ราคาและ valuation</td><td><code>MATNR + BWKEY</code></td></tr>
     </tbody>
   </table>
+  <div class="bi" style="margin-top:8px;font-size:.65em;">
+    <strong>💡 <code>BWKEY</code> = Valuation Area</strong> = ขอบเขตที่ SAP ตีมูลค่าสินค้าแยกกัน (ปกติ = ระดับ Plant)<br>
+    สินค้าเดียวกันคนละ Plant → ราคา MAP คนละตัวได้ &nbsp;|&nbsp;
+    โอนข้าม Valuation Area = <strong>มี FI Doc</strong> / โอนภายใน = <strong>ไม่มี</strong> — นี่คือเหตุผลที่ Movement 311 ไม่มี FI แต่ 351 มี
+  </div>
   <div class="bw" style="margin-top:8px;">
     <strong>⚠️ Gotcha:</strong> อย่า Query แค่ <code>MATNR</code> อย่างเดียว — ต้องใส่ Plant / Valuation Area ด้วยเสมอ
   </div>
@@ -286,63 +304,40 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
   <span class="lbl">Part 2 — Material Master</span>
   <h2>Material Type ของ Dohome — มีผลต่อ Stock ต่างกัน</h2>
 
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin:6px 0;font-size:.6em;">
-
-    <div style="background:rgba(39,174,96,.08);border:1px solid var(--green);border-radius:6px;padding:7px 8px;">
-      <p style="color:var(--green);font-weight:700;margin-bottom:3px;">✅ เข้า Stock</p>
-      <p style="color:var(--muted);font-size:.88em;margin-bottom:4px;">มีจำนวน + มีมูลค่า</p>
-      <table style="margin:0;">
-        <tbody>
-          <tr><td style="padding:1px 5px;white-space:nowrap;"><strong>ZAWA</strong></td><td style="padding:1px 4px;">Trading Goods <span style="color:var(--orange)">⭐</span></td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZAWB</strong></td><td style="padding:1px 4px;">Trading Goods Part</td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZAWC</strong></td><td style="padding:1px 4px;">Trading Consignment</td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZGLD</strong></td><td style="padding:1px 4px;">Gold <span style="color:var(--yellow)">(MAP สูง)</span></td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZGUT</strong></td><td style="padding:1px 4px;">Empties</td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZSPR</strong></td><td style="padding:1px 4px;">Spare Parts</td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZTOL</strong></td><td style="padding:1px 4px;">Maintenance Tools</td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZMAS</strong></td><td style="padding:1px 4px;">Maint. Assemblies</td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZREF</strong></td><td style="padding:1px 4px;">Refurbishment Parts</td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZERP</strong></td><td style="padding:1px 4px;">Packaging</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div style="background:rgba(231,76,60,.08);border:1px solid var(--red);border-left:3px solid var(--red);border-radius:6px;padding:7px 8px;">
-      <p style="color:var(--red);font-weight:700;margin-bottom:3px;">❌ เข้า Consumption ทันที</p>
-      <p style="color:var(--muted);font-size:.88em;margin-bottom:4px;">ไม่มีจำนวน ไม่มีมูลค่าใน stock</p>
-      <table style="margin:0;">
-        <tbody>
-          <tr><td style="padding:1px 5px;"><strong>ZCON</strong></td><td style="padding:1px 4px;">Consumable</td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZIEN</strong></td><td style="padding:1px 4px;">Service</td></tr>
-          <tr><td style="padding:1px 5px;"><strong>ZOUP</strong></td><td style="padding:1px 4px;">Coupons</td></tr>
-        </tbody>
-      </table>
-      <div style="margin-top:8px;padding:5px 6px;background:rgba(231,76,60,.12);border-radius:4px;font-size:.9em;">
-        GR ไม่เข้า stock เลย<br>integration ที่คาดว่า<br>"ทุก GR = เข้า stock"<br><strong style="color:var(--red)">จะผิดทันที</strong>
-      </div>
-    </div>
-
-    <div style="background:rgba(52,152,219,.08);border:1px solid var(--blue);border-radius:6px;padding:7px 8px;">
-      <p style="color:var(--blue);font-weight:700;margin-bottom:3px;">⚠️ กรณีพิเศษ</p>
-      <p style="color:var(--muted);font-size:.88em;margin-bottom:4px;">ต้องระวังเป็นพิเศษ</p>
-      <table style="margin:0 0 6px;">
-        <tbody>
-          <tr>
-            <td style="padding:1px 5px;"><strong>ZNBW</strong></td>
-            <td style="padding:1px 4px;">Nonvaluated<br><span style="color:var(--muted)">จำนวน ✅ มูลค่า ❌</span></td>
-          </tr>
-          <tr>
-            <td style="padding:1px 5px;"><strong>ZERT</strong></td>
-            <td style="padding:1px 4px;">Value-only<br><span style="color:var(--muted)">มูลค่า ✅ ไม่แยกราย</span></td>
-          </tr>
-        </tbody>
-      </table>
-      <div style="padding:5px 6px;background:rgba(52,152,219,.12);border-radius:4px;font-size:.9em;">
-        ZNBW: report มูลค่า = 0<br>
-        ZERT: ดู qty รายชิ้นไม่ได้
-      </div>
-    </div>
-
+  <table style="font-size:.66em;">
+    <thead><tr><th>กลุ่ม</th><th>Material Type</th><th style="text-align:center">จำนวน</th><th style="text-align:center">มูลค่า</th><th>ผลต่อ Integration</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong style="color:var(--green)">✅ เข้า Stock</strong></td>
+        <td><strong>ZAWA</strong> Trading Goods <span style="color:var(--orange)">⭐ ตัวหลัก</span><br><span class="sm">+ อีก ~9 ประเภท (ZGLD, ZSPR, ZGUT …) หลักการเดียวกัน</span></td>
+        <td style="text-align:center"><span class="yes">✅</span></td>
+        <td style="text-align:center"><span class="yes">✅</span></td>
+        <td>GR เข้า stock ปกติ — Stock = Qty × Price</td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--red)">❌ Consumption</strong></td>
+        <td><strong>ZCON</strong> Consumable, <strong>ZIEN</strong> Service, <strong>ZOUP</strong> Coupons</td>
+        <td style="text-align:center"><span class="no">❌</span></td>
+        <td style="text-align:center"><span class="no">❌</span></td>
+        <td>GR ลงค่าใช้จ่ายทันที <strong style="color:var(--red)">ไม่เข้า stock เลย</strong></td>
+      </tr>
+      <tr>
+        <td rowspan="2"><strong style="color:var(--blue)">⚠️ พิเศษ</strong></td>
+        <td><strong>ZNBW</strong> Nonvaluated</td>
+        <td style="text-align:center"><span class="yes">✅</span></td>
+        <td style="text-align:center"><span class="no">❌</span></td>
+        <td>นับจำนวนได้ แต่ report มูลค่า = 0 เสมอ</td>
+      </tr>
+      <tr>
+        <td><strong>ZERT</strong> Value-only</td>
+        <td style="text-align:center"><span class="no">❌</span></td>
+        <td style="text-align:center"><span class="yes">✅</span></td>
+        <td>มีแต่มูลค่ารวม — ดู qty รายชิ้นไม่ได้</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="bw" style="margin-top:10px;">
+    <strong>⚠️ Gotcha:</strong> Integration ที่ assume ว่า <em>"ทุก GR = เข้า stock"</em> จะผิดทันทีเมื่อเจอ ZCON/ZIEN — ต้องเช็ค Material Type (<code>MARA-MTART</code>) ก่อนเสมอ
   </div>
 </section>
 
@@ -352,35 +347,8 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
   <h2 class="ptit">Price Control &amp;<br>Moving Average Price</h2>
   <span class="psub">หัวใจของการตีมูลค่าสินค้า</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
-    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 10 นาที</span>
-    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:17</span>
-  </div>
-</section>
-
-<!-- SLIDE: Why Price Control Matters -->
-<section>
-  <span class="lbl">Part 3 — Price Control</span>
-  <h2>ทำไม Price Control ถึงสำคัญที่สุด?</h2>
-  <p class="sm">Price Control กำหนดสิ่งเหล่านี้ทั้งหมด:</p>
-  <div class="two" style="margin-top:10px;">
-    <div>
-      <div class="bo" style="margin-bottom:8px;">มูลค่าสินค้าในคลังคำนวณยังไง</div>
-      <div class="bo">Invoice ราคาต่างจาก PO → ไปไหน?</div>
-    </div>
-    <div>
-      <div class="bo" style="margin-bottom:8px;">บัญชีไหนถูก Debit/Credit เมื่อสินค้าเดิน</div>
-      <div class="bo">ราคาใน MBEW-VERPR เปลี่ยนเมื่อไหร่</div>
-    </div>
-  </div>
-  <div class="two" style="margin-top:12px;text-align:center;">
-    <div style="background:rgba(39,174,96,.1);border:1px solid var(--green);border-radius:8px;padding:14px;">
-      <strong style="font-size:1.3em;color:var(--green);">V</strong><br>
-      <span class="sm">Moving Average Price<br>ราคาสะท้อนต้นทุนจริง</span>
-    </div>
-    <div style="background:rgba(52,152,219,.1);border:1px solid var(--blue);border-radius:8px;padding:14px;">
-      <strong style="font-size:1.3em;color:var(--blue);">S</strong><br>
-      <span class="sm">Standard Price<br>ราคาคงที่ตามกำหนด</span>
-    </div>
+    <span style="background:rgba(238,127,45,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 8 นาที</span>
+    <span style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:16</span>
   </div>
 </section>
 
@@ -388,9 +356,12 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
 <section>
   <span class="lbl">Part 3 — Price Control</span>
   <h2>Moving Average Price (V) — หลักการ</h2>
+  <p class="sm">Price Control มี 2 แบบ: <strong style="color:var(--green)">V</strong> Moving Average (ราคาตามต้นทุนจริง — ค้าปลีกใช้ตัวนี้) และ <strong style="color:var(--blue)">S</strong> Standard (ราคาคงที่ — เปรียบเทียบท้าย Part นี้)</p>
   <div class="big" style="font-size:.82em;">
     MAP ใหม่ = <span>(มูลค่า stock เดิม + มูลค่าที่รับเข้า)</span> ÷ <span>จำนวน stock รวม</span>
   </div>
+  <p class="sm">⛽ เหมือนเติมน้ำมันรถ: น้ำมันเก่าในถังลิตรละ 38 เติมใหม่ลิตรละ 42 → ราคาเฉลี่ยต่อลิตรในถังขยับขึ้น
+  แต่ตอน<strong>ขับออกไป</strong> (ขายออก) ราคาเฉลี่ยไม่เปลี่ยน — แค่ปริมาณในถังลดลง</p>
   <div class="two" style="margin-top:10px;">
     <div>
       <p style="font-size:.72em;color:var(--green);"><strong>✅ MAP เปลี่ยนเมื่อ:</strong></p>
@@ -418,13 +389,12 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
     <thead><tr><th>ขั้นตอน</th><th style="text-align:right">จำนวน</th><th style="text-align:right">มูลค่า</th><th style="text-align:right">MAP</th></tr></thead>
     <tbody>
       <tr><td>เริ่มต้น</td><td style="text-align:right">100</td><td style="text-align:right">10,000</td><td style="text-align:right"><strong>100.00</strong></td></tr>
-      <tr style="background:rgba(244,121,32,.1)"><td>GR: รับเข้า 50 ชิ้น @120 บาท</td><td style="text-align:right">150</td><td style="text-align:right">16,000</td><td style="text-align:right"><strong style="color:var(--orange)">106.67</strong></td></tr>
+      <tr style="background:rgba(238,127,45,.1)"><td>GR: รับเข้า 50 ชิ้น @120 บาท</td><td style="text-align:right">150</td><td style="text-align:right">16,000</td><td style="text-align:right"><strong style="color:var(--orange)">106.67</strong></td></tr>
       <tr><td>Invoice: ราคาจริง @115 (−250)</td><td style="text-align:right">150</td><td style="text-align:right">15,750</td><td style="text-align:right"><strong>105.00</strong></td></tr>
-      <tr style="background:rgba(231,76,60,.08)"><td>ขายออก 80 ชิ้น @MAP 105</td><td style="text-align:right">70</td><td style="text-align:right">7,350</td><td style="text-align:right"><strong>105.00</strong></td></tr>
-      <tr style="background:rgba(244,121,32,.1)"><td>GR: รับเข้าอีก 30 ชิ้น @130 บาท</td><td style="text-align:right">100</td><td style="text-align:right">11,250</td><td style="text-align:right"><strong style="color:var(--orange)">112.50</strong></td></tr>
+      <tr style="background:rgba(201,101,91,.08)"><td>ขายออก 80 ชิ้น @MAP 105</td><td style="text-align:right">70</td><td style="text-align:right">7,350</td><td style="text-align:right"><strong>105.00</strong></td></tr>
+      <tr style="background:rgba(238,127,45,.1)"><td>GR: รับเข้าอีก 30 ชิ้น @130 บาท</td><td style="text-align:right">100</td><td style="text-align:right">11,250</td><td style="text-align:right"><strong style="color:var(--orange)">112.50</strong></td></tr>
     </tbody>
   </table>
-  <blockquote>MAP เปลี่ยนเฉพาะตอนรับเข้าและ Invoice — <strong>ไม่เปลี่ยนตอนขายออก</strong></blockquote>
 </section>
 
 <!-- SLIDE: GI Effect -->
@@ -463,7 +433,8 @@ Dr  ส่วนต่างราคา (PRD)     1,000  ← ส่วนเก
       <tr><td>เหมาะกับ</td><td>ค้าปลีก ราคาผันผวน</td><td>สินค้าผลิต ต้นทุนคงที่</td></tr>
     </tbody>
   </table>
-  <blockquote><strong>จำง่ายๆ:</strong> V เปลี่ยน stock value ตาม actual; S แยก variance ออกจาก stock</blockquote>
+  <blockquote><strong>จำง่ายๆ:</strong> <strong style="color:var(--green)">V</strong> = อาหารตามสั่ง — ราคาขยับตามต้นทุนวัตถุดิบจริง &nbsp;|&nbsp;
+  <strong style="color:var(--blue)">S</strong> = บุฟเฟ่ต์ราคาเหมา — ต้นทุนต่อหัวคงที่ วัตถุดิบแพงขึ้นเท่าไหร่ไปลงบัญชีหลังร้าน (PRD)</blockquote>
 </section>
 
 <!-- PART 4 DIVIDER -->
@@ -472,114 +443,51 @@ Dr  ส่วนต่างราคา (PRD)     1,000  ← ส่วนเก
   <h2 class="ptit">Procure-to-Pay<br>Flow</h2>
   <span class="psub">จาก PO ถึง Payment — แต่ละ step เกิดอะไรขึ้น?</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
-    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 12 นาที</span>
-    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:27</span>
+    <span style="background:rgba(238,127,45,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 8 นาที</span>
+    <span style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:24</span>
   </div>
 </section>
 
-<!-- SLIDE: Debit & Credit Concept -->
+<!-- SLIDE: Dr/Cr as from→to -->
 <section>
   <span class="lbl">Part 4 — พื้นฐาน</span>
-  <h2>Debit กับ Credit คืออะไร?</h2>
-  <p class="sm">ก่อนอ่าน accounting entries ใน SAP — ต้องเข้าใจหลักการนี้ก่อน</p>
-
-  <div style="display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--orange);border-radius:8px;overflow:hidden;font-size:.8em;text-align:center;margin:10px 0;">
-    <div style="background:rgba(39,174,96,.15);padding:14px 10px;border-right:2px solid var(--orange);">
-      <strong style="font-size:1.4em;color:var(--green);">Dr</strong><br>
-      <strong style="color:var(--green);">Debit</strong><br>
-      <span class="sm">บันทึกด้านซ้าย</span>
-    </div>
-    <div style="background:rgba(52,152,219,.15);padding:14px 10px;">
-      <strong style="font-size:1.4em;color:var(--blue);">Cr</strong><br>
-      <strong style="color:var(--blue);">Credit</strong><br>
-      <span class="sm">บันทึกด้านขวา</span>
-    </div>
+  <h2>อ่าน Dr / Cr แบบ Developer: มันคือ from → to</h2>
+  <div class="bo" style="font-size:.68em;margin-bottom:10px;">
+    ทุก FI document = <strong>transaction ย้ายมูลค่า</strong> ระหว่างบัญชี — เหมือน API โอนเงินที่มี <code>from</code> / <code>to</code><br>
+    <strong style="color:var(--blue)">Cr = ต้นทาง</strong> (มูลค่าไหล<em>ออกจาก</em>บัญชีนี้) &nbsp;|&nbsp;
+    <strong style="color:var(--green)">Dr = ปลายทาง</strong> (มูลค่าไหล<em>เข้า</em>บัญชีนี้) &nbsp;|&nbsp;
+    มูลค่าไม่หายไปไหน — <strong>เข้ารวม = ออกรวม เสมอ</strong>
   </div>
 
-  <div class="bo" style="text-align:center;font-size:.82em;margin-bottom:10px;">
-    กฎเหล็ก: <strong>Dr รวม = Cr รวม เสมอ</strong> — ทุก transaction ต้องสมดุล
+  <div style="display:grid;grid-template-columns:110px 160px 105px 160px 1fr;gap:8px 10px;align-items:center;font-size:.62em;">
+    <div class="lbl" style="margin:0;">เหตุการณ์</div>
+    <div class="lbl" style="margin:0;text-align:center;color:var(--blue);">ต้นทาง (Cr)</div>
+    <div class="lbl" style="margin:0;text-align:center;">มูลค่า</div>
+    <div class="lbl" style="margin:0;text-align:center;color:var(--green);">ปลายทาง (Dr)</div>
+    <div class="lbl" style="margin:0;">อ่านว่า…</div>
+
+    <div>📦 <strong>รับของเข้า DC</strong></div>
+    <div class="fb" style="border-color:var(--blue);white-space:normal;">Vendor<br><span class="sm" style="color:var(--blue)">Cr GR/IR</span></div>
+    <div class="fa" style="font-size:1em;text-align:center;">─ 10,000 ─▶</div>
+    <div class="fb" style="border-color:var(--green);white-space:normal;">คลังสินค้า<br><span class="sm" style="color:var(--green)">Dr สินค้าคงคลัง</span></div>
+    <div style="color:var(--muted);">ของมาจาก vendor → มูลค่าเข้าคลัง — ติดหนี้พักไว้ก่อน (รอ Invoice)</div>
+
+    <div>🛒 <strong>ขายออก</strong></div>
+    <div class="fb" style="border-color:var(--blue);white-space:normal;">คลังสินค้า<br><span class="sm" style="color:var(--blue)">Cr สินค้าคงคลัง</span></div>
+    <div class="fa" style="font-size:1em;text-align:center;">─ 1,050 ─▶</div>
+    <div class="fb" style="border-color:var(--green);white-space:normal;">ต้นทุนขาย<br><span class="sm" style="color:var(--green)">Dr COGS</span></div>
+    <div style="color:var(--muted);">มูลค่าออกจากคลัง → กลายเป็นต้นทุนของยอดขายครั้งนี้ (10 ชิ้น × MAP 105)</div>
+
+    <div>🧾 <strong>รับ Invoice</strong></div>
+    <div class="fb" style="border-color:var(--blue);white-space:normal;">เจ้าหนี้ (AP)<br><span class="sm" style="color:var(--blue)">Cr เจ้าหนี้</span></div>
+    <div class="fa" style="font-size:1em;text-align:center;">─ 10,000 ─▶</div>
+    <div class="fb" style="border-color:var(--green);white-space:normal;">หนี้พัก<br><span class="sm" style="color:var(--green)">Dr GR/IR</span></div>
+    <div style="color:var(--muted);">เคสย้าย "หนี้": เคลียร์ bucket พัก (GR/IR) → ไปเป็นหนี้ทางการที่รอจ่ายจริง</div>
   </div>
 
-  <table>
-    <thead><tr><th>ประเภทบัญชี</th><th>ตัวอย่าง</th><th style="text-align:center">Debit (Dr)</th><th style="text-align:center">Credit (Cr)</th></tr></thead>
-    <tbody>
-      <tr>
-        <td><strong>สินทรัพย์</strong> (Assets)</td>
-        <td>สินค้าคงคลัง, เงินสด</td>
-        <td style="text-align:center"><span class="yes">เพิ่ม ↑</span></td>
-        <td style="text-align:center"><span class="no">ลด ↓</span></td>
-      </tr>
-      <tr>
-        <td><strong>หนี้สิน</strong> (Liabilities)</td>
-        <td>เจ้าหนี้, GR/IR</td>
-        <td style="text-align:center"><span class="no">ลด ↓</span></td>
-        <td style="text-align:center"><span class="yes">เพิ่ม ↑</span></td>
-      </tr>
-      <tr>
-        <td><strong>ค่าใช้จ่าย</strong> (Expenses)</td>
-        <td>ต้นทุนขาย (COGS), ส่วนต่างราคา</td>
-        <td style="text-align:center"><span class="yes">เพิ่ม ↑</span></td>
-        <td style="text-align:center"><span class="no">ลด ↓</span></td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- SLIDE: Dr/Cr Dohome Example -->
-<section>
-  <span class="lbl">Part 4 — พื้นฐาน</span>
-  <h2>Dr / Cr ในชีวิตจริงของ Dohome</h2>
-  <p class="sm" style="margin-bottom:8px;">อ่านด้วยคำถามเดียว: <em>"account นี้ประเภทไหน? และมันเพิ่มหรือลด?"</em></p>
-
-  <table style="font-size:.63em;">
-    <thead>
-      <tr>
-        <th style="padding:5px 10px;">เหตุการณ์</th>
-        <th style="padding:5px 10px;background:rgba(39,174,96,.5);">Dr (ซ้าย)</th>
-        <th style="padding:5px 10px;background:rgba(52,152,219,.5);">Cr (ขวา)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="padding:7px 10px;">📦 DC <strong>รับสินค้าเข้า</strong><br><span style="color:var(--muted)">100 ชิ้น @ 100 บาท</span></td>
-        <td style="padding:7px 10px;background:rgba(39,174,96,.06);">
-          <strong style="color:var(--green)">สินค้าคงคลัง 10,000</strong><br>
-          <span style="color:var(--muted)">สินทรัพย์ เพิ่ม → Dr</span>
-        </td>
-        <td style="padding:7px 10px;background:rgba(52,152,219,.06);">
-          <strong style="color:var(--blue)">GR/IR 10,000</strong><br>
-          <span style="color:var(--muted)">หนี้สิน เพิ่ม → Cr (รอ Invoice)</span>
-        </td>
-      </tr>
-      <tr>
-        <td style="padding:7px 10px;">🧾 รับ <strong>Invoice</strong> จาก vendor<br><span style="color:var(--muted)">10,000 บาท</span></td>
-        <td style="padding:7px 10px;background:rgba(39,174,96,.06);">
-          <strong style="color:var(--green)">GR/IR 10,000</strong><br>
-          <span style="color:var(--muted)">หนี้สิน ลด → Dr (เคลียร์)</span>
-        </td>
-        <td style="padding:7px 10px;background:rgba(52,152,219,.06);">
-          <strong style="color:var(--blue)">เจ้าหนี้ 10,000</strong><br>
-          <span style="color:var(--muted)">หนี้สิน เพิ่ม → Cr (ค้างจ่าย)</span>
-        </td>
-      </tr>
-      <tr>
-        <td style="padding:7px 10px;">🛒 <strong>ขายสินค้าออก</strong><br><span style="color:var(--muted)">10 ชิ้น @ MAP 105</span></td>
-        <td style="padding:7px 10px;background:rgba(39,174,96,.06);">
-          <strong style="color:var(--green)">ต้นทุนขาย 1,050</strong><br>
-          <span style="color:var(--muted)">ค่าใช้จ่าย เพิ่ม → Dr</span>
-        </td>
-        <td style="padding:7px 10px;background:rgba(52,152,219,.06);">
-          <strong style="color:var(--blue)">สินค้าคงคลัง 1,050</strong><br>
-          <span style="color:var(--muted)">สินทรัพย์ ลด → Cr (ของออก)</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="bo" style="margin-top:8px;font-size:.65em;">
-    <strong>สังเกต:</strong> Dr รวม = Cr รวม ทุกแถว &nbsp;|&nbsp;
-    สินทรัพย์ <strong>Dr = เพิ่ม</strong> / <strong>Cr = ลด</strong> &nbsp;|&nbsp;
-    หนี้สิน <strong>Dr = ลด</strong> / <strong>Cr = เพิ่ม</strong>
+  <div class="bi" style="margin-top:10px;font-size:.65em;">
+    <strong>สูตรอ่านทุก entry:</strong> "มูลค่า X บาท วิ่งจากไหน (Cr) ไปไหน (Dr)?" — ไม่ต้องท่องตารางประเภทบัญชี<br>
+    <span class="sm">ภาษานักบัญชี "Dr สินทรัพย์ = เพิ่ม" คือเรื่องเดียวกัน (มูลค่าวิ่ง<em>เข้า</em> bucket สินทรัพย์) — แค่มองคนละมุม</span>
   </div>
 </section>
 
@@ -607,47 +515,45 @@ Dr  ส่วนต่างราคา (PRD)     1,000  ← ส่วนเก
       <tr><td>Payment</td><td>F110</td><td><code>BKPF/BSEG</code></td></tr>
     </tbody>
   </table>
+  <div class="bw" style="margin-top:8px;font-size:.65em;">
+    <strong>⚠️ GR สร้างเอกสาร 2 ใบ — เลขคนละชุดกัน (คนละ number range)</strong><br>
+    ห้าม join Mat Doc กับ FI Doc ด้วยเลขเอกสารตรงๆ — ให้เชื่อมผ่าน <code>BKPF-AWKEY</code> = เลข Mat Doc + ปี (<code>MBLNR</code>+<code>MJAHR</code>)
+  </div>
+  <p class="sm" style="margin-top:6px;">📌 บน S/4HANA ตารางจริงของ goods movement คือ <code>MATDOC</code> — <code>MKPF/MSEG</code> เหลือเป็น compatibility view (query ได้ แต่ตารางใหม่ควรอ่าน <code>MATDOC</code> ตรง)</p>
 </section>
 
 <!-- SLIDE: GR/IR -->
 <section>
   <span class="lbl">Part 4 — P2P Flow</span>
-  <h2>GR/IR Clearing Account คืออะไร?</h2>
-  <p class="sm"><strong>GR/IR Clearing</strong> = บัญชีพักชั่วคราว ระหว่างรับของกับรับใบแจ้งหนี้</p>
-  <pre><code>ตอน Goods Receipt:
-  Dr  สินค้าคงคลัง     10,000  ← ของเข้าคลัง
-      Cr  GR/IR         10,000  ← รอ Invoice
+  <h2>GR/IR — บัญชีพักของ "ของมาแล้ว แต่บิลยังไม่มา"</h2>
+  <p class="sm">ของกับใบแจ้งหนี้เดินทางมา<strong>คนละเวลา</strong> (คลังเป็นคนรับของ / บัญชีเป็นคนรับบิล) — SAP เลยมีบัญชีพักไว้จับคู่สองฝั่ง<br>
+  เหมือนกินข้าวในร้าน: ได้อาหารก่อน รู้ราคาคร่าวๆ จากเมนู (= ราคา PO) ส่วนบิลจริงมาตอนจบ &nbsp;<span style="color:var(--muted)">(ขั้น PO ยังไม่มีผลบัญชีใดๆ)</span></p>
 
-ตอน Invoice Receipt:
-  Dr  GR/IR            10,000  ← เคลียร์ออก
-      Cr  เจ้าหนี้ (AP) 10,000  ← ค้างจ่าย vendor</code></pre>
-  <table style="margin-top:8px;">
-    <thead><tr><th>กรณี</th><th>GR/IR Balance</th><th>สาเหตุ</th></tr></thead>
-    <tbody>
-      <tr><td>ปกติ (ครบ)</td><td style="color:var(--green);font-weight:600;">= 0 ✅</td><td>GR และ Invoice ครบและตรงกัน</td></tr>
-      <tr><td>ยอด Debit ค้าง</td><td style="color:var(--orange);">&gt; 0</td><td>รับของแล้ว แต่ยังไม่มี Invoice</td></tr>
-      <tr><td>ยอด Credit ค้าง</td><td style="color:var(--red);">&lt; 0</td><td>Invoice มาแล้ว แต่ของยังไม่มาถึง</td></tr>
-    </tbody>
-  </table>
-</section>
+  <div class="two" style="margin-top:8px;">
+    <div class="bo" style="margin:0;">
+      <strong>① ของมาถึง — Goods Receipt</strong><br>
+      <span class="sm">มูลค่าวิ่งเข้าคลัง แต่บิลยังไม่มา → ต้นทางเป็น "หนี้แปะโป้ง" ไว้ก่อน</span>
+      <pre style="font-size:.58em;margin:6px 0;"><code>Dr สินค้าคงคลัง   10,000  ← ของเข้าคลัง
+   Cr GR/IR       10,000  ← แปะโป้งไว้ รอบิล</code></pre>
+      <div style="text-align:center;font-size:.66em;background:rgba(238,127,45,.1);border-radius:8px;padding:5px 8px;">
+        บัญชีพัก: <strong style="color:var(--orange)">ค้าง 10,000</strong> — ของมาแล้ว รอบิลมาจับคู่
+      </div>
+    </div>
+    <div class="bg" style="margin:0;">
+      <strong>② บิลมาถึง — Invoice Receipt</strong><br>
+      <span class="sm">บิลจับคู่กับของได้ → ฉีกที่แปะโป้งทิ้ง หนี้กลายเป็นหนี้จริงรอจ่าย</span>
+      <pre style="font-size:.58em;margin:6px 0;"><code>Dr GR/IR         10,000  ← เคลียร์ที่แปะไว้
+   Cr เจ้าหนี้ (AP) 10,000  ← หนี้จริง รอจ่าย</code></pre>
+      <div style="text-align:center;font-size:.66em;background:rgba(78,158,115,.12);border-radius:8px;padding:5px 8px;">
+        บัญชีพัก: <strong style="color:var(--green)">0 ✅</strong> — จับคู่ครบ ของ = บิล
+      </div>
+    </div>
+  </div>
 
-<!-- SLIDE: GR Example -->
-<section>
-  <span class="lbl">Part 4 — P2P Flow</span>
-  <h2>ตัวอย่าง: รับสินค้าเข้า DC จาก Vendor</h2>
-  <p class="sm">100 ชิ้น, PO price = 100 บาท, MAP ปัจจุบัน = 95 บาท (Price Control = V)</p>
-  <div class="bi" style="margin:8px 0;">
-    <strong>ขั้นที่ 1 — สร้าง PO (ME21N):</strong> ไม่มีผลต่อ stock และบัญชีใดๆ
-  </div>
-  <div class="bo" style="margin-bottom:6px;">
-    <strong>ขั้นที่ 2 — Goods Receipt (MIGO — Movement 101):</strong><br>
-    <code>Dr สินค้าคงคลัง 10,000 / Cr GR/IR 10,000</code><br>
-    MAP ใหม่ = (9,500 + 10,000) ÷ 200 = <strong>97.50 บาท</strong>
-  </div>
-  <div class="bg">
-    <strong>ขั้นที่ 3 — Invoice (MIRO) ราคาตรงกับ PO:</strong><br>
-    <code>Dr GR/IR 10,000 / Cr เจ้าหนี้ 10,000</code><br>
-    GR/IR เคลียร์ = 0 ✅
+  <div class="bi" style="margin-top:10px;font-size:.65em;">
+    <strong>วิธีอ่านยอดค้างใน GR/IR:</strong> ยอดคงเหลือ = รายการที่ยัง<strong>จับคู่ไม่ครบ</strong><br>
+    ค้างฝั่ง <strong style="color:var(--orange)">Cr</strong> = ของมาแล้ว บิลยังไม่มา (เคสปกติของค้าปลีก) &nbsp;|&nbsp;
+    ค้างฝั่ง <strong style="color:var(--red)">Dr</strong> = บิลมาแล้ว ของยังไม่ถึง (ต้องตามของ)
   </div>
 </section>
 
@@ -672,8 +578,12 @@ Dr ส่วนต่าง (PRD)     1,000 ← แยกบัญชี
       <p class="sm" style="color:var(--blue);">Stock value ไม่เปลี่ยน</p>
     </div>
   </div>
-  <div class="bw" style="margin-top:8px;">
-    <strong>⚠️ Integration ต้องระวัง:</strong> ถ้าส่ง Invoice สาย — MAP อาจเปลี่ยนย้อนหลัง กระทบมูลค่าสินค้าที่ขายไปแล้ว
+  <div class="bi" style="margin-top:8px;font-size:.65em;">
+    <strong>💡 "ถ้า stock พอ" หมายถึง:</strong> stock คงเหลือ ≥ จำนวนใน Invoice → ส่วนต่างปรับเข้า stock เต็มจำนวน<br>
+    ถ้าเหลือน้อยกว่า (ขายออกไปแล้วบางส่วน) → ปรับเข้า stock ได้ตามสัดส่วนที่เหลือ ส่วนเกินลงบัญชีส่วนต่างราคา (PRD)
+  </div>
+  <div class="bw" style="margin-top:6px;font-size:.65em;">
+    <strong>⚠️ ส่ง Invoice ช้า:</strong> ต้นทุนที่ตัดไปก่อนหน้าใช้ MAP เก่า (SAP ไม่ย้อนแก้ COGS ที่ post แล้ว) → ต้นทุนรวมของงวดเพี้ยนจากความจริง
   </div>
 </section>
 
@@ -683,8 +593,8 @@ Dr ส่วนต่าง (PRD)     1,000 ← แยกบัญชี
   <h2 class="ptit">Movement Types &amp;<br>Stock ของ Dohome</h2>
   <span class="psub">DC-DC, DC-สาขา, Stock จอง, และ Gotchas</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
-    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 10 นาที</span>
-    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:39</span>
+    <span style="background:rgba(238,127,45,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 8 นาที</span>
+    <span style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:32</span>
   </div>
 </section>
 
@@ -754,7 +664,7 @@ Dr ส่วนต่าง (PRD)     1,000 ← แยกบัญชี
     <thead><tr><th>ขั้นตอน</th><th style="text-align:right">Stock DC</th><th style="text-align:right">In Transit</th><th style="text-align:right">Stock สาขา</th></tr></thead>
     <tbody>
       <tr><td>ก่อนโอน</td><td style="text-align:right">100</td><td style="text-align:right">0</td><td style="text-align:right">50</td></tr>
-      <tr style="background:rgba(244,121,32,.1)"><td>หลัง Movement 351 (DC ส่งออก)</td><td style="text-align:right">70</td><td style="text-align:right">30</td><td style="text-align:right">50</td></tr>
+      <tr style="background:rgba(238,127,45,.1)"><td>หลัง Movement 351 (DC ส่งออก)</td><td style="text-align:right">70</td><td style="text-align:right">30</td><td style="text-align:right">50</td></tr>
       <tr><td>หลังสาขารับเข้า</td><td style="text-align:right">70</td><td style="text-align:right">0</td><td style="text-align:right">80</td></tr>
     </tbody>
   </table>
@@ -762,29 +672,7 @@ Dr ส่วนต่าง (PRD)     1,000 ← แยกบัญชี
     <strong>⚠️ สำคัญ:</strong> มูลค่าเดินทางตั้งแต่ <strong>DC ส่งออก</strong> — ไม่ใช่ตอนสาขารับเข้า<br>
     Integration ที่คิดว่า "ของถึงร้านเมื่อไร ค่อยมีมูลค่า" จะคำนวณผิด
   </div>
-</section>
-
-<!-- SLIDE: Reserved Stock -->
-<section>
-  <span class="lbl">Part 5 — Movement Types</span>
-  <h2>Stock จอง (Reserved Stock) ใน Dohome</h2>
-  <p class="sm">เมื่อสร้าง Delivery — SAP จอง Stock อัตโนมัติ</p>
-  <pre><code>Unrestricted Stock ทั้งหมด = 100 ชิ้น
-├── Reserved โดย Delivery #001 = 30 ชิ้น
-├── Reserved โดย Delivery #002 = 20 ชิ้น
-└── Available to Promise (ATP)  = 50 ชิ้น  ← ขายได้จริง</code></pre>
-  <table style="margin:8px 0;">
-    <thead><tr><th>เหตุการณ์</th><th style="text-align:right">Unrestricted</th><th style="text-align:right">Reserved</th><th style="text-align:right">Available</th></tr></thead>
-    <tbody>
-      <tr><td>เริ่มต้น</td><td style="text-align:right">100</td><td style="text-align:right">0</td><td style="text-align:right">100</td></tr>
-      <tr style="background:rgba(244,121,32,.1)"><td>สร้าง Delivery (30 ชิ้น)</td><td style="text-align:right">100</td><td style="text-align:right">30</td><td style="text-align:right"><strong>70</strong></td></tr>
-      <tr style="background:rgba(39,174,96,.08)"><td>Post Goods Issue (Mov. 601)</td><td style="text-align:right">70</td><td style="text-align:right">0</td><td style="text-align:right"><strong>70</strong></td></tr>
-    </tbody>
-  </table>
-  <div class="bw">
-    <strong>⚠️ Integration ต้องดู Available — ไม่ใช่แค่ MARD-LABST</strong><br>
-    <code>MARD-LABST</code> = Unrestricted (ยังรวม Reserved อยู่)
-  </div>
+  <p class="sm" style="margin-top:6px;">📌 Movement 351 ตัดมูลค่าด้วย <strong>MAP ของ DC ฝั่งส่ง</strong> และ stock in transit ถือเป็นของ<strong>สาขาปลายทาง</strong>ทางบัญชีแล้ว — แม้ของยังอยู่บนรถ</p>
 </section>
 
 <!-- SLIDE: Gotchas -->
@@ -819,44 +707,43 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
   <h2 class="ptit">Account<br>Determination</h2>
   <span class="psub">SAP ตัดบัญชีอัตโนมัติยังไง?</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
-    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 4 นาที</span>
-    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:49</span>
+    <span style="background:rgba(238,127,45,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 2 นาที</span>
+    <span style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:40</span>
   </div>
 </section>
 
-<!-- SLIDE: Account Det Chain -->
+<!-- SLIDE: Account Determination (one page) -->
 <section>
   <span class="lbl">Part 6 — Account Determination</span>
-  <h2>ห่วงโซ่ Account Determination</h2>
-  <div style="display:flex;flex-direction:column;gap:6px;margin:8px 0;font-size:.72em;">
-    <div style="display:flex;align-items:center;gap:10px;"><div class="fb" style="min-width:220px;">Movement Type</div><span class="sm">เช่น 101, 601, 351</span></div>
-    <div style="color:var(--orange);padding-left:22px;font-size:1.2em;">↓</div>
-    <div style="display:flex;align-items:center;gap:10px;"><div class="fb" style="min-width:220px;">Value String</div><span class="sm">กำหนดใน Customizing</span></div>
-    <div style="color:var(--orange);padding-left:22px;font-size:1.2em;">↓</div>
-    <div style="display:flex;align-items:center;gap:10px;"><div class="fb" style="min-width:220px;border-color:var(--orange);">Transaction / Event Key</div><span class="sm">BSX / WRX / PRD / GBB / KDM / UMB</span></div>
-    <div style="color:var(--orange);padding-left:22px;font-size:1.2em;">↓</div>
-    <div style="display:flex;align-items:center;gap:10px;"><div class="fb" style="min-width:220px;">Valuation Class (BKLAS)</div><span class="sm">จาก MBEW-BKLAS ของสินค้า</span></div>
-    <div style="color:var(--orange);padding-left:22px;font-size:1.2em;">↓</div>
-    <div style="display:flex;align-items:center;gap:10px;"><div class="fb" style="min-width:220px;background:#1a4a1a;border-color:var(--green);">G/L Account</div><span class="sm">กำหนดใน OBYC</span></div>
-  </div>
-  <blockquote>Dev ต้องรู้ว่า <strong>Valuation Class + Movement Type</strong> คือตัวแปรหลักที่กำหนดบัญชี</blockquote>
-</section>
+  <h2>SAP เลือกบัญชีให้เอง — เหมือน rule แยก email เข้า folder</h2>
+  <p class="sm">ตอนของเดิน ไม่มีใครนั่งเลือก G/L account เอง — SAP ดูแค่ <strong>2 อย่าง</strong> แล้วเปิดตาราง rule
+  (ตั้งไว้ล่วงหน้าใน <code>OBYC</code> เหมือนตั้ง filter อีเมลครั้งเดียว ใช้ตลอด)</p>
 
-<!-- SLIDE: Transaction Keys -->
-<section>
-  <span class="lbl">Part 6 — Account Determination</span>
-  <h2>Transaction Keys ที่ต้องรู้จัก</h2>
-  <table>
-    <thead><tr><th>Key</th><th>ความหมาย</th><th>ใช้เมื่อ</th></tr></thead>
-    <tbody>
-      <tr><td><strong style="color:var(--orange)">BSX</strong></td><td>Inventory Posting</td><td>ทุกครั้งที่ stock เพิ่ม/ลดมูลค่า</td></tr>
-      <tr><td><strong style="color:var(--blue)">WRX</strong></td><td>GR/IR Clearing</td><td>ทุก GR จาก PO และ Invoice</td></tr>
-      <tr><td><strong style="color:var(--red)">PRD</strong></td><td>Price Difference</td><td>ราคาซื้อ ≠ Standard Price (S)</td></tr>
-      <tr><td><strong style="color:var(--green)">GBB</strong></td><td>Offsetting Entry</td><td>เบิกใช้ภายใน, scrap, delivery</td></tr>
-      <tr><td><strong style="color:#9b59b6">KDM</strong></td><td>Exchange Rate Difference</td><td>ซื้อสินค้าสกุลเงินต่างประเทศ</td></tr>
-      <tr><td><strong style="color:var(--yellow)">UMB</strong></td><td>Revaluation</td><td>ปรับมูลค่าย้อนหลัง, backdated posting</td></tr>
-    </tbody>
-  </table>
+  <div class="flow" style="justify-content:center;gap:8px;margin:10px 0;flex-wrap:wrap;">
+    <div class="fb" style="white-space:normal;min-width:170px;"><strong>เกิดอะไรขึ้น?</strong><br><span class="sm">Movement Type<br>เช่น 101 = รับของจาก PO</span></div>
+    <div class="fa">+</div>
+    <div class="fb" style="white-space:normal;min-width:170px;"><strong>ของประเภทไหน?</strong><br><span class="sm">Valuation Class<br>จาก <code>MBEW-BKLAS</code></span></div>
+    <div class="fa">→</div>
+    <div class="fb" style="white-space:normal;min-width:120px;border-color:var(--orange);"><strong>ตาราง Rule</strong><br><span class="sm">OBYC</span></div>
+    <div class="fa">→</div>
+    <div class="fb" style="white-space:normal;min-width:120px;background:rgba(78,158,115,.14);border-color:var(--green);"><strong>G/L Account</strong></div>
+  </div>
+
+  <div class="bg" style="font-size:.66em;">
+    <strong>ตัวอย่าง: GR สินค้า ZAWA มูลค่า 10,000</strong> — Movement 101 บอกว่า entry นี้มี 2 ขา:
+    ขา stock (key <strong style="color:var(--orange)">BSX</strong>) กับขาบัญชีพัก (key <strong style="color:var(--blue)">WRX</strong>)
+    แล้ว Valuation Class ของ ZAWA ชี้ว่าแต่ละ key ใช้บัญชีเลขไหน<br>
+    <code>Dr สินค้าคงคลัง 10,000 / Cr GR/IR 10,000</code> — entry ที่เห็นใน Part 4 ทั้งหมด มาจากกลไกนี้แหละ
+  </div>
+
+  <p class="sm" style="margin-top:6px;">key ที่เจอบ่อย: <strong style="color:var(--orange)">BSX</strong> ขา stock &nbsp;|&nbsp;
+  <strong style="color:var(--blue)">WRX</strong> ขา GR/IR &nbsp;|&nbsp;
+  <strong style="color:var(--green)">GBB</strong> ขาคู่ตรงข้ามตอนเบิก/ขาย &nbsp;|&nbsp;
+  <strong style="color:var(--red)">PRD</strong> ส่วนต่างราคา</p>
+
+  <div class="bw" style="font-size:.65em;">
+    <strong>เวลาลงบัญชีผิด</strong> เกือบทั้งหมดมาจาก 2 ที่: Valuation Class ของสินค้าตั้งผิด หรือ rule ใน OBYC ชี้ผิดบัญชี — ไม่ต้องไปไล่ที่อื่น
+  </div>
 </section>
 
 <!-- PART 7 DIVIDER -->
@@ -865,8 +752,8 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
   <h2 class="ptit">Developer<br>Quick Reference</h2>
   <span class="psub">Cheat Sheet สำหรับใช้งานจริง</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
-    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 4 นาที</span>
-    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:53</span>
+    <span style="background:rgba(238,127,45,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 4 นาที</span>
+    <span style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:42</span>
   </div>
 </section>
 
@@ -883,8 +770,8 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
       <tr><td>GR เข้า stock หรือ consumption?</td><td>PO account assignment (<code>EKPO-KNTTP</code>)</td></tr>
       <tr><td>Invoice variance ไปไหน?</td><td>Price Control + stock coverage ตอน IR</td></tr>
       <tr><td>DC→สาขา มี FI ไหม?</td><td>Valuation Area ของ 2 plant</td></tr>
-      <tr><td>Mat Doc กับ FI Doc</td><td>อย่า join ด้วยเลขเดียวกัน — ใช้ reference key</td></tr>
-      <tr style="background:rgba(231,76,60,.1)"><td>Interface บอก success แต่ไม่มี doc</td><td><strong style="color:var(--red)">ลืม BAPI_TRANSACTION_COMMIT</strong></td></tr>
+      <tr><td>Mat Doc กับ FI Doc</td><td>อย่า join ด้วยเลขเดียวกัน — เชื่อมผ่าน <code>BKPF-AWKEY</code></td></tr>
+      <tr style="background:rgba(201,101,91,.1)"><td>Interface บอก success แต่ไม่มี doc</td><td><strong style="color:var(--red)">ลืม BAPI_TRANSACTION_COMMIT</strong></td></tr>
     </tbody>
   </table>
 </section>
@@ -902,12 +789,55 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
       <tr><td><code>BAPI_GOODSMVT_CANCEL</code></td><td>ยกเลิก Goods Movement</td></tr>
       <tr><td><code>BAPI_PO_CREATE1</code></td><td>สร้าง Purchase Order</td></tr>
       <tr><td><code>BAPI_INCOMINGINVOICE_CREATE</code></td><td>บันทึก Invoice Receipt (แทน MIRO)</td></tr>
-      <tr style="background:rgba(244,121,32,.15)"><td><strong style="color:var(--orange)">BAPI_TRANSACTION_COMMIT</strong></td><td><strong>Commit LUW — ต้องเรียกหลัง BAPI ทุกตัวเสมอ!</strong></td></tr>
+      <tr style="background:rgba(238,127,45,.15)"><td><strong style="color:var(--orange)">BAPI_TRANSACTION_COMMIT</strong></td><td><strong>Commit LUW — ต้องเรียกหลัง BAPI ทุกตัวเสมอ!</strong></td></tr>
     </tbody>
   </table>
   <pre style="margin-top:8px;font-size:.6em;"><code>1. BAPI_GOODSMVT_CREATE    → ได้ Material Doc Number กลับมา
 2. ตรวจ Return Table       → ถ้ามี Error → อย่า Commit!
 3. BAPI_TRANSACTION_COMMIT → Commit เมื่อไม่มี Error เท่านั้น</code></pre>
+  <p class="sm">💾 เหมือน <code>INSERT</code> แล้วไม่ <code>COMMIT</code> ใน database — คำสั่งผ่าน แต่ข้อมูลไม่เคยถูกเขียนลงจริง</p>
+</section>
+
+<!-- QUIZ -->
+<section>
+  <span class="lbl">ลองตอบดู 🤔</span>
+  <h2>3 โจทย์ก่อนจาก — ใช้สิ่งที่เรียนวันนี้ตอบ</h2>
+  <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px;">
+    <div class="bo" style="margin:0;">
+      <div style="display:flex;gap:14px;align-items:center;">
+        <strong style="font-size:1.6em;color:var(--orange);min-width:28px;">1</strong>
+        <span style="flex:1;">Integration ดึง <code>MARD-LABST</code> มาโชว์ว่ามีของ <strong>100 ชิ้น</strong> แต่ลูกค้ากดสั่งแล้วระบบบอก<strong>ของไม่พอ</strong> — เกิดอะไรขึ้น และต้องไปดูตัวเลขไหนแทน?</span>
+        <button class="qbtn" onclick="toggleAns('ans1',this)">เฉลย</button>
+      </div>
+      <div class="ans" id="ans1">
+        <code>MARD-LABST</code> = Unrestricted ทั้งก้อน ซึ่งยังมี <strong>Reserved</strong> จาก Delivery ฝังอยู่ (โต๊ะว่าง 100 ติดจอง 33) →
+        ต้องดู <strong style="color:var(--green)">Available / ATP</strong> แทน
+      </div>
+    </div>
+    <div class="bi" style="margin:0;">
+      <div style="display:flex;gap:14px;align-items:center;">
+        <strong style="font-size:1.6em;color:var(--blue);min-width:28px;">2</strong>
+        <span style="flex:1;">ยิง GR เข้าระบบ<strong>สำเร็จ</strong> มี Material Document ครบ แต่ stock ในคลัง<strong>ไม่ขึ้นเลยสักชิ้น</strong> — เป็นไปได้กี่กรณี อะไรบ้าง?</span>
+        <button class="qbtn" onclick="toggleAns('ans2',this)">เฉลย</button>
+      </div>
+      <div class="ans" id="ans2">
+        มี 2 กรณีหลัก: ① Material Type กลุ่ม consumption (<strong>ZCON / ZIEN</strong>) — GR ลงค่าใช้จ่ายทันที ไม่ผ่าน stock
+        &nbsp;② PO มี <strong>Account Assignment</strong> (Cost Center) — ต่อให้เป็น ZAWA ก็เข้า consumption (เช็คที่ <code>EKPO-KNTTP</code>)
+      </div>
+    </div>
+    <div class="bg" style="margin:0;font-size:.73em;">
+      <div style="display:flex;gap:14px;align-items:center;">
+        <strong style="font-size:1.6em;color:var(--green);min-width:28px;">3</strong>
+        <span style="flex:1;">เริ่มต้นมีของ 100 ชิ้น MAP 100 บาท → <strong>รับเข้า</strong> 50 ชิ้น ราคา 130 บาท → <strong>ขายออก</strong> 60 ชิ้น — ตอนนี้ <strong>MAP เท่าไหร่?</strong></span>
+        <button class="qbtn" onclick="toggleAns('ans3',this)">เฉลย</button>
+      </div>
+      <div class="ans" id="ans3">
+        หลังรับเข้า: (10,000 + 6,500) ÷ 150 = <strong style="color:var(--green)">110 บาท</strong> —
+        ส่วนขายออก<strong>ไม่เปลี่ยน MAP</strong> (ขับรถออกไป ราคาเฉลี่ยในถังเท่าเดิม) → คำตอบ <strong>110 บาท</strong>
+      </div>
+    </div>
+  </div>
+  <blockquote style="margin-top:14px;">คิดก่อน ค่อยกด "เฉลย" 😄</blockquote>
 </section>
 
 <!-- KEY TAKEAWAYS -->
@@ -942,21 +872,25 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
 <section style="text-align:center;">
   <div style="margin-top:50px;">
     <p style="font-size:.65em;color:var(--muted);letter-spacing:3px;text-transform:uppercase;">DOHOME DEVELOPMENT TEAM</p>
-    <h1 style="font-size:2.4em;color:#fff;margin:14px 0;">ขอบคุณครับ</h1>
+    <h1 style="font-size:2.4em;color:var(--txt);margin:14px 0;">ขอบคุณครับ</h1>
     <p style="font-size:.82em;color:var(--muted);">มีคำถาม หรืออยากขุดลึก topic ไหนเพิ่มเติม?</p>
     <hr class="rule" style="margin:22px auto;width:180px;">
-    <p style="font-size:.62em;color:#3a4a60;">SAP Stock &amp; Material Master for Dohome Developers</p>
+    <p style="font-size:.62em;color:var(--muted);">SAP Stock &amp; Material Master for Dohome Developers</p>
   </div>
 </section>
 
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.js"></script>
 <script>
+function toggleAns(id, btn) {
+  const show = document.getElementById(id).classList.toggle('show');
+  btn.textContent = show ? 'ซ่อนเฉลย' : 'เฉลย';
+}
 Reveal.initialize({
   hash: true,
   slideNumber: 'c/t',
-  transition: 'slide',
-  transitionSpeed: 'fast',
+  transition: 'fade',
+  transitionSpeed: 'default',
   controls: true,
   progress: true,
   center: false,
