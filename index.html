@@ -98,7 +98,7 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#F3EA
       <p><strong style="color:var(--orange)">PART 5</strong> — Movement Types &amp; Stock</p>
       <p><strong style="color:var(--orange)">PART 6</strong> — Account Determination</p>
       <p><strong style="color:var(--orange)">PART 7</strong> — Developer Quick Reference</p>
-      <p style="color:var(--muted);">⏱ รวม ~45 นาที &nbsp;|&nbsp; 28 slides</p>
+      <p style="color:var(--muted);">⏱ รวม ~50 นาที &nbsp;|&nbsp; 29 slides</p>
     </div>
   </div>
   <div class="bo" style="margin-top:14px;">
@@ -789,6 +789,27 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
 2. ตรวจ Return Table       → ถ้ามี Error → อย่า Commit!
 3. BAPI_TRANSACTION_COMMIT → Commit เมื่อไม่มี Error เท่านั้น</code></pre>
   <p class="sm">💾 เหมือน <code>INSERT</code> แล้วไม่ <code>COMMIT</code> ใน database — คำสั่งผ่าน แต่ข้อมูลไม่เคยถูกเขียนลงจริง</p>
+</section>
+
+<!-- QUIZ -->
+<section>
+  <span class="lbl">ลองตอบดู 🤔</span>
+  <h2>3 โจทย์ก่อนจาก — ใช้สิ่งที่เรียนวันนี้ตอบ</h2>
+  <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px;">
+    <div class="bo" style="display:flex;gap:14px;align-items:center;">
+      <strong style="font-size:1.6em;color:var(--orange);min-width:28px;">1</strong>
+      <span>Integration ดึง <code>MARD-LABST</code> มาโชว์ว่ามีของ <strong>100 ชิ้น</strong> แต่ลูกค้ากดสั่งแล้วระบบบอก<strong>ของไม่พอ</strong> — เกิดอะไรขึ้น และต้องไปดูตัวเลขไหนแทน?</span>
+    </div>
+    <div class="bi" style="display:flex;gap:14px;align-items:center;">
+      <strong style="font-size:1.6em;color:var(--blue);min-width:28px;">2</strong>
+      <span>ยิง GR เข้าระบบ<strong>สำเร็จ</strong> มี Material Document ครบ แต่ stock ในคลัง<strong>ไม่ขึ้นเลยสักชิ้น</strong> — เป็นไปได้กี่กรณี อะไรบ้าง?</span>
+    </div>
+    <div class="bg" style="display:flex;gap:14px;align-items:center;font-size:.73em;">
+      <strong style="font-size:1.6em;color:var(--green);min-width:28px;">3</strong>
+      <span>เริ่มต้นมีของ 100 ชิ้น MAP 100 บาท → <strong>รับเข้า</strong> 50 ชิ้น ราคา 130 บาท → <strong>ขายออก</strong> 60 ชิ้น — ตอนนี้ <strong>MAP เท่าไหร่?</strong></span>
+    </div>
+  </div>
+  <blockquote style="margin-top:14px;">คิดก่อน อย่าเพิ่งเปิด slide ย้อน 😄</blockquote>
 </section>
 
 <!-- KEY TAKEAWAYS -->
