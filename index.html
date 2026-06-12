@@ -174,7 +174,8 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#F3EA
       <tr><td><strong>Blocked</strong></td><td>ระงับการใช้งาน</td><td><span class="no">❌ ไม่ได้</span></td></tr>
     </tbody>
   </table>
-  <p class="sm" style="margin-top:8px;"><strong style="color:var(--orange)">Reserved ไม่ใช่ประเภทที่ 4</strong> — มันคือ "การจอง" ที่ฝังอยู่ <em>ข้างใน</em> Unrestricted (เกิดอัตโนมัติเมื่อสร้าง Delivery)</p>
+  <p class="sm" style="margin-top:8px;"><strong style="color:var(--orange)">Reserved ไม่ใช่ประเภทที่ 4</strong> — มันคือ "การจอง" ที่ฝังอยู่ <em>ข้างใน</em> Unrestricted (เกิดอัตโนมัติเมื่อสร้าง Delivery)<br>
+  🍽 เหมือนโต๊ะในร้านอาหาร: โต๊ะว่าง 100 โต๊ะ แต่ติดจองล่วงหน้า 33 — รับลูกค้า walk-in ได้จริงแค่ 67</p>
   <pre><code>Unrestricted (MARD-LABST)        = 100 ชิ้น  ← integration มักดึงตัวนี้
 ├── Reserved โดย Delivery ค้างอยู่ =  33 ชิ้น
 └── Available to Promise (ATP)    =  67 ชิ้น  ← ขายได้จริง</code></pre>
@@ -353,6 +354,8 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#F3EA
   <div class="big" style="font-size:.82em;">
     MAP ใหม่ = <span>(มูลค่า stock เดิม + มูลค่าที่รับเข้า)</span> ÷ <span>จำนวน stock รวม</span>
   </div>
+  <p class="sm">⛽ เหมือนเติมน้ำมันรถ: น้ำมันเก่าในถังลิตรละ 38 เติมใหม่ลิตรละ 42 → ราคาเฉลี่ยต่อลิตรในถังขยับขึ้น
+  แต่ตอน<strong>ขับออกไป</strong> (ขายออก) ราคาเฉลี่ยไม่เปลี่ยน — แค่ปริมาณในถังลดลง</p>
   <div class="two" style="margin-top:10px;">
     <div>
       <p style="font-size:.72em;color:var(--green);"><strong>✅ MAP เปลี่ยนเมื่อ:</strong></p>
@@ -424,7 +427,8 @@ Dr  ส่วนต่างราคา (PRD)     1,000  ← ส่วนเก
       <tr><td>เหมาะกับ</td><td>ค้าปลีก ราคาผันผวน</td><td>สินค้าผลิต ต้นทุนคงที่</td></tr>
     </tbody>
   </table>
-  <blockquote><strong>จำง่ายๆ:</strong> V เปลี่ยน stock value ตาม actual; S แยก variance ออกจาก stock</blockquote>
+  <blockquote><strong>จำง่ายๆ:</strong> <strong style="color:var(--green)">V</strong> = อาหารตามสั่ง — ราคาขยับตามต้นทุนวัตถุดิบจริง &nbsp;|&nbsp;
+  <strong style="color:var(--blue)">S</strong> = บุฟเฟ่ต์ราคาเหมา — ต้นทุนต่อหัวคงที่ วัตถุดิบแพงขึ้นเท่าไหร่ไปลงบัญชีหลังร้าน (PRD)</blockquote>
 </section>
 
 <!-- PART 4 DIVIDER -->
@@ -784,6 +788,7 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
   <pre style="margin-top:8px;font-size:.6em;"><code>1. BAPI_GOODSMVT_CREATE    → ได้ Material Doc Number กลับมา
 2. ตรวจ Return Table       → ถ้ามี Error → อย่า Commit!
 3. BAPI_TRANSACTION_COMMIT → Commit เมื่อไม่มี Error เท่านั้น</code></pre>
+  <p class="sm">💾 เหมือน <code>INSERT</code> แล้วไม่ <code>COMMIT</code> ใน database — คำสั่งผ่าน แต่ข้อมูลไม่เคยถูกเขียนลงจริง</p>
 </section>
 
 <!-- KEY TAKEAWAYS -->
