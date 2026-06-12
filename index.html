@@ -69,6 +69,12 @@
 .rule { border:none; border-top:1px solid var(--line); margin:10px 0; }
 small,.sm { font-size:.68em; color:var(--muted); }
 code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#F3EAD7; padding:1px 5px; border-radius:4px; color:#A65818; }
+.qbtn { font-family:'Sarabun',sans-serif; font-size:.62em; font-weight:600; color:#fff; background:var(--orange);
+  border:none; border-radius:20px; padding:5px 16px; cursor:pointer; flex-shrink:0; box-shadow:0 1px 3px rgba(74,68,60,.15); }
+.qbtn:hover { opacity:.82; }
+.ans { display:none; margin-top:8px; padding:8px 12px; background:rgba(255,255,255,.75); border-radius:8px;
+  border-left:3px solid var(--green); color:var(--txt); }
+.ans.show { display:block; }
 </style>
 </head>
 <body>
@@ -796,20 +802,41 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
   <span class="lbl">ลองตอบดู 🤔</span>
   <h2>3 โจทย์ก่อนจาก — ใช้สิ่งที่เรียนวันนี้ตอบ</h2>
   <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px;">
-    <div class="bo" style="display:flex;gap:14px;align-items:center;">
-      <strong style="font-size:1.6em;color:var(--orange);min-width:28px;">1</strong>
-      <span>Integration ดึง <code>MARD-LABST</code> มาโชว์ว่ามีของ <strong>100 ชิ้น</strong> แต่ลูกค้ากดสั่งแล้วระบบบอก<strong>ของไม่พอ</strong> — เกิดอะไรขึ้น และต้องไปดูตัวเลขไหนแทน?</span>
+    <div class="bo" style="margin:0;">
+      <div style="display:flex;gap:14px;align-items:center;">
+        <strong style="font-size:1.6em;color:var(--orange);min-width:28px;">1</strong>
+        <span style="flex:1;">Integration ดึง <code>MARD-LABST</code> มาโชว์ว่ามีของ <strong>100 ชิ้น</strong> แต่ลูกค้ากดสั่งแล้วระบบบอก<strong>ของไม่พอ</strong> — เกิดอะไรขึ้น และต้องไปดูตัวเลขไหนแทน?</span>
+        <button class="qbtn" onclick="toggleAns('ans1',this)">เฉลย</button>
+      </div>
+      <div class="ans" id="ans1">
+        <code>MARD-LABST</code> = Unrestricted ทั้งก้อน ซึ่งยังมี <strong>Reserved</strong> จาก Delivery ฝังอยู่ (โต๊ะว่าง 100 ติดจอง 33) →
+        ต้องดู <strong style="color:var(--green)">Available / ATP</strong> แทน
+      </div>
     </div>
-    <div class="bi" style="display:flex;gap:14px;align-items:center;">
-      <strong style="font-size:1.6em;color:var(--blue);min-width:28px;">2</strong>
-      <span>ยิง GR เข้าระบบ<strong>สำเร็จ</strong> มี Material Document ครบ แต่ stock ในคลัง<strong>ไม่ขึ้นเลยสักชิ้น</strong> — เป็นไปได้กี่กรณี อะไรบ้าง?</span>
+    <div class="bi" style="margin:0;">
+      <div style="display:flex;gap:14px;align-items:center;">
+        <strong style="font-size:1.6em;color:var(--blue);min-width:28px;">2</strong>
+        <span style="flex:1;">ยิง GR เข้าระบบ<strong>สำเร็จ</strong> มี Material Document ครบ แต่ stock ในคลัง<strong>ไม่ขึ้นเลยสักชิ้น</strong> — เป็นไปได้กี่กรณี อะไรบ้าง?</span>
+        <button class="qbtn" onclick="toggleAns('ans2',this)">เฉลย</button>
+      </div>
+      <div class="ans" id="ans2">
+        มี 2 กรณีหลัก: ① Material Type กลุ่ม consumption (<strong>ZCON / ZIEN</strong>) — GR ลงค่าใช้จ่ายทันที ไม่ผ่าน stock
+        &nbsp;② PO มี <strong>Account Assignment</strong> (Cost Center) — ต่อให้เป็น ZAWA ก็เข้า consumption (เช็คที่ <code>EKPO-KNTTP</code>)
+      </div>
     </div>
-    <div class="bg" style="display:flex;gap:14px;align-items:center;font-size:.73em;">
-      <strong style="font-size:1.6em;color:var(--green);min-width:28px;">3</strong>
-      <span>เริ่มต้นมีของ 100 ชิ้น MAP 100 บาท → <strong>รับเข้า</strong> 50 ชิ้น ราคา 130 บาท → <strong>ขายออก</strong> 60 ชิ้น — ตอนนี้ <strong>MAP เท่าไหร่?</strong></span>
+    <div class="bg" style="margin:0;font-size:.73em;">
+      <div style="display:flex;gap:14px;align-items:center;">
+        <strong style="font-size:1.6em;color:var(--green);min-width:28px;">3</strong>
+        <span style="flex:1;">เริ่มต้นมีของ 100 ชิ้น MAP 100 บาท → <strong>รับเข้า</strong> 50 ชิ้น ราคา 130 บาท → <strong>ขายออก</strong> 60 ชิ้น — ตอนนี้ <strong>MAP เท่าไหร่?</strong></span>
+        <button class="qbtn" onclick="toggleAns('ans3',this)">เฉลย</button>
+      </div>
+      <div class="ans" id="ans3">
+        หลังรับเข้า: (10,000 + 6,500) ÷ 150 = <strong style="color:var(--green)">110 บาท</strong> —
+        ส่วนขายออก<strong>ไม่เปลี่ยน MAP</strong> (ขับรถออกไป ราคาเฉลี่ยในถังเท่าเดิม) → คำตอบ <strong>110 บาท</strong>
+      </div>
     </div>
   </div>
-  <blockquote style="margin-top:14px;">คิดก่อน อย่าเพิ่งเปิด slide ย้อน 😄</blockquote>
+  <blockquote style="margin-top:14px;">คิดก่อน ค่อยกด "เฉลย" 😄</blockquote>
 </section>
 
 <!-- KEY TAKEAWAYS -->
@@ -854,6 +881,10 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.js"></script>
 <script>
+function toggleAns(id, btn) {
+  const show = document.getElementById(id).classList.toggle('show');
+  btn.textContent = show ? 'ซ่อนเฉลย' : 'เฉลย';
+}
 Reveal.initialize({
   hash: true,
   slideNumber: 'c/t',
