@@ -507,43 +507,35 @@ Dr  ส่วนต่างราคา (PRD)     1,000  ← ส่วนเก
 <!-- SLIDE: Dr/Cr as from→to -->
 <section>
   <span class="lbl">Part 4 — พื้นฐาน</span>
-  <h2>อ่าน Dr / Cr แบบ Developer: มันคือ from → to</h2>
-  <div class="bo" style="font-size:.68em;margin-bottom:10px;">
-    ทุก FI document = <strong>transaction ย้ายมูลค่า</strong> ระหว่างบัญชี — เหมือน API โอนเงินที่มี <code>from</code> / <code>to</code><br>
-    <strong style="color:var(--blue)">Cr = ต้นทาง</strong> (มูลค่าไหล<em>ออกจาก</em>บัญชีนี้) &nbsp;|&nbsp;
-    <strong style="color:var(--green)">Dr = ปลายทาง</strong> (มูลค่าไหล<em>เข้า</em>บัญชีนี้) &nbsp;|&nbsp;
-    มูลค่าไม่หายไปไหน — <strong>เข้ารวม = ออกรวม เสมอ</strong>
+  <h2>อ่าน Dr / Cr ใน 1 นาที: มูลค่าวิ่งจากไหน → ไปไหน</h2>
+  <p class="sm">ทุก entry คือ <strong>มูลค่าวิ่งจากต้นทางไปปลายทาง</strong> — เหมือน API โอนเงินที่มี <code>from</code> / <code>to</code> และยอดเข้า = ยอดออก เสมอ</p>
+
+  <div style="display:grid;grid-template-columns:1fr 180px 1fr;gap:10px;align-items:stretch;margin:12px 40px;font-size:.7em;">
+    <div class="fb" style="white-space:normal;padding:14px 12px;border-color:var(--blue);background:rgba(91,143,191,.07);">
+      <strong style="font-size:1.2em;color:var(--blue);">GR/IR</strong><br>
+      <span class="sm">"เปิดหนี้ไว้กับ vendor"</span><br>
+      <strong style="color:var(--blue);">ต้นทาง = Cr</strong>
+    </div>
+    <div class="fa flowline" style="font-size:1.1em;text-align:center;white-space:nowrap;align-self:center;">── 10,000 ──▶</div>
+    <div class="fb" style="white-space:normal;padding:14px 12px;border-color:var(--green);background:rgba(78,158,115,.07);">
+      <strong style="font-size:1.2em;color:var(--green);">คลังสินค้า</strong><br>
+      <span class="sm">"ของโผล่ในคลัง"</span><br>
+      <strong style="color:var(--green);">ปลายทาง = Dr</strong>
+    </div>
   </div>
 
-  <div style="display:grid;grid-template-columns:95px 145px 130px 145px 1fr;gap:8px;align-items:center;font-size:.6em;">
-    <div class="lbl" style="margin:0;">เหตุการณ์</div>
-    <div class="lbl" style="margin:0;text-align:center;color:var(--blue);">ต้นทาง (Cr)</div>
-    <div class="lbl" style="margin:0;text-align:center;">มูลค่า</div>
-    <div class="lbl" style="margin:0;text-align:center;color:var(--green);">ปลายทาง (Dr)</div>
-    <div class="lbl" style="margin:0;">อ่านว่า…</div>
+  <pre style="font-size:.6em;"><code>entry จริงใน SAP (ตอนรับของเข้า DC):
+  Dr  สินค้าคงคลัง  10,000   ← ปลายทาง: มูลค่าไปโผล่ที่ไหน
+      Cr  GR/IR     10,000   ← ต้นทาง:  มูลค่ามาจากไหน</code></pre>
 
-    <div>📦 <strong>รับของเข้า DC</strong></div>
-    <div class="fb" style="border-color:var(--blue);white-space:normal;">Vendor<br><span class="sm" style="color:var(--blue)">Cr GR/IR</span></div>
-    <div class="fa flowline" style="font-size:.9em;text-align:center;white-space:nowrap;">─ 10,000 ─▶</div>
-    <div class="fb" style="border-color:var(--green);white-space:normal;">คลังสินค้า<br><span class="sm" style="color:var(--green)">Dr สินค้าคงคลัง</span></div>
-    <div style="color:var(--muted);">ของมาจาก vendor → มูลค่าเข้าคลัง — ติดหนี้พักไว้ก่อน (รอ Invoice)</div>
-
-    <div>🛒 <strong>ขายออก</strong></div>
-    <div class="fb" style="border-color:var(--blue);white-space:normal;">คลังสินค้า<br><span class="sm" style="color:var(--blue)">Cr สินค้าคงคลัง</span></div>
-    <div class="fa flowline" style="font-size:.9em;text-align:center;white-space:nowrap;">─ 1,050 ─▶</div>
-    <div class="fb" style="border-color:var(--green);white-space:normal;">ต้นทุนขาย<br><span class="sm" style="color:var(--green)">Dr COGS</span></div>
-    <div style="color:var(--muted);">มูลค่าออกจากคลัง → กลายเป็นต้นทุนของยอดขายครั้งนี้ (10 ชิ้น × MAP 105)</div>
-
-    <div>🧾 <strong>รับ Invoice</strong></div>
-    <div class="fb" style="border-color:var(--blue);white-space:normal;">เจ้าหนี้ (AP)<br><span class="sm" style="color:var(--blue)">Cr เจ้าหนี้</span></div>
-    <div class="fa flowline" style="font-size:.9em;text-align:center;white-space:nowrap;">─ 10,000 ─▶</div>
-    <div class="fb" style="border-color:var(--green);white-space:normal;">หนี้พัก<br><span class="sm" style="color:var(--green)">Dr GR/IR</span></div>
-    <div style="color:var(--muted);">เคสย้าย "หนี้": เคลียร์ bucket พัก (GR/IR) → ไปเป็นหนี้ทางการที่รอจ่ายจริง</div>
+  <div class="bw" style="font-size:.65em;">
+    <strong>⚠️ ไม่ใช่ "เงิน" วิ่ง — เป็น "มูลค่า" วิ่ง:</strong> เคสนี้ของเข้าคลังทั้งที่เงินยังไม่ออกสักบาท (แค่เปิดหนี้ค้างไว้ รอจ่ายทีหลัง)
   </div>
 
-  <div class="bi" style="margin-top:10px;font-size:.65em;">
-    <strong>สูตรอ่านทุก entry:</strong> "มูลค่า X บาท วิ่งจากไหน (Cr) ไปไหน (Dr)?" — ไม่ต้องท่องตารางประเภทบัญชี<br>
-    <span class="sm">ภาษานักบัญชี "Dr สินทรัพย์ = เพิ่ม" คือเรื่องเดียวกัน (มูลค่าวิ่ง<em>เข้า</em> bucket สินทรัพย์) — แค่มองคนละมุม</span>
+  <div class="bi" style="font-size:.65em;">
+    <strong>💡 สูตรอ่าน:</strong> เจอ entry ที่ไหน ถามแค่ <em>"มูลค่ามาจากไหน (Cr) → ไปโผล่ที่ไหน (Dr)?"</em>
+    — ลองใช้กับ entry ขายออกและ Invoice ในหน้าถัดๆ ไปดู อ่านออกหมด
+    <span class="sm">(ภาษานักบัญชี "Dr สินทรัพย์ = เพิ่ม" คือเรื่องเดียวกัน — มองคนละมุม)</span>
   </div>
 </section>
 
