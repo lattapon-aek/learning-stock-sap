@@ -515,7 +515,7 @@ Dr  ส่วนต่างราคา (PRD)     1,000  ← ส่วนเก
     มูลค่าไม่หายไปไหน — <strong>เข้ารวม = ออกรวม เสมอ</strong>
   </div>
 
-  <div style="display:grid;grid-template-columns:110px 160px 105px 160px 1fr;gap:8px 10px;align-items:center;font-size:.62em;">
+  <div style="display:grid;grid-template-columns:95px 145px 130px 145px 1fr;gap:8px;align-items:center;font-size:.6em;">
     <div class="lbl" style="margin:0;">เหตุการณ์</div>
     <div class="lbl" style="margin:0;text-align:center;color:var(--blue);">ต้นทาง (Cr)</div>
     <div class="lbl" style="margin:0;text-align:center;">มูลค่า</div>
@@ -524,19 +524,19 @@ Dr  ส่วนต่างราคา (PRD)     1,000  ← ส่วนเก
 
     <div>📦 <strong>รับของเข้า DC</strong></div>
     <div class="fb" style="border-color:var(--blue);white-space:normal;">Vendor<br><span class="sm" style="color:var(--blue)">Cr GR/IR</span></div>
-    <div class="fa flowline" style="font-size:1em;text-align:center;">─ 10,000 ─▶</div>
+    <div class="fa flowline" style="font-size:.9em;text-align:center;white-space:nowrap;">─ 10,000 ─▶</div>
     <div class="fb" style="border-color:var(--green);white-space:normal;">คลังสินค้า<br><span class="sm" style="color:var(--green)">Dr สินค้าคงคลัง</span></div>
     <div style="color:var(--muted);">ของมาจาก vendor → มูลค่าเข้าคลัง — ติดหนี้พักไว้ก่อน (รอ Invoice)</div>
 
     <div>🛒 <strong>ขายออก</strong></div>
     <div class="fb" style="border-color:var(--blue);white-space:normal;">คลังสินค้า<br><span class="sm" style="color:var(--blue)">Cr สินค้าคงคลัง</span></div>
-    <div class="fa flowline" style="font-size:1em;text-align:center;">─ 1,050 ─▶</div>
+    <div class="fa flowline" style="font-size:.9em;text-align:center;white-space:nowrap;">─ 1,050 ─▶</div>
     <div class="fb" style="border-color:var(--green);white-space:normal;">ต้นทุนขาย<br><span class="sm" style="color:var(--green)">Dr COGS</span></div>
     <div style="color:var(--muted);">มูลค่าออกจากคลัง → กลายเป็นต้นทุนของยอดขายครั้งนี้ (10 ชิ้น × MAP 105)</div>
 
     <div>🧾 <strong>รับ Invoice</strong></div>
     <div class="fb" style="border-color:var(--blue);white-space:normal;">เจ้าหนี้ (AP)<br><span class="sm" style="color:var(--blue)">Cr เจ้าหนี้</span></div>
-    <div class="fa flowline" style="font-size:1em;text-align:center;">─ 10,000 ─▶</div>
+    <div class="fa flowline" style="font-size:.9em;text-align:center;white-space:nowrap;">─ 10,000 ─▶</div>
     <div class="fb" style="border-color:var(--green);white-space:normal;">หนี้พัก<br><span class="sm" style="color:var(--green)">Dr GR/IR</span></div>
     <div style="color:var(--muted);">เคสย้าย "หนี้": เคลียร์ bucket พัก (GR/IR) → ไปเป็นหนี้ทางการที่รอจ่ายจริง</div>
   </div>
