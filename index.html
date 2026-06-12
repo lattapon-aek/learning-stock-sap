@@ -228,7 +228,7 @@ section.present .flow > .heart { animation:popin .4s ease .25s both, heartbeat 2
 <section>
   <span class="lbl">Part 1 — Mental Model</span>
   <h2>Stock มีหลายประเภท — ไม่ใช่ตัวเลขเดียว</h2>
-  <table>
+  <table style="font-size:.6em;">
     <thead><tr><th>ประเภท (เก็บแยกกันใน SAP)</th><th>ความหมาย</th><th>ขายได้?</th></tr></thead>
     <tbody>
       <tr><td><strong>Unrestricted</strong></td><td>พร้อมใช้งาน</td><td><span class="yes">✅</span> เฉพาะส่วนที่ยังไม่ถูกจอง</td></tr>
@@ -236,14 +236,13 @@ section.present .flow > .heart { animation:popin .4s ease .25s both, heartbeat 2
       <tr><td><strong>Blocked</strong></td><td>ระงับการใช้งาน</td><td><span class="no">❌ ไม่ได้</span></td></tr>
     </tbody>
   </table>
-  <p class="sm" style="margin-top:8px;"><strong style="color:var(--orange)">Reserved ไม่ใช่ประเภทที่ 4</strong> — มันคือ "การจอง" ที่ฝังอยู่ <em>ข้างใน</em> Unrestricted (เกิดอัตโนมัติเมื่อสร้าง Delivery)<br>
+  <p class="sm" style="margin:6px 0 0;"><strong style="color:var(--orange)">Reserved ไม่ใช่ประเภทที่ 4</strong> — มันคือ "การจอง" ที่ฝังอยู่ <em>ข้างใน</em> Unrestricted (เกิดอัตโนมัติเมื่อสร้าง Delivery)<br>
   🍽 เหมือนโต๊ะในร้านอาหาร: โต๊ะว่าง 100 โต๊ะ แต่ติดจองล่วงหน้า 33 — รับลูกค้า walk-in ได้จริงแค่ 67</p>
-  <pre><code>Unrestricted (MARD-LABST)        = 100 ชิ้น  ← integration มักดึงตัวนี้
+  <pre style="font-size:.55em;margin:4px 0;padding:8px 12px;"><code>Unrestricted (MARD-LABST)        = 100 ชิ้น  ← integration มักดึงตัวนี้
 ├── Reserved โดย Delivery ค้างอยู่ =  33 ชิ้น
 └── Available to Promise (ATP)    =  67 ชิ้น  ← ขายได้จริง</code></pre>
-  <div class="bw" style="margin-top:8px;">
-    <strong>⚠️ Integration ต้องดู Available — ไม่ใช่ <code>MARD-LABST</code></strong><br>
-    <code>MARD-LABST</code> = Unrestricted ทั้งก้อน (ยังรวม Reserved อยู่) → เห็น 100 แต่ขายได้จริง 67
+  <div class="bw" style="margin-top:4px;font-size:.65em;">
+    <strong>⚠️ Integration ต้องดู Available — ไม่ใช่ <code>MARD-LABST</code></strong> (= Unrestricted ทั้งก้อน ยังรวม Reserved) → เห็น 100 แต่ขายได้จริง 67
   </div>
 </section>
 
@@ -763,11 +762,10 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
 <!-- SLIDE: Account Determination (one page) -->
 <section>
   <span class="lbl">Part 6 — Account Determination</span>
-  <h2>SAP เลือกบัญชีให้เอง — เหมือน rule แยก email เข้า folder</h2>
-  <p class="sm">ตอนของเดิน ไม่มีใครนั่งเลือก G/L account เอง — SAP ดูแค่ <strong>2 อย่าง</strong> แล้วเปิดตาราง rule
-  (ตั้งไว้ล่วงหน้าใน <code>OBYC</code> เหมือนตั้ง filter อีเมลครั้งเดียว ใช้ตลอด)</p>
+  <h2>SAP เลือกบัญชีให้เอง — เหมือน rule แยก email</h2>
+  <p class="sm" style="margin:0;">ไม่มีใครนั่งเลือก G/L ตอนของเดิน — SAP ดูแค่ <strong>2 อย่าง</strong> แล้วเปิดตาราง rule ที่ตั้งไว้ล่วงหน้าใน <code>OBYC</code> (ตั้ง filter ครั้งเดียว ใช้ตลอด)</p>
 
-  <div class="flow relay" style="justify-content:center;gap:8px;margin:10px 0;flex-wrap:wrap;">
+  <div class="flow relay" style="justify-content:center;gap:8px;margin:8px 0;flex-wrap:wrap;font-size:.6em;">
     <div class="fb r1" style="white-space:normal;min-width:170px;"><strong>เกิดอะไรขึ้น?</strong><br><span class="sm">Movement Type<br>เช่น 101 = รับของจาก PO</span></div>
     <div class="fa">+</div>
     <div class="fb r2" style="white-space:normal;min-width:170px;"><strong>ของประเภทไหน?</strong><br><span class="sm">Valuation Class<br>จาก <code>MBEW-BKLAS</code></span></div>
@@ -777,20 +775,20 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
     <div class="fb r4" style="white-space:normal;min-width:120px;background:rgba(78,158,115,.14);border-color:var(--green);"><strong>G/L Account</strong></div>
   </div>
 
-  <div class="bg" style="font-size:.66em;">
+  <div class="bg" style="font-size:.62em;margin:4px 0;">
     <strong>ตัวอย่าง: GR สินค้า ZAWA มูลค่า 10,000</strong> — Movement 101 บอกว่า entry นี้มี 2 ขา:
     ขา stock (key <strong style="color:var(--orange)">BSX</strong>) กับขาบัญชีพัก (key <strong style="color:var(--blue)">WRX</strong>)
     แล้ว Valuation Class ของ ZAWA ชี้ว่าแต่ละ key ใช้บัญชีเลขไหน<br>
     <code>Dr สินค้าคงคลัง 10,000 / Cr GR/IR 10,000</code> — entry ที่เห็นใน Part 4 ทั้งหมด มาจากกลไกนี้แหละ
   </div>
 
-  <p class="sm" style="margin-top:6px;">key ที่เจอบ่อย: <strong style="color:var(--orange)">BSX</strong> ขา stock &nbsp;|&nbsp;
+  <p class="sm" style="margin:4px 0 0;">key ที่เจอบ่อย: <strong style="color:var(--orange)">BSX</strong> ขา stock &nbsp;|&nbsp;
   <strong style="color:var(--blue)">WRX</strong> ขา GR/IR &nbsp;|&nbsp;
   <strong style="color:var(--green)">GBB</strong> ขาคู่ตรงข้ามตอนเบิก/ขาย &nbsp;|&nbsp;
   <strong style="color:var(--red)">PRD</strong> ส่วนต่างราคา</p>
 
-  <div class="bw" style="font-size:.65em;">
-    <strong>เวลาลงบัญชีผิด</strong> เกือบทั้งหมดมาจาก 2 ที่: Valuation Class ของสินค้าตั้งผิด หรือ rule ใน OBYC ชี้ผิดบัญชี — ไม่ต้องไปไล่ที่อื่น
+  <div class="bw" style="font-size:.6em;margin:4px 0 0;">
+    <strong>เวลาลงบัญชีผิด</strong> เกือบทั้งหมดมาจาก 2 ที่: Valuation Class ตั้งผิด หรือ rule ใน OBYC ชี้ผิด — ไม่ต้องไปไล่ที่อื่น
   </div>
 </section>
 
