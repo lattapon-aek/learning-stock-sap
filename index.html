@@ -111,6 +111,26 @@ section.present .flow > *:nth-child(9) { animation-delay:.85s; }
   82%  { opacity:.9; }
   100% { left:86%; opacity:0; }
 }
+/* ไฟวิ่ง relay: กล่องสว่างไล่ลำดับ */
+.relay .fb { position:relative; }
+.relay .fb::after { content:""; position:absolute; inset:-2px; border-radius:12px;
+  border:1px solid rgba(238,127,45,.8); box-shadow:0 0 12px rgba(238,127,45,.4);
+  opacity:0; pointer-events:none; animation:relaypulse 6s ease-in-out infinite; }
+.relay .r1::after { animation-delay:0s; }
+.relay .r2::after { animation-delay:1.2s; }
+.relay .r3::after { animation-delay:2.4s; }
+.relay .r4::after { animation-delay:3.6s; }
+.relay .r5::after { animation-delay:4.8s; }
+@keyframes relaypulse { 0%,20%,100% { opacity:0; } 7%,13% { opacity:1; } }
+/* กล่องพัสดุวิ่งข้าม flow (STO) */
+.shipline { position:relative; }
+.shipline::after { content:"📦"; position:absolute; top:-16px; left:6%; font-size:1em;
+  opacity:0; pointer-events:none; animation:shipmove 5.5s ease-in-out infinite; }
+@keyframes shipmove { 0% { left:6%; opacity:0; } 8% { opacity:1; } 88% { opacity:1; } 100% { left:90%; opacity:0; } }
+/* pulse หัวใจ Material Master */
+@keyframes heartbeat { 0%,100% { transform:scale(1); } 50% { transform:scale(1.06); box-shadow:0 0 14px rgba(238,127,45,.35); } }
+.heart { animation:heartbeat 2.8s ease-in-out infinite; }
+section.present .flow > .heart { animation:popin .4s ease .25s both, heartbeat 2.8s ease-in-out 1s infinite; }
 </style>
 </head>
 <body>
@@ -274,7 +294,7 @@ section.present .flow > *:nth-child(9) { animation-delay:.85s; }
   <div class="flow" style="justify-content:center;gap:8px;flex-wrap:wrap;margin:10px 0;">
     <div class="fb">Purchasing</div>
     <div class="fb">MRP</div>
-    <div class="fb" style="border-color:var(--orange);background:rgba(238,127,45,.12);padding:10px 16px;"><strong>Material Master</strong></div>
+    <div class="fb heart" style="border-color:var(--orange);background:rgba(238,127,45,.12);padding:10px 16px;"><strong>Material Master</strong></div>
     <div class="fb">Inventory Mgmt</div>
     <div class="fb">FI / Accounting</div>
   </div>
@@ -531,16 +551,16 @@ Dr  ส่วนต่างราคา (PRD)     1,000  ← ส่วนเก
 <section>
   <span class="lbl">Part 4 — P2P Flow</span>
   <h2>ภาพรวม Procure-to-Pay</h2>
-  <div class="flow" style="justify-content:center;gap:0;margin:12px 0;">
-    <div class="fb dim" style="min-width:80px;padding:9px 7px;text-align:center;">PR<br><span class="sm">ไม่มี FI</span></div>
+  <div class="flow relay" style="justify-content:center;gap:0;margin:12px 0;">
+    <div class="fb dim r1" style="min-width:80px;padding:9px 7px;text-align:center;">PR<br><span class="sm">ไม่มี FI</span></div>
     <div class="fa">→</div>
-    <div class="fb dim" style="min-width:80px;padding:9px 7px;text-align:center;">PO<br><span class="sm">ไม่มี FI</span></div>
+    <div class="fb dim r2" style="min-width:80px;padding:9px 7px;text-align:center;">PO<br><span class="sm">ไม่มี FI</span></div>
     <div class="fa">→</div>
-    <div class="fb" style="min-width:105px;padding:9px 7px;text-align:center;">Goods Receipt<br><span class="sm" style="color:var(--orange)">Mat Doc + FI Doc ✅</span></div>
+    <div class="fb r3" style="min-width:105px;padding:9px 7px;text-align:center;">Goods Receipt<br><span class="sm" style="color:var(--orange)">Mat Doc + FI Doc ✅</span></div>
     <div class="fa">→</div>
-    <div class="fb" style="min-width:95px;padding:9px 7px;text-align:center;">Invoice<br><span class="sm" style="color:var(--orange)">FI Doc ✅</span></div>
+    <div class="fb r4" style="min-width:95px;padding:9px 7px;text-align:center;">Invoice<br><span class="sm" style="color:var(--orange)">FI Doc ✅</span></div>
     <div class="fa">→</div>
-    <div class="fb" style="min-width:80px;padding:9px 7px;text-align:center;">Payment<br><span class="sm" style="color:var(--orange)">FI Doc ✅</span></div>
+    <div class="fb r5" style="min-width:80px;padding:9px 7px;text-align:center;">Payment<br><span class="sm" style="color:var(--orange)">FI Doc ✅</span></div>
   </div>
   <table>
     <thead><tr><th>ขั้นตอน</th><th>Transaction</th><th>ตาราง</th></tr></thead>
@@ -687,7 +707,7 @@ Dr ส่วนต่าง (PRD)     1,000 ← แยกบัญชี
 <section>
   <span class="lbl">Part 5 — Movement Types</span>
   <h2>Dohome Scenario: DC → สาขา (STO Flow)</h2>
-  <div class="flow" style="justify-content:center;margin:10px 0;">
+  <div class="flow shipline" style="justify-content:center;margin:16px 0 10px;">
     <div class="fb">DC สร้าง STO</div>
     <div class="fa">→</div>
     <div class="fb" style="border-color:var(--orange)">DC ส่งออก<br><span class="sm">Movement 351</span></div>
@@ -755,14 +775,14 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
   <p class="sm">ตอนของเดิน ไม่มีใครนั่งเลือก G/L account เอง — SAP ดูแค่ <strong>2 อย่าง</strong> แล้วเปิดตาราง rule
   (ตั้งไว้ล่วงหน้าใน <code>OBYC</code> เหมือนตั้ง filter อีเมลครั้งเดียว ใช้ตลอด)</p>
 
-  <div class="flow" style="justify-content:center;gap:8px;margin:10px 0;flex-wrap:wrap;">
-    <div class="fb" style="white-space:normal;min-width:170px;"><strong>เกิดอะไรขึ้น?</strong><br><span class="sm">Movement Type<br>เช่น 101 = รับของจาก PO</span></div>
+  <div class="flow relay" style="justify-content:center;gap:8px;margin:10px 0;flex-wrap:wrap;">
+    <div class="fb r1" style="white-space:normal;min-width:170px;"><strong>เกิดอะไรขึ้น?</strong><br><span class="sm">Movement Type<br>เช่น 101 = รับของจาก PO</span></div>
     <div class="fa">+</div>
-    <div class="fb" style="white-space:normal;min-width:170px;"><strong>ของประเภทไหน?</strong><br><span class="sm">Valuation Class<br>จาก <code>MBEW-BKLAS</code></span></div>
+    <div class="fb r2" style="white-space:normal;min-width:170px;"><strong>ของประเภทไหน?</strong><br><span class="sm">Valuation Class<br>จาก <code>MBEW-BKLAS</code></span></div>
     <div class="fa">→</div>
-    <div class="fb" style="white-space:normal;min-width:120px;border-color:var(--orange);"><strong>ตาราง Rule</strong><br><span class="sm">OBYC</span></div>
+    <div class="fb r3" style="white-space:normal;min-width:120px;border-color:var(--orange);"><strong>ตาราง Rule</strong><br><span class="sm">OBYC</span></div>
     <div class="fa">→</div>
-    <div class="fb" style="white-space:normal;min-width:120px;background:rgba(78,158,115,.14);border-color:var(--green);"><strong>G/L Account</strong></div>
+    <div class="fb r4" style="white-space:normal;min-width:120px;background:rgba(78,158,115,.14);border-color:var(--green);"><strong>G/L Account</strong></div>
   </div>
 
   <div class="bg" style="font-size:.66em;">
