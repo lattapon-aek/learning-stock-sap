@@ -257,6 +257,11 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
       <tr><td><strong>MBEW</strong></td><td>ราคาและ valuation</td><td><code>MATNR + BWKEY</code></td></tr>
     </tbody>
   </table>
+  <div class="bi" style="margin-top:8px;font-size:.65em;">
+    <strong>💡 <code>BWKEY</code> = Valuation Area</strong> = ขอบเขตที่ SAP ตีมูลค่าสินค้าแยกกัน (ปกติ = ระดับ Plant)<br>
+    สินค้าเดียวกันคนละ Plant → ราคา MAP คนละตัวได้ &nbsp;|&nbsp;
+    โอนข้าม Valuation Area = <strong>มี FI Doc</strong> / โอนภายใน = <strong>ไม่มี</strong> — นี่คือเหตุผลที่ Movement 311 ไม่มี FI แต่ 351 มี
+  </div>
   <div class="bw" style="margin-top:8px;">
     <strong>⚠️ Gotcha:</strong> อย่า Query แค่ <code>MATNR</code> อย่างเดียว — ต้องใส่ Plant / Valuation Area ด้วยเสมอ
   </div>
@@ -511,6 +516,11 @@ Dr  ส่วนต่างราคา (PRD)     1,000  ← ส่วนเก
       <tr><td>Payment</td><td>F110</td><td><code>BKPF/BSEG</code></td></tr>
     </tbody>
   </table>
+  <div class="bw" style="margin-top:8px;font-size:.65em;">
+    <strong>⚠️ GR สร้างเอกสาร 2 ใบ — เลขคนละชุดกัน (คนละ number range)</strong><br>
+    ห้าม join Mat Doc กับ FI Doc ด้วยเลขเอกสารตรงๆ — ให้เชื่อมผ่าน <code>BKPF-AWKEY</code> = เลข Mat Doc + ปี (<code>MBLNR</code>+<code>MJAHR</code>)
+  </div>
+  <p class="sm" style="margin-top:6px;">📌 บน S/4HANA ตารางจริงของ goods movement คือ <code>MATDOC</code> — <code>MKPF/MSEG</code> เหลือเป็น compatibility view (query ได้ แต่ตารางใหม่ควรอ่าน <code>MATDOC</code> ตรง)</p>
 </section>
 
 <!-- SLIDE: GR/IR -->
@@ -557,8 +567,12 @@ Dr ส่วนต่าง (PRD)     1,000 ← แยกบัญชี
       <p class="sm" style="color:var(--blue);">Stock value ไม่เปลี่ยน</p>
     </div>
   </div>
-  <div class="bw" style="margin-top:8px;">
-    <strong>⚠️ Integration ต้องระวัง:</strong> ถ้าส่ง Invoice สาย — MAP อาจเปลี่ยนย้อนหลัง กระทบมูลค่าสินค้าที่ขายไปแล้ว
+  <div class="bi" style="margin-top:8px;font-size:.65em;">
+    <strong>💡 "ถ้า stock พอ" หมายถึง:</strong> stock คงเหลือ ≥ จำนวนใน Invoice → ส่วนต่างปรับเข้า stock เต็มจำนวน<br>
+    ถ้าเหลือน้อยกว่า (ขายออกไปแล้วบางส่วน) → ปรับเข้า stock ได้ตามสัดส่วนที่เหลือ ส่วนเกินลงบัญชีส่วนต่างราคา (PRD)
+  </div>
+  <div class="bw" style="margin-top:6px;font-size:.65em;">
+    <strong>⚠️ ส่ง Invoice ช้า:</strong> ต้นทุนที่ตัดไปก่อนหน้าใช้ MAP เก่า (SAP ไม่ย้อนแก้ COGS ที่ post แล้ว) → ต้นทุนรวมของงวดเพี้ยนจากความจริง
   </div>
 </section>
 
@@ -647,6 +661,7 @@ Dr ส่วนต่าง (PRD)     1,000 ← แยกบัญชี
     <strong>⚠️ สำคัญ:</strong> มูลค่าเดินทางตั้งแต่ <strong>DC ส่งออก</strong> — ไม่ใช่ตอนสาขารับเข้า<br>
     Integration ที่คิดว่า "ของถึงร้านเมื่อไร ค่อยมีมูลค่า" จะคำนวณผิด
   </div>
+  <p class="sm" style="margin-top:6px;">📌 Movement 351 ตัดมูลค่าด้วย <strong>MAP ของ DC ฝั่งส่ง</strong> และ stock in transit ถือเป็นของ<strong>สาขาปลายทาง</strong>ทางบัญชีแล้ว — แม้ของยังอยู่บนรถ</p>
 </section>
 
 <!-- SLIDE: Gotchas -->
@@ -743,7 +758,7 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
       <tr><td>GR เข้า stock หรือ consumption?</td><td>PO account assignment (<code>EKPO-KNTTP</code>)</td></tr>
       <tr><td>Invoice variance ไปไหน?</td><td>Price Control + stock coverage ตอน IR</td></tr>
       <tr><td>DC→สาขา มี FI ไหม?</td><td>Valuation Area ของ 2 plant</td></tr>
-      <tr><td>Mat Doc กับ FI Doc</td><td>อย่า join ด้วยเลขเดียวกัน — ใช้ reference key</td></tr>
+      <tr><td>Mat Doc กับ FI Doc</td><td>อย่า join ด้วยเลขเดียวกัน — เชื่อมผ่าน <code>BKPF-AWKEY</code></td></tr>
       <tr style="background:rgba(231,76,60,.1)"><td>Interface บอก success แต่ไม่มี doc</td><td><strong style="color:var(--red)">ลืม BAPI_TRANSACTION_COMMIT</strong></td></tr>
     </tbody>
   </table>
