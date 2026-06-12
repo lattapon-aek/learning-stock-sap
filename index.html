@@ -7,63 +7,68 @@
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reset.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/theme/black.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/theme/white.css">
 <style>
 :root {
-  --orange: #F47920;
-  --bg:     #0f1623;
-  --card:   #1a2234;
-  --card2:  #212e45;
-  --txt:    #e8eaf0;
-  --muted:  #8896a8;
-  --green:  #27ae60;
-  --red:    #e74c3c;
-  --blue:   #3498db;
-  --yellow: #f39c12;
+  --orange: #EE7F2D;
+  --bg:     #FAF6EF;
+  --card:   #FFFFFF;
+  --card2:  #F7F1E6;
+  --txt:    #4A443C;
+  --muted:  #9A9183;
+  --green:  #4E9E73;
+  --red:    #C9655B;
+  --blue:   #5B8FBF;
+  --yellow: #D9A026;
+  --line:   #E9E0D0;
 }
 .reveal { font-family:'Sarabun',sans-serif; background:var(--bg); }
 .reveal .slides { text-align:left; }
 .reveal h1,.reveal h2,.reveal h3 {
   font-family:'Sarabun',sans-serif; color:var(--orange);
-  text-transform:none; letter-spacing:normal; line-height:1.2;
+  text-transform:none; letter-spacing:normal; line-height:1.2; font-weight:700;
 }
 .reveal h2 { font-size:1.35em; }
 .reveal p,.reveal li { font-size:.77em; color:var(--txt); line-height:1.6; }
 .reveal ul { list-style:none; padding-left:0; }
 .reveal ul li::before { content:"▸ "; color:var(--orange); }
-.reveal table { width:100%; border-collapse:collapse; font-size:.63em; margin:.4em 0; }
-.reveal table th { background:var(--orange); color:#fff; padding:7px 11px; text-align:left; font-weight:600; }
-.reveal table td { background:var(--card); color:var(--txt); padding:6px 11px; border-bottom:1px solid #2a3550; }
+.reveal table { width:100%; border-collapse:collapse; font-size:.63em; margin:.4em 0;
+  border-radius:8px; overflow:hidden; box-shadow:0 1px 4px rgba(74,68,60,.08); }
+.reveal table th { background:rgba(238,127,45,.85); color:#fff; padding:7px 11px; text-align:left; font-weight:600; }
+.reveal table td { background:var(--card); color:var(--txt); padding:6px 11px; border-bottom:1px solid var(--line); }
 .reveal table tr:nth-child(even) td { background:var(--card2); }
-.reveal pre { background:#0a0e1a; border:1px solid #2a3550; border-left:3px solid var(--orange);
-  border-radius:4px; font-size:.58em; padding:10px 14px; margin:.4em 0; width:100%; box-shadow:none; }
-.reveal pre code { font-family:'JetBrains Mono',monospace; color:#c8d3e8; background:transparent; }
+.reveal pre { background:#FBF2E2; border:1px solid var(--line); border-left:3px solid var(--orange);
+  border-radius:8px; font-size:.58em; padding:10px 14px; margin:.4em 0; width:100%; box-shadow:none; }
+.reveal pre code { font-family:'JetBrains Mono',monospace; color:#6E5E45; background:transparent; }
 .reveal blockquote { background:var(--card); border-left:3px solid var(--orange); padding:9px 14px;
-  font-size:.7em; color:var(--muted); font-style:italic; width:100%; margin:7px 0; box-shadow:none; }
-.bo  { background:rgba(244,121,32,.12); border:1px solid var(--orange); border-radius:6px; padding:10px 14px; margin:6px 0; font-size:.73em; }
-.bi  { background:rgba(52,152,219,.12); border:1px solid var(--blue);   border-radius:6px; padding:10px 14px; margin:6px 0; font-size:.73em; }
-.bw  { background:rgba(231,76,60,.12);  border:1px solid var(--red);    border-left:4px solid var(--red); border-radius:6px; padding:10px 14px; margin:6px 0; font-size:.71em; }
-.bg  { background:rgba(39,174,96,.12);  border:1px solid var(--green);  border-radius:6px; padding:9px 13px; margin:6px 0; font-size:.71em; }
+  font-size:.7em; color:var(--muted); font-style:italic; width:100%; margin:7px 0;
+  box-shadow:0 1px 3px rgba(74,68,60,.06); border-radius:0 8px 8px 0; }
+.bo  { background:rgba(238,127,45,.08);  border:1px solid rgba(238,127,45,.35); border-radius:10px; padding:10px 14px; margin:6px 0; font-size:.73em; }
+.bi  { background:rgba(91,143,191,.09);  border:1px solid rgba(91,143,191,.35); border-radius:10px; padding:10px 14px; margin:6px 0; font-size:.73em; }
+.bw  { background:rgba(201,101,91,.08);  border:1px solid rgba(201,101,91,.35); border-left:4px solid var(--red); border-radius:10px; padding:10px 14px; margin:6px 0; font-size:.71em; }
+.bg  { background:rgba(78,158,115,.10);  border:1px solid rgba(78,158,115,.35); border-radius:10px; padding:9px 13px; margin:6px 0; font-size:.71em; }
 .two { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:8px; }
 .thr { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:8px; }
 .flow { display:flex; align-items:center; flex-wrap:wrap; gap:0; margin:10px 0; font-size:.68em; }
-.fb  { background:var(--card); border:1px solid var(--orange); border-radius:6px; padding:7px 12px; text-align:center; color:#fff; white-space:nowrap; }
-.fb.dim { border-color:#3a4a60; color:var(--muted); }
+.fb  { background:var(--card); border:1px solid rgba(238,127,45,.5); border-radius:10px; padding:7px 12px;
+  text-align:center; color:var(--txt); white-space:nowrap; box-shadow:0 1px 3px rgba(74,68,60,.08); }
+.fb.dim { border-color:var(--line); color:var(--muted); box-shadow:none; }
 .fa  { color:var(--orange); font-size:1.3em; padding:0 5px; flex-shrink:0; }
 .part { text-align:center !important; }
 .pnum { font-size:.85em; color:var(--muted); letter-spacing:4px; text-transform:uppercase; margin-bottom:6px; display:block; }
 .ptit { font-size:2em !important; color:var(--orange) !important; line-height:1.25 !important; }
 .psub { font-size:.82em; color:var(--muted); margin-top:10px; display:block; }
-.big  { text-align:center; font-size:1.25em; color:#fff; font-weight:600; margin:14px 0; padding:14px;
-        background:var(--card); border-radius:8px; border:1px solid var(--orange); }
+.big  { text-align:center; font-size:1.25em; color:var(--txt); font-weight:600; margin:14px 0; padding:14px;
+        background:var(--card); border-radius:12px; border:1px solid rgba(238,127,45,.4);
+        box-shadow:0 1px 4px rgba(74,68,60,.08); }
 .big span { color:var(--orange); }
 .lbl  { font-size:.53em; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-bottom:3px; display:block; }
 .num  { font-size:2.4em; font-weight:700; color:var(--orange); line-height:1; }
 .yes  { color:var(--green); font-weight:700; }
 .no   { color:var(--red);   font-weight:700; }
-.rule { border:none; border-top:1px solid #2a3550; margin:10px 0; }
+.rule { border:none; border-top:1px solid var(--line); margin:10px 0; }
 small,.sm { font-size:.68em; color:var(--muted); }
-code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a2234; padding:1px 5px; border-radius:3px; color:#c8d3e8; }
+code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#F3EAD7; padding:1px 5px; border-radius:4px; color:#A65818; }
 </style>
 </head>
 <body>
@@ -72,10 +77,10 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
 <!-- COVER -->
 <section>
   <p style="font-size:.65em;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">DOHOME DEVELOPMENT TEAM</p>
-  <h1 style="font-size:2.1em;color:#fff;line-height:1.15;">SAP <span style="color:var(--orange)">Stock</span> &amp;<br>Material Master<br><span style="color:var(--orange)">สำหรับ Developer</span></h1>
+  <h1 style="font-size:2.1em;color:var(--txt);line-height:1.15;">SAP <span style="color:var(--orange)">Stock</span> &amp;<br>Material Master<br><span style="color:var(--orange)">สำหรับ Developer</span></h1>
   <p style="font-size:.78em;color:var(--muted);margin-top:14px;">ความเข้าใจพื้นฐานสำหรับการทำ Integration และ Debug ระบบ</p>
   <hr class="rule" style="margin-top:20px;">
-  <p style="font-size:.6em;color:#3a4a60;">ใช้ลูกศร ◄ ► หรือ Spacebar เพื่อเปลี่ยน Slide &nbsp;|&nbsp; F = Full Screen</p>
+  <p style="font-size:.6em;color:var(--muted);">ใช้ลูกศร ◄ ► หรือ Spacebar เพื่อเปลี่ยน Slide &nbsp;|&nbsp; F = Full Screen</p>
 </section>
 
 <!-- AGENDA -->
@@ -105,7 +110,7 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
 <!-- HOOK -->
 <section>
   <span class="lbl">Hook</span>
-  <h2 style="color:#fff;font-size:1.15em;">ทำไม stock ที่ integration ดึงมา<br>กับที่ขายได้จริง ถึงไม่ตรงกัน?</h2>
+  <h2 style="color:var(--txt);font-size:1.15em;">ทำไม stock ที่ integration ดึงมา<br>กับที่ขายได้จริง ถึงไม่ตรงกัน?</h2>
   <div class="two" style="margin-top:18px;text-align:center;">
     <div style="background:var(--card);border-radius:8px;padding:18px;">
       <p class="sm" style="margin-bottom:4px;">Integration ดึงมา</p>
@@ -131,8 +136,8 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
   <h2 class="ptit">SAP มอง<br>"Stock" ยังไง?</h2>
   <span class="psub">Mental Model ที่ต้องมีก่อนทุกอย่าง</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
-    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 5 นาที</span>
-    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:04</span>
+    <span style="background:rgba(238,127,45,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 5 นาที</span>
+    <span style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:04</span>
   </div>
 </section>
 
@@ -214,8 +219,8 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
   <h2 class="ptit">Article /<br>Material Master</h2>
   <span class="psub">ศูนย์กลางข้อมูลสินค้าของ Dohome</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
-    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 7 นาที</span>
-    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:09</span>
+    <span style="background:rgba(238,127,45,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 7 นาที</span>
+    <span style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:09</span>
   </div>
 </section>
 
@@ -226,7 +231,7 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
   <div class="flow" style="justify-content:center;gap:8px;flex-wrap:wrap;margin:10px 0;">
     <div class="fb">Purchasing</div>
     <div class="fb">MRP</div>
-    <div class="fb" style="border-color:#fff;background:#2a3a56;padding:10px 16px;"><strong>Material Master</strong></div>
+    <div class="fb" style="border-color:var(--orange);background:rgba(238,127,45,.12);padding:10px 16px;"><strong>Material Master</strong></div>
     <div class="fb">Inventory Mgmt</div>
     <div class="fb">FI / Accounting</div>
   </div>
@@ -335,8 +340,8 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
   <h2 class="ptit">Price Control &amp;<br>Moving Average Price</h2>
   <span class="psub">หัวใจของการตีมูลค่าสินค้า</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
-    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 8 นาที</span>
-    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:16</span>
+    <span style="background:rgba(238,127,45,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 8 นาที</span>
+    <span style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:16</span>
   </div>
 </section>
 
@@ -375,10 +380,10 @@ code { font-family:'JetBrains Mono',monospace; font-size:.88em; background:#1a22
     <thead><tr><th>ขั้นตอน</th><th style="text-align:right">จำนวน</th><th style="text-align:right">มูลค่า</th><th style="text-align:right">MAP</th></tr></thead>
     <tbody>
       <tr><td>เริ่มต้น</td><td style="text-align:right">100</td><td style="text-align:right">10,000</td><td style="text-align:right"><strong>100.00</strong></td></tr>
-      <tr style="background:rgba(244,121,32,.1)"><td>GR: รับเข้า 50 ชิ้น @120 บาท</td><td style="text-align:right">150</td><td style="text-align:right">16,000</td><td style="text-align:right"><strong style="color:var(--orange)">106.67</strong></td></tr>
+      <tr style="background:rgba(238,127,45,.1)"><td>GR: รับเข้า 50 ชิ้น @120 บาท</td><td style="text-align:right">150</td><td style="text-align:right">16,000</td><td style="text-align:right"><strong style="color:var(--orange)">106.67</strong></td></tr>
       <tr><td>Invoice: ราคาจริง @115 (−250)</td><td style="text-align:right">150</td><td style="text-align:right">15,750</td><td style="text-align:right"><strong>105.00</strong></td></tr>
-      <tr style="background:rgba(231,76,60,.08)"><td>ขายออก 80 ชิ้น @MAP 105</td><td style="text-align:right">70</td><td style="text-align:right">7,350</td><td style="text-align:right"><strong>105.00</strong></td></tr>
-      <tr style="background:rgba(244,121,32,.1)"><td>GR: รับเข้าอีก 30 ชิ้น @130 บาท</td><td style="text-align:right">100</td><td style="text-align:right">11,250</td><td style="text-align:right"><strong style="color:var(--orange)">112.50</strong></td></tr>
+      <tr style="background:rgba(201,101,91,.08)"><td>ขายออก 80 ชิ้น @MAP 105</td><td style="text-align:right">70</td><td style="text-align:right">7,350</td><td style="text-align:right"><strong>105.00</strong></td></tr>
+      <tr style="background:rgba(238,127,45,.1)"><td>GR: รับเข้าอีก 30 ชิ้น @130 บาท</td><td style="text-align:right">100</td><td style="text-align:right">11,250</td><td style="text-align:right"><strong style="color:var(--orange)">112.50</strong></td></tr>
     </tbody>
   </table>
 </section>
@@ -428,8 +433,8 @@ Dr  ส่วนต่างราคา (PRD)     1,000  ← ส่วนเก
   <h2 class="ptit">Procure-to-Pay<br>Flow</h2>
   <span class="psub">จาก PO ถึง Payment — แต่ละ step เกิดอะไรขึ้น?</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
-    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 8 นาที</span>
-    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:24</span>
+    <span style="background:rgba(238,127,45,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 8 นาที</span>
+    <span style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:24</span>
   </div>
 </section>
 
@@ -444,28 +449,30 @@ Dr  ส่วนต่างราคา (PRD)     1,000  ← ส่วนเก
     มูลค่าไม่หายไปไหน — <strong>เข้ารวม = ออกรวม เสมอ</strong>
   </div>
 
-  <div style="display:flex;flex-direction:column;gap:8px;font-size:.62em;">
-    <div style="display:flex;align-items:center;gap:8px;">
-      <div style="min-width:105px;">📦 <strong>รับของเข้า DC</strong></div>
-      <div class="fb" style="border-color:var(--blue);">Vendor<br><span class="sm" style="color:var(--blue)">Cr GR/IR</span></div>
-      <div class="fa" style="font-size:1em;">─ 10,000 ─▶</div>
-      <div class="fb" style="border-color:var(--green);">คลังสินค้า<br><span class="sm" style="color:var(--green)">Dr สินค้าคงคลัง</span></div>
-      <div style="color:var(--muted);flex:1;">ของมาจาก vendor → มูลค่าเข้าคลัง — ติดหนี้พักไว้ก่อน (รอ Invoice)</div>
-    </div>
-    <div style="display:flex;align-items:center;gap:8px;">
-      <div style="min-width:105px;">🛒 <strong>ขายออก</strong></div>
-      <div class="fb" style="border-color:var(--blue);">คลังสินค้า<br><span class="sm" style="color:var(--blue)">Cr สินค้าคงคลัง</span></div>
-      <div class="fa" style="font-size:1em;">─ 1,050 ─▶</div>
-      <div class="fb" style="border-color:var(--green);">ต้นทุนขาย<br><span class="sm" style="color:var(--green)">Dr COGS</span></div>
-      <div style="color:var(--muted);flex:1;">มูลค่าออกจากคลัง → กลายเป็นต้นทุนของยอดขายครั้งนี้ (10 ชิ้น × MAP 105)</div>
-    </div>
-    <div style="display:flex;align-items:center;gap:8px;">
-      <div style="min-width:105px;">🧾 <strong>รับ Invoice</strong></div>
-      <div class="fb" style="border-color:var(--blue);">เจ้าหนี้ (AP)<br><span class="sm" style="color:var(--blue)">Cr เจ้าหนี้</span></div>
-      <div class="fa" style="font-size:1em;">─ 10,000 ─▶</div>
-      <div class="fb" style="border-color:var(--green);">หนี้พัก<br><span class="sm" style="color:var(--green)">Dr GR/IR</span></div>
-      <div style="color:var(--muted);flex:1;">เคสย้าย "หนี้": เคลียร์ bucket พัก (GR/IR) → ไปเป็นหนี้ทางการที่รอจ่ายจริง</div>
-    </div>
+  <div style="display:grid;grid-template-columns:110px 160px 105px 160px 1fr;gap:8px 10px;align-items:center;font-size:.62em;">
+    <div class="lbl" style="margin:0;">เหตุการณ์</div>
+    <div class="lbl" style="margin:0;text-align:center;color:var(--blue);">ต้นทาง (Cr)</div>
+    <div class="lbl" style="margin:0;text-align:center;">มูลค่า</div>
+    <div class="lbl" style="margin:0;text-align:center;color:var(--green);">ปลายทาง (Dr)</div>
+    <div class="lbl" style="margin:0;">อ่านว่า…</div>
+
+    <div>📦 <strong>รับของเข้า DC</strong></div>
+    <div class="fb" style="border-color:var(--blue);white-space:normal;">Vendor<br><span class="sm" style="color:var(--blue)">Cr GR/IR</span></div>
+    <div class="fa" style="font-size:1em;text-align:center;">─ 10,000 ─▶</div>
+    <div class="fb" style="border-color:var(--green);white-space:normal;">คลังสินค้า<br><span class="sm" style="color:var(--green)">Dr สินค้าคงคลัง</span></div>
+    <div style="color:var(--muted);">ของมาจาก vendor → มูลค่าเข้าคลัง — ติดหนี้พักไว้ก่อน (รอ Invoice)</div>
+
+    <div>🛒 <strong>ขายออก</strong></div>
+    <div class="fb" style="border-color:var(--blue);white-space:normal;">คลังสินค้า<br><span class="sm" style="color:var(--blue)">Cr สินค้าคงคลัง</span></div>
+    <div class="fa" style="font-size:1em;text-align:center;">─ 1,050 ─▶</div>
+    <div class="fb" style="border-color:var(--green);white-space:normal;">ต้นทุนขาย<br><span class="sm" style="color:var(--green)">Dr COGS</span></div>
+    <div style="color:var(--muted);">มูลค่าออกจากคลัง → กลายเป็นต้นทุนของยอดขายครั้งนี้ (10 ชิ้น × MAP 105)</div>
+
+    <div>🧾 <strong>รับ Invoice</strong></div>
+    <div class="fb" style="border-color:var(--blue);white-space:normal;">เจ้าหนี้ (AP)<br><span class="sm" style="color:var(--blue)">Cr เจ้าหนี้</span></div>
+    <div class="fa" style="font-size:1em;text-align:center;">─ 10,000 ─▶</div>
+    <div class="fb" style="border-color:var(--green);white-space:normal;">หนี้พัก<br><span class="sm" style="color:var(--green)">Dr GR/IR</span></div>
+    <div style="color:var(--muted);">เคสย้าย "หนี้": เคลียร์ bucket พัก (GR/IR) → ไปเป็นหนี้ทางการที่รอจ่ายจริง</div>
   </div>
 
   <div class="bi" style="margin-top:10px;font-size:.65em;">
@@ -564,8 +571,8 @@ Dr ส่วนต่าง (PRD)     1,000 ← แยกบัญชี
   <h2 class="ptit">Movement Types &amp;<br>Stock ของ Dohome</h2>
   <span class="psub">DC-DC, DC-สาขา, Stock จอง, และ Gotchas</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
-    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 8 นาที</span>
-    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:32</span>
+    <span style="background:rgba(238,127,45,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 8 นาที</span>
+    <span style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:32</span>
   </div>
 </section>
 
@@ -635,7 +642,7 @@ Dr ส่วนต่าง (PRD)     1,000 ← แยกบัญชี
     <thead><tr><th>ขั้นตอน</th><th style="text-align:right">Stock DC</th><th style="text-align:right">In Transit</th><th style="text-align:right">Stock สาขา</th></tr></thead>
     <tbody>
       <tr><td>ก่อนโอน</td><td style="text-align:right">100</td><td style="text-align:right">0</td><td style="text-align:right">50</td></tr>
-      <tr style="background:rgba(244,121,32,.1)"><td>หลัง Movement 351 (DC ส่งออก)</td><td style="text-align:right">70</td><td style="text-align:right">30</td><td style="text-align:right">50</td></tr>
+      <tr style="background:rgba(238,127,45,.1)"><td>หลัง Movement 351 (DC ส่งออก)</td><td style="text-align:right">70</td><td style="text-align:right">30</td><td style="text-align:right">50</td></tr>
       <tr><td>หลังสาขารับเข้า</td><td style="text-align:right">70</td><td style="text-align:right">0</td><td style="text-align:right">80</td></tr>
     </tbody>
   </table>
@@ -678,8 +685,8 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
   <h2 class="ptit">Account<br>Determination</h2>
   <span class="psub">SAP ตัดบัญชีอัตโนมัติยังไง?</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
-    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 3 นาที</span>
-    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:40</span>
+    <span style="background:rgba(238,127,45,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 3 นาที</span>
+    <span style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:40</span>
   </div>
 </section>
 
@@ -694,7 +701,7 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
     <div style="color:var(--orange);padding-left:22px;font-size:1.2em;">↓</div>
     <div style="display:flex;align-items:center;gap:10px;"><div class="fb" style="min-width:220px;">Valuation Class (BKLAS)</div><span class="sm">จาก MBEW-BKLAS ของสินค้า</span></div>
     <div style="color:var(--orange);padding-left:22px;font-size:1.2em;">↓</div>
-    <div style="display:flex;align-items:center;gap:10px;"><div class="fb" style="min-width:220px;background:#1a4a1a;border-color:var(--green);">G/L Account</div><span class="sm">กำหนดใน OBYC</span></div>
+    <div style="display:flex;align-items:center;gap:10px;"><div class="fb" style="min-width:220px;background:rgba(78,158,115,.14);border-color:var(--green);">G/L Account</div><span class="sm">กำหนดใน OBYC</span></div>
   </div>
   <blockquote>Dev ต้องรู้ว่า <strong>Valuation Class + Movement Type</strong> คือตัวแปรหลักที่กำหนดบัญชี</blockquote>
 </section>
@@ -722,8 +729,8 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
   <h2 class="ptit">Developer<br>Quick Reference</h2>
   <span class="psub">Cheat Sheet สำหรับใช้งานจริง</span>
   <div style="margin-top:18px;display:inline-flex;gap:16px;font-size:.7em;">
-    <span style="background:rgba(244,121,32,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 4 นาที</span>
-    <span style="background:var(--card);border:1px solid #2a3550;border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:43</span>
+    <span style="background:rgba(238,127,45,.15);border:1px solid var(--orange);border-radius:20px;padding:4px 14px;">⏱ 4 นาที</span>
+    <span style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 14px;color:var(--muted);">เริ่มตอน ~0:43</span>
   </div>
 </section>
 
@@ -741,7 +748,7 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
       <tr><td>Invoice variance ไปไหน?</td><td>Price Control + stock coverage ตอน IR</td></tr>
       <tr><td>DC→สาขา มี FI ไหม?</td><td>Valuation Area ของ 2 plant</td></tr>
       <tr><td>Mat Doc กับ FI Doc</td><td>อย่า join ด้วยเลขเดียวกัน — เชื่อมผ่าน <code>BKPF-AWKEY</code></td></tr>
-      <tr style="background:rgba(231,76,60,.1)"><td>Interface บอก success แต่ไม่มี doc</td><td><strong style="color:var(--red)">ลืม BAPI_TRANSACTION_COMMIT</strong></td></tr>
+      <tr style="background:rgba(201,101,91,.1)"><td>Interface บอก success แต่ไม่มี doc</td><td><strong style="color:var(--red)">ลืม BAPI_TRANSACTION_COMMIT</strong></td></tr>
     </tbody>
   </table>
 </section>
@@ -759,7 +766,7 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
       <tr><td><code>BAPI_GOODSMVT_CANCEL</code></td><td>ยกเลิก Goods Movement</td></tr>
       <tr><td><code>BAPI_PO_CREATE1</code></td><td>สร้าง Purchase Order</td></tr>
       <tr><td><code>BAPI_INCOMINGINVOICE_CREATE</code></td><td>บันทึก Invoice Receipt (แทน MIRO)</td></tr>
-      <tr style="background:rgba(244,121,32,.15)"><td><strong style="color:var(--orange)">BAPI_TRANSACTION_COMMIT</strong></td><td><strong>Commit LUW — ต้องเรียกหลัง BAPI ทุกตัวเสมอ!</strong></td></tr>
+      <tr style="background:rgba(238,127,45,.15)"><td><strong style="color:var(--orange)">BAPI_TRANSACTION_COMMIT</strong></td><td><strong>Commit LUW — ต้องเรียกหลัง BAPI ทุกตัวเสมอ!</strong></td></tr>
     </tbody>
   </table>
   <pre style="margin-top:8px;font-size:.6em;"><code>1. BAPI_GOODSMVT_CREATE    → ได้ Material Doc Number กลับมา
@@ -799,10 +806,10 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
 <section style="text-align:center;">
   <div style="margin-top:50px;">
     <p style="font-size:.65em;color:var(--muted);letter-spacing:3px;text-transform:uppercase;">DOHOME DEVELOPMENT TEAM</p>
-    <h1 style="font-size:2.4em;color:#fff;margin:14px 0;">ขอบคุณครับ</h1>
+    <h1 style="font-size:2.4em;color:var(--txt);margin:14px 0;">ขอบคุณครับ</h1>
     <p style="font-size:.82em;color:var(--muted);">มีคำถาม หรืออยากขุดลึก topic ไหนเพิ่มเติม?</p>
     <hr class="rule" style="margin:22px auto;width:180px;">
-    <p style="font-size:.62em;color:#3a4a60;">SAP Stock &amp; Material Master for Dohome Developers</p>
+    <p style="font-size:.62em;color:var(--muted);">SAP Stock &amp; Material Master for Dohome Developers</p>
   </div>
 </section>
 
@@ -812,8 +819,8 @@ BAPI_TRANSACTION_COMMIT  ← ต้องเรียกเสมอ!</code></pr
 Reveal.initialize({
   hash: true,
   slideNumber: 'c/t',
-  transition: 'slide',
-  transitionSpeed: 'fast',
+  transition: 'fade',
+  transitionSpeed: 'default',
   controls: true,
   progress: true,
   center: false,
