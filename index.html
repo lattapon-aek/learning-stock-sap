@@ -515,24 +515,36 @@ Dr  ส่วนต่างราคา (PRD)     1,000  ← ส่วนเก
 <!-- SLIDE: GR/IR -->
 <section>
   <span class="lbl">Part 4 — P2P Flow</span>
-  <h2>GR/IR Clearing Account คืออะไร?</h2>
-  <p class="sm"><strong>GR/IR Clearing</strong> = บัญชีพักชั่วคราว ระหว่างรับของกับรับใบแจ้งหนี้<br>
-  (ขั้น PO ยังไม่มีผลทางบัญชี — ทุกอย่างเริ่มที่ Goods Receipt)</p>
-  <pre><code>ตอน Goods Receipt:
-  Dr  สินค้าคงคลัง     10,000  ← ของเข้าคลัง
-      Cr  GR/IR         10,000  ← รอ Invoice
+  <h2>GR/IR — บัญชีพักของ "ของมาแล้ว แต่บิลยังไม่มา"</h2>
+  <p class="sm">ของกับใบแจ้งหนี้เดินทางมา<strong>คนละเวลา</strong> (คลังเป็นคนรับของ / บัญชีเป็นคนรับบิล) — SAP เลยมีบัญชีพักไว้จับคู่สองฝั่ง<br>
+  เหมือนกินข้าวในร้าน: ได้อาหารก่อน รู้ราคาคร่าวๆ จากเมนู (= ราคา PO) ส่วนบิลจริงมาตอนจบ &nbsp;<span style="color:var(--muted)">(ขั้น PO ยังไม่มีผลบัญชีใดๆ)</span></p>
 
-ตอน Invoice Receipt:
-  Dr  GR/IR            10,000  ← เคลียร์ออก
-      Cr  เจ้าหนี้ (AP) 10,000  ← ค้างจ่าย vendor</code></pre>
-  <table style="margin-top:8px;">
-    <thead><tr><th>กรณี</th><th>GR/IR Balance</th><th>สาเหตุ</th></tr></thead>
-    <tbody>
-      <tr><td>ปกติ (ครบ)</td><td style="color:var(--green);font-weight:600;">= 0 ✅</td><td>GR และ Invoice ครบและตรงกัน</td></tr>
-      <tr><td>ยอด Debit ค้าง</td><td style="color:var(--orange);">&gt; 0</td><td>รับของแล้ว แต่ยังไม่มี Invoice</td></tr>
-      <tr><td>ยอด Credit ค้าง</td><td style="color:var(--red);">&lt; 0</td><td>Invoice มาแล้ว แต่ของยังไม่มาถึง</td></tr>
-    </tbody>
-  </table>
+  <div class="two" style="margin-top:8px;">
+    <div class="bo" style="margin:0;">
+      <strong>① ของมาถึง — Goods Receipt</strong><br>
+      <span class="sm">มูลค่าวิ่งเข้าคลัง แต่บิลยังไม่มา → ต้นทางเป็น "หนี้แปะโป้ง" ไว้ก่อน</span>
+      <pre style="font-size:.58em;margin:6px 0;"><code>Dr สินค้าคงคลัง   10,000  ← ของเข้าคลัง
+   Cr GR/IR       10,000  ← แปะโป้งไว้ รอบิล</code></pre>
+      <div style="text-align:center;font-size:.66em;background:rgba(238,127,45,.1);border-radius:8px;padding:5px 8px;">
+        บัญชีพัก: <strong style="color:var(--orange)">ค้าง 10,000</strong> — ของมาแล้ว รอบิลมาจับคู่
+      </div>
+    </div>
+    <div class="bg" style="margin:0;">
+      <strong>② บิลมาถึง — Invoice Receipt</strong><br>
+      <span class="sm">บิลจับคู่กับของได้ → ฉีกที่แปะโป้งทิ้ง หนี้กลายเป็นหนี้จริงรอจ่าย</span>
+      <pre style="font-size:.58em;margin:6px 0;"><code>Dr GR/IR         10,000  ← เคลียร์ที่แปะไว้
+   Cr เจ้าหนี้ (AP) 10,000  ← หนี้จริง รอจ่าย</code></pre>
+      <div style="text-align:center;font-size:.66em;background:rgba(78,158,115,.12);border-radius:8px;padding:5px 8px;">
+        บัญชีพัก: <strong style="color:var(--green)">0 ✅</strong> — จับคู่ครบ ของ = บิล
+      </div>
+    </div>
+  </div>
+
+  <div class="bi" style="margin-top:10px;font-size:.65em;">
+    <strong>วิธีอ่านยอดค้างใน GR/IR:</strong> ยอดคงเหลือ = รายการที่ยัง<strong>จับคู่ไม่ครบ</strong><br>
+    ค้างฝั่ง <strong style="color:var(--orange)">Cr</strong> = ของมาแล้ว บิลยังไม่มา (เคสปกติของค้าปลีก) &nbsp;|&nbsp;
+    ค้างฝั่ง <strong style="color:var(--red)">Dr</strong> = บิลมาแล้ว ของยังไม่ถึง (ต้องตามของ)
+  </div>
 </section>
 
 <!-- SLIDE: Invoice Variance -->
